@@ -1,4 +1,4 @@
-diary
-health
-others
+/diary
+/health
+/others
 .gitignore
