@@ -1,0 +1,335 @@
+    1  \
+    2  ip a
+    3  ping 11.11.11.2
+    4  ping 11.11.11.3
+    5  ping -c 20 11.11.11.4
+    6  ping -c 20 11.11.11.5
+    7  ping -c 20 11.11.11.6
+    8  ping -c 20 11.11.11.7
+    9  ping -c 20 11.11.11.8
+   10  ping -c 20 11.11.11.9
+   11  ping -c 20 11.11.11.10
+   12  cat /etc/sysconfig/network
+   13  exit
+   14  ip a
+   15  hostname node1
+   16  vim /etc/sysconfig/network
+   17  sed -i 's/HOSTNAME=localhost.localdomain/HOSTNAME=node1/g' /etc/sysconfig/network
+   18  history 
+   19  ip a
+   20  ifconfig 
+   21  bash
+   22  exit
+   23  df -h
+   24  sh /mnt/mlnxofedinstall --help
+   25   /mnt/mlnxofedinstall --help
+   26   /mnt/mlnxofedinstall --without-fw-update --force
+   27  /etc/init.d/openibd restart
+   28  ip a
+   29  hostname 
+   30  cat /etc/sysconfig/network
+   31  exit
+   32  ip a
+   33  vim /etc/sysconfig/network-scripts/ifcfg-eth0 
+   34  ip a
+   35  cd /etc/sysconfig/network
+   36  ls
+   37  cd /etc/sysconfig/network-scripts/
+   38  lsblk 
+   39  mount /dev/sdb1 /mnt/
+   40  cp ifcfg-eth0 /mnt/
+   41  cd 
+   42  umount mnt
+   43  umount /mnt/
+   44  cd 
+   45  ls
+   46  \\\\
+   47  systemct restartnetwork
+   48  service network restart
+   49  ip a
+   50  cat /etc/sysconfig/network-scripts/ifcfg-ib0 
+   51  ssh node2
+   52  exit
+   53  ip a
+   54  lspci  | grep -i mellanox
+   55  ip a
+   56  ofed_info -s
+   57  /etc/init.d//openibd status
+   58  /etc/init.d//openibd restart
+   59  ip a
+   60  ping 12.12.12.254
+   61  route -n
+   62  cat /etc/sysconfig/network-scripts/ifcfg-ib0 
+   63  ibhosts 
+   64  df -h
+   65  cd /nfs/
+   66  ls
+   67  cd resources/
+   68  ls
+   69  ll
+   70  mount MLNX_OFED_LINUX-4.0-2.0.0.1-rhel6.9-x86_64.iso /mnt/
+   71  mount MLNX_OFED_LINUX-4.0-2.0.0.1-rhel6.9-x86_64.iso /mnt/ -o loop
+   72  cd /mnt/
+   73  ls
+   74  ll
+   75  ./mlnxofedinstall --help
+   76  ./mlnxofedinstall --without-fw-update --force 
+   77  //etc/init.d/openibd restart
+   78  ip a
+   79  reboot
+   80  df -h
+   81  ip a
+   82  /etc/init.d/opensmd start
+   83  ip a
+   84  ibstat
+   85  ofed_info -s
+   86  service opensmd stop
+   87  chkconfig opensmd off
+   88  exit
+   89  df -h
+   90  ip a
+   91  exit
+   92  ssh node2
+   93  ssh ndoe3
+   94  ssh node3
+   95  exit
+   96  yum install ipmitool OpenIPMI -y
+   97  ipmitool lan print
+   98  modprobe ipmi_watchdog
+   99  modprobe ipmi_poweroff
+  100  modprobe ipmi_devintf
+  101  modprobe ipmi_si
+  102  modprobe ipmi_msghandler
+  103  service ipmievd restart
+  104  chkconfig ipmievd on
+  105  ipmitool lan print
+  106  exit
+  107  ipmitool lan set 1 ipsrc static
+  108  ipmitool lan set 1 netmask 255.255.0.0
+  109  ipmitool lan set 1 ipaddr 11.11.21.1
+  110  ssh node2
+  111  exit
+  112  ipmitool lan print
+  113  ssh node2 ipmitool lan print 
+  114  ssh node3 ipmitool lan print 
+  115  ping 38.38.3.1
+  116  ping 38.38.3.254
+  117  ssh node3 ipmitool lan print 
+  118  ssh node3 ipmitool lan print ]
+  119  ssh node3 ipmitool lan print 
+  120  ipmitool lan set 1 ipsrc static
+  121  ipmitool lan set 1 netmask 255.255.0.0
+  122  ipmitool lan set 1 defgw ipaddr 0.0.0.0
+  123  ipmitool lan set 1 ipaddr 11.11.21.1
+  124  ipmitool lan print | grep 'IP Address'
+  125  exit
+  126  ibstat
+  127  cd 
+  128  ibstat
+  129  ip a
+  130  exit
+  131  df -h
+  132  cd /nfs/
+  133  ls
+  134  cd resources/
+  135  ls
+  136  ll
+  137  ll /mnt/
+  138  pwd
+  139  exit
+  140  ipmitool usr list 
+  141  ipmitool user list 
+  142  ipmitool user list 1
+  143  ipmitool user set password 2 Sugon999
+  144  exit
+  145  service iptables status
+  146  getenforce 
+  147  service firewalld status
+  148  cat /tmp/setup_service.sh 
+  149  cat /etc/hosts
+  150  exit
+  151  top 
+  152  lscpu u
+  153  lscpu 
+  154  cd /public/resources/admin/clussoft-2.4
+  155  ls
+  156  ./clussoft -I base | tee -i base.txt &
+  157  pestat 
+  158  /etc/init.d/pbs_mom status
+  159  pestat 
+  160  ping node1
+  161  pestat 
+  162  cd /opt/
+  163  ls
+  164  cd gridview/
+  165  ls
+  166  vim /etc/init.d/pbs_mom 
+  167  /etc/init.d/pbs_mom restart
+  168  /etc/init.d/trqauthd restart
+  169  ping iadmin
+  170  ls
+  171  cd ..
+  172  ls
+  173  cd gridview/
+  174  ls
+  175  cd pbs/
+  176  ls
+  177  cd dispatcher/
+  178  ls
+  179  cat server_name 
+  180  pestat 
+  181  exit
+  182  cd /public/resources/admin/
+  183  ls
+  184  cd clussoft
+  185  ls
+  186  cd clussoft-2.4
+  187  ls
+  188  vim base.txt 
+  189  ./clussoft --help
+  190  ./clussoft -l
+  191  pwd
+  192  cat /etc/hosts
+  193  cd 
+  194  pest
+  195  bash
+  196  exit
+  197  sed -i 's/nfs/public/g' /etc/yum.repos.d/CentOS-Media.repo
+  198  vim /etc/yum.repos.d/CentOS-Media.repo 
+  199  exit
+  200  /etc/init.d/pbs_mom status
+  201  pestat 
+  202  /etc/init.d/pbs_mom restart
+  203  pestat 
+  204  ypwhich 
+  205  authconfig-tui 
+  206  id ll
+  207  ssh ndoe2
+  208  ssh node2
+  209  /etc/init.d/trqauthd restart
+  210  qstat -Q
+  211  exit
+  212  cd /opt/
+  213  ls
+  214  cd gridview/
+  215  ls
+  216  cd pbs/
+  217  ls
+  218  cd dispatcher/
+  219  ls
+  220  vim server_name 
+  221  vim pbs_environment 
+  222  ll
+  223  cd aux/
+  224  ls
+  225  cd ../bin/
+  226  ll
+  227  cd ..
+  228  ll
+  229  cd client_logs/
+  230  ll
+  231  cd ..
+  232  ll
+  233  cd mom_priv/
+  234  ls
+  235  vim config 
+  236  ll
+  237  vim common.sh 
+  238  cd ..
+  239  ls
+  240  ll
+  241  cd sched_
+  242  cd sched_priv/
+  243  ls
+  244  cd ..
+  245  ll
+  246  cd server_priv/
+  247  ls
+  248  cat nodes 
+  249  ll
+  250  cd hostlist/
+  251  ls
+  252  cd ..
+  253  ll
+  254  cd ..
+  255  ll
+  256  cd 
+  257  cd /etc/init.d/
+  258  ls
+  259  vim pbs_mom 
+  260  ssh node2
+  261  top
+  262  ls
+  263  ls /oopt
+  264  ls /opt
+  265  exit
+  266  ls
+  267  exit
+  268  history
+  269  cat /etc/hosts
+  270  exit
+  271  ssh node1
+  272  exit
+  273  top
+  274  cat /etc/host
+  275  cat /etc/hosts
+  276  cpuinfo
+  277  lscpu
+  278  cat /proc/meminfo | grep MemTotal
+  279  fdisk & disk – l & d
+  280  fdisk & disk – l & df
+  281  fdisk -l
+  282  fdisk -d
+  283  ifconfig
+  284  ping node1
+  285  ping node2
+  286  ping login
+  287  ping admin
+  288  exit
+  289  history
+  290  ip a
+  291  exit
+  292  mpicc
+  293  mpi-selector
+  294  showq
+  295  tetch-cpu
+  296  fetch-cpu
+  297  ls
+  298  exit
+  299  ls
+  300  exit
+  301  ls
+  302  clear
+  303  ls
+  304  cat /var/log/secure
+  305  vi /var/log/secure
+  306  vi /var/log/secure-20210307 
+  307  ls
+  308  cat /etc/hosts
+  309  ls
+  310  exit
+  311  ssh inode2
+  312  ls
+  313  pwd
+  314  cd /home/
+  315  ls
+  316  cd /public/
+  317  ls
+  318  cd home/
+  319  ls
+  320  cd pram/
+  321  ls
+  322  cd xszhu
+  323  cd ../xszhu
+  324  ls
+  325  cd ..
+  326  ls
+  327  exit
+  328  cp /etc/sudoers /etc/sudoers_bak
+  329  cat /etc/sudoers
+  330  exit
+  331  cat /etc/sudoers
+  332  visudo
+  333  ssh login
+  334  cat /etc/sudoers
+  335  history >> /public/home/node1history.bak

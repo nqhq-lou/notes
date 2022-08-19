@@ -1,0 +1,10 @@
+{
+  "theme": "moonstone",
+  "cssTheme": "Deep Work",
+  "monospaceFontFamily": "Fira Code Retina",
+  "textFontFamily": "等线",
+  "interfaceFontFamily": "微软雅黑",
+  "translucency": false,
+  "baseFontSize": 13,
+  "baseFontSizeAction": true
+}

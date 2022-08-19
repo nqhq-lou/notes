@@ -1,0 +1,1002 @@
+    2  hostname admin
+    3  exit
+    4  clusconf --sync-file /etc/hosts
+    5  rz
+    6  ls
+    7  chmod 755 nprsh 
+    8  mv nprsh /usr/bin/
+    9  cd /public/resources/
+   10  ls
+   11  ll
+   12  mount -o loop MLNX_OFED_LINUX-4.4-1.0.0.0-rhel6.9-x86_64.iso /mnt/
+   13  ls
+   14  cd /mnt/
+   15  ls
+   16  ll
+   17  ./mlnxofedinstall 
+   18  /etc/init.d/openibd restart
+   19  ip a
+   20  /etc/init.d/opensmd restart
+   21  cd 
+   22  chkconfig opensmd on
+   23  /etc/init.d/openibd restart
+   24  ip a
+   25  service libguest stop
+   26  service libvirtuald stop
+   27  service libvirtual stop
+   28  chkconfig --list | grep on
+   29  history 
+   30  ssh node1
+   31  history 
+   32  exit
+   33  lsblk 
+   34  parted /dev/sdb 
+   35  mkfs.ext4 /dev/sdb1 
+   36  ip a
+   37  route -n
+   38  ip a
+   39  clusconf -h
+   40  cd 
+   41  nprsh -on node1..10 "mkdir -p /public"
+   42  nprsh -on node1..10 "mkdir -p /nfs"
+   43  nprsh -on node1..10 "mount admin:/public/ /nfs"
+   44  nprsh -on node1..10 "df -h | grep  /nfs"
+   45  nprsh -on node1..10 ""mount /nfs/resources/MLNX_OFED_LINUX-4.4-1.0.0.0-rhel6.9-x86_64.iso /mnt/ -o loop""
+   46  ip a
+   47  cat /etc/yum.repos.d/CentOS-Media.repo 
+   48  ls
+   49  cp /etc/yum.repos.d/CentOS-Media.repo /root/
+   50  cd 
+   51  vim CentOS-Media.repo 
+   52  nprsh -on node1..10 "rm -f /etc/yum.repos.d/*"
+   53  ls
+   54  for i in {1..10} ; do scp CentOS-Media.repo node$i:/etc/yum.repos.d/; done
+   55  scp CentOS-Media.repo login:/etc/yum.repos.d
+   56  nprsh -on node1..10 "yum clean all"
+   57  nprsh -on node1..10 "yum makecache"
+   58  nprsh -on node1..10 "yum install rsh* -y"
+   59  yum -y install tcl pssh mpssh environment-modules
+   60  history 
+   61  yum install rsh* -y
+   62  nprsh -on node1..10 "yum install tcl pssh mpssh environment-modules -y"
+   63  ip a
+   64  chkconfig libvirtd stop
+   65  chkconfig libvirtd off
+   66  chkconfig libvirt-guests off
+   67  chkconfig bluetooth off
+   68  chkconfig certmonger off
+   69  chkconfig cpuspeed  off
+   70  chkconfig ip6tables  off
+   71  ip a
+   72  df -h
+   73  ibstat
+   74  ibhosts 
+   75  ip a
+   76  vim /etc/sysconfig/network-scripts/ifcfg-ib0 
+   77  ifup ib0
+   78  ip a
+   79  service libvirtd stop
+   80  service libvirt-guest stop
+   81  service libvirt-guests stop
+   82  ip a
+   83  vim /etc/sysconfig/network-scripts/ifcfg-eth0 
+   84  vim /etc/hosts
+   85  nprsh -on node1..10 "yum install libmnl -y"
+   86  history 
+   87  history | grep --forece
+   88  nprsh -on node2..10 "/mnt/mlnxofedinstall --without-fw-update --force"
+   89  nprsh -on node1..10 reboot
+   90  ibstat
+   91  ip a
+   92  reboot
+   93   history | grep forece
+   94  ssh node5
+   95  cat /etc/sysconfig/network-scripts/ifcfg-ib0 
+   96  ip a
+   97  vim /etc/sysconfig/network-scripts/ifcfg-eth0 
+   98  ssh login
+   99  nprsh -on node1..10 "sed -i 's/NETMASK=255.255.255.0/NETMASK=255.255.0.0/g' /etc/sysconfig/network-scripts/ifcfg-eth0"
+  100  history | grep forece
+  101  for i in {1..10}; do ssh node$i "hostname node$i" ; done
+  102  for i in {1..10}; do ssh node$i "cat /etc/sysconfig/network" ; done
+  103  for i in {2..10}; do "sed -i 's/HOSTNAME=localhost.localdomain/HOSTNAME=node$i/g' /etc/sysconfig/network"; done
+  104  for i in {2..10}; do ssh node$i "sed -i 's/HOSTNAME=localhost.localdomain/HOSTNAME=node$i/g' /etc/sysconfig/network"; done
+  105  cd /etc/sysconfig/network-scripts/
+  106  ll
+  107  ls ifcfg-ib0 
+  108  cat ifcfg-ib0 
+  109  vim ifcfg-ib0 
+  110  ifup ib0
+  111  ip a
+  112  for i in {1..10}; do "scp ifcfg-ib0 node$i:/etc/sysconfig/network-scripts/ifcfg-ib0" ; done
+  113  for i in {1..10}; do scp ifcfg-ib0 node$i:/etc/sysconfig/network-scripts/ifcfg-ib0; done
+  114  for i in {1..10}; do sed -i 's/IPADDR=12.12.12.254/IPADDR=12.12.12.$i/g /etc/sysconfig/network-scripts/ifcfg-ib0; done
+  115  for i in {1..10}; do sed -i 's/IPADDR=12.12.12.254/IPADDR=12.12.12.$i/g' /etc/sysconfig/network-scripts/ifcfg-ib0; done
+  116  scp ifcfg-ib0 login:/etc/sysconfig/network-scripts/ifcfg-ib0 
+  117  cat /etc/sysconfig/network-scripts/ifcfg-ib0 
+  118  ssh node1
+  119  ssh login
+  120  ping node1
+  121  ssh node1
+  122  ip a
+  123  /etc/init.d/opensmd status
+  124  /etc/init.d/opensmd start
+  125  cat /etc/sysconfig/network-scripts/ifcfg-ib0 
+  126  vim /etc/sysconfig/network-scripts/ifcfg-ib0 
+  127  ifup  ib0
+  128  service opensmd start
+  129  chkconfig opensmd start
+  130  chkconfig opensmd on
+  131  chkconfig openibd on
+  132  service openibd start
+  133  service opensmd start
+  134  service opensmd restart
+  135  ip a
+  136  nprsh -on node1..10 "cat /etc/sysconfig/network-scripts/ifcfg-ib0|grep IPADDR "
+  137  for i in {1..10}; do sed -i 's/IPADDR=12.12.12.254/IPADDR=12.12.12."$i"/g' /etc/sysconfig/network-scripts/ifcfg-ib0; done
+  138  for i in {1..10}; do ssh node$i sed -i 's/IPADDR=12.12.12.254/IPADDR=12.12.12."$i"/g' /etc/sysconfig/network-scripts/ifcfg-ib0; done
+  139  for i in {1..10}; do ssh node$i sed -i 's/IPADDR=12.12.12./IPADDR=12.12.12.$i/g' /etc/sysconfig/network-scripts/ifcfg-ib0; done
+  140  for i in {1..10}; do ssh node$i "sed -i 's/'IPADDR=12.12.12.'/IPADDR=12.12.12.$i/g' /etc/sysconfig/network-scripts/ifcfg-ib0"; done
+  141  nprsh -on node1..10 "cat /etc/sysconfig/network-scripts/ifcfg-ib0|grep IPADDR "
+  142  ip a
+  143  history | grep mount 
+  144  nprsh -on node1..10 "mount admin:/public/ /nfs"
+  145  chkconfig --list | grep nfs
+  146  chkconfig nfs on
+  147  service nfs start
+  148  nprsh -on node1..10 "mount admin:/public/ /nfs"
+  149  ssh login mount admin:/public/ /nfs
+  150  cd 
+  151  cd /public/resources/
+  152  ls
+  153  mount MLNX_OFED_LINUX-4.0-2.0.0.1-rhel6.9-x86_64.iso /mnt
+  154  mount MLNX_OFED_LINUX-4.0-2.0.0.1-rhel6.9-x86_64.iso /mnt -o loop
+  155  cd /mnt/
+  156  ./mlnxofedinstall  --force
+  157  service dhcpd status
+  158  service httpd status
+  159  /etc/init.d/openibd restart
+  160  /etc/init.d/opensmd restart
+  161  cd 
+  162  chkconfig opensmd on
+  163  chkconfig openibd on
+  164  nprsh -on node1..10 "umoun /nfs"
+  165  nprsh -on node1..10 "umount /nfs"
+  166  nprsh -on node1..10 "umount /public"
+  167  reboot
+  168  ipmitool lan print
+  169  service ipmitool restart
+  170  service ipmi restart
+  171  chkconfig --list | grep ipmi
+  172  service ipmievd restart
+  173  ssh login
+  174  nprsh -on node1..10 "yum -y install ipmitool* OpenIPMI*"
+  175  history 
+  176  nprsh -on node1..10 "yum -y install ipmitool OpenIPMI"
+  177  nprsh -on node1..10 "chkconfig openibd on"
+  178  ip a
+  # 需要有下面这几条, 之后的ipmitool才能使用
+  179  modprobe ipmi_watchdog
+  180  modprobe ipmi_poweroff
+  181  modprobe ipmi_devintf
+  182  modprobe ipmi_si
+  183  modprobe ipmi_msghandler
+  184  service ipmievd restart
+  185  chkconfig ipmievd on
+  186  ipmitool lan print
+  187  ip a
+  188  ibstat
+  189  df -h
+  190  nprsh -on node1..10 "mount admin:/public/ /nfs"
+  191  ssh node3
+  192  ssh node4
+  193  ssh node5
+  # 在这之前要ipmitool lan set 1 access off,执行完后access on
+  194  nprsh -on node1..10 "ipmitool lan set 1 ipsrc static"
+  195  nprsh -on node1..10 "ipmitool lan set 1 defgw ipaddr 0.0.0.0"
+  196  nprsh -on node1..10 "ipmitool lan set 1 ipsrc static"
+  197  nprsh -on node1..10 "ipmitool lan set 1 netmask 255.255.0.0"
+  198  nprsh -on node1..10 "ipmitool lan set 1 defgw ipaddr 0.0.0.0"
+  199  ssh node1 "ipmitool lan set 1 ipaddr 11.11.21.1"
+  200  ssh node2 "ipmitool lan set 1 ipaddr 11.11.21.2"
+  201  ssh node3 "ipmitool lan set 1 ipaddr 11.11.21.3"
+  202  ssh node4 "ipmitool lan set 1 ipaddr 11.11.21.4"
+  203  ssh node5 "ipmitool lan set 1 ipaddr 11.11.21.5"
+  204  ssh node6 "ipmitool lan set 1 ipaddr 11.11.21.6"
+  205  ssh node7 "ipmitool lan set 1 ipaddr 11.11.21.7"
+  206  ssh node8 "ipmitool lan set 1 ipaddr 11.11.21.8"
+  207  ssh node9 "ipmitool lan set 1 ipaddr 11.11.21.9"
+  208  ssh node10 "ipmitool lan set 1 ipaddr 11.11.21.10"
+  209  ssh node1
+  210  exit
+  211  ssh node1
+  212  ssh login
+  213  ping 11.11.21.253
+  214  ping 11.11.21.1
+  215  ping 11.11.21.2
+  216  ping 11.11.21.1
+  217  ipmitool lan print
+  218  ipmitool lan set 1 ipsrc static
+  219  ipmitool lan set 1 ipaddr 11.11.21.254
+  220  ipmitool lan set 1 netmask 255.255.0.0
+  221  ip a
+  222  ipmitool lan set 1 netmask 255.255.0.0
+  223  ipmitool lan print
+  224  ping 11.11.21.254
+  225  ping 11.11.21.253
+  226  ssh login
+  227  cat /etc/hosts
+  228  ping node1
+  229  ping -c 2 node1
+  230  ping -c 2 node2
+  231  ping -c 2 node3
+  232  ping -c 2 node4
+  233  ping -c 2 node5
+  234  ping -c 2 node6
+  235  ping -c 2 node7
+  236  ping -c 2 node8
+  237  ping -c 2 node9
+  238  ping -c 2 node10
+  239  clusconf --set-rsh
+  240  history 
+  241  nprsh -on node1..10 "mount admin:/public/ /nfs"
+  242  nprsh -on node1..10 "yum -y install dos2unix"
+  243  clusconf --set-rsh
+  244  nprsh -on node1..10 "yum -y install rsh*"
+  245  clusconf --set-rsh
+  246  rsh  localhost
+  247  bash
+  248  clusconf --set-rsh
+  249  cd /opt/clusconf/
+  250  ls
+  251  dos2unix ./*
+  252  clusconf --set-rsh
+  253  ls
+  254  cd bin/
+  255  ls
+  256  dos2unix ./*
+  257  cd ..
+  258  ls
+  259  cd etc/
+  260  ls
+  261  dos2unix ./*
+  262  ls
+  263  cd ..
+  264  ll
+  265  cd lb
+  266  cd lib/
+  267  ls
+  268  ll
+  269  dos2unix clus_set_rsh
+  270  vim clus_setup_ssh
+  271  ll
+  272  vim clus_setup_rsh
+  273  dos2unix clus_setup_rsh
+  274  history 
+  275  clusconf --set-rsh
+  276  rsh node3
+  277  cd 
+  278  clusconf --set-service
+  279  clusconf --set-rsh
+  280  rsh  node2
+  281  clusconf --sync-file /etc/hosts
+  282  clusconf --set-rsh
+  283  cd /public/resources/
+  284  ls
+  285  cd clusconf-2.4
+  286  ls
+  287  cat Version 
+  288  ./install 
+  289  source /etc/profile.d/clusconf-env.sh
+  290  history 
+  291  clusconf --set-rsh
+  292  cd 
+  293  nprsh -on node1..10 "chmod 755 /etc/rc.d/rc.local"
+  294  cat /etc/hosts
+  295  nprsh -on node1..10 "umount /mnt"
+  296  nprsh -on node1..10 "umount /nfs"
+  297  nprsh -on node1..10 "mount iadmin:/public /public"
+  298  nprsh -on node1..10 "df -h | grep  /public"
+  299  cd /public/
+  300  ls
+  301  cd resources/
+  302  ls
+  303  ls -al 
+  304  mkdir admin
+  305  mv clus* admin/
+  306  mv Gridview4.* admin
+  307  ls
+  308  ll
+  309  mv ipmi.sh admin/
+  310  ll
+  311  cd admin/
+  312  ls
+  313  ll
+  314  mount Gridview4.7.0_Support.iso /mnt/
+  315  mount Gridview4.7.0_Support.iso /mnt/ -o loop
+  316  cd /mnt/
+  317  ls
+  318  ll
+  319  cp clussoft.tar.bz2 /public/resources/admin/
+  320  cp -rv mysql/ /public/resources/admin/
+  321  cd tools/
+  322  ls
+  323  cd /public/resources/admin/
+  324  ls
+  325  ll
+  326  tar xvf clussoft-2.4.tar.bz2
+  327  cd clussoft
+  328  cd /public/resources/admin/clussoft-2.4
+  329  ./clussoft -d /public/software
+  330  ./clussoft -p nodelist
+  331  ./clussoft -L
+  332  pwd
+  333  tailf base.txt 
+  334  df -h
+  335  ip a
+  336  cat /etc/sysconfig/network-scripts/ifcfg-ib0 
+  337  vim /etc/sysconfig/network-scripts/ifcfg-ib0 
+  338  ifup ib0
+  339  ip a
+  340  /etc/init.d/openibd status
+  341  /etc/init.d/opensmd status
+  342  chkconfig --list | grep opensmd
+  343  ls
+  344  cd /public/
+  345  ls
+  346  cd resources/
+  347  ls
+  348  ls -l
+  349  rm -f MLNX_OFED_LINUX-4.4-1.0.0.0-rhel6.9-x86_64.iso 
+  350  ls
+  351  ll
+  352  nprsh -on node1..10 "mount admin:/public/ /nfs"
+  353  nprsh -on node1..10 "mount /nfs/resources/MLNX_OFED_LINUX-4.0-2.0.0.1-rhel6.9-x86_64.iso /mnt/ -o loop"
+  354  cat /etc/passwd | grep /bin/bash
+  355  yum remove mysql
+  356  rpm -e mysql
+  357  rpm -e mysql mysql-server mysql-devel
+  358  rpm -e mysql mysql-server mysql-devel akonadi
+  359  cat /etc/passwd | grep /bin/bash
+  360  nprsh -on node2..10 "/etc/init.d/openibd restart"
+  361  nprsh -on node2..10 "ipmitool lan print | grep 'IP Address'"
+  362  ping 11.11.21.1
+  363  ping 11.11.21.2
+  364  ipmitool lan print
+  365  ping 11.11.21.2
+  366  ping 11.11.21.3
+  367  ping 11.11.21.4
+  368  ping 11.11.21.5
+  369  ping 11.11.21.6
+  370  ping 11.11.21.7
+  371  ping 11.11.21.8
+  372  ping 11.11.21.9
+  373  ping 11.11.21.10
+  374  ping 11.11.21.1
+  375  ping 11.11.21.2
+  376  ping 11.11.21.3
+  377  ping 11.11.21.4
+  378  ping 11.11.21.5
+  379  ping 11.11.21.6
+  380  ping 11.11.21.7
+  381  ping 11.11.21.8
+  382  ping 11.11.21.9
+  383  ping 11.11.21.10
+  384  cd 
+  385  ipmitool user list 1
+  386  ipmitool user list 2
+  387  ipmitool user list 3
+  388  ipmitool user list 4
+  389  ipmitool user list 14
+  390  ipmitool user list 1
+  391  ipmitool user set name 2 username admin
+  392  ipmitool user set name 2 admin
+  393  ipmitool user list 1
+  394  ipmitool user set name 2 admin
+  395  ipmitool user set password 2 Sugon999
+  396  nprsh -on node2..10 reboot
+  397  cd 
+  398  clusconf --help
+  399  clusconf --help | more
+  400  ls
+  401  cd /opt/clusconf/
+  402  ls
+  403  cd man/
+  404  ls
+  405  cd 
+  406  vim /etc/hosts
+  407  clusconf --help | more
+  408  cat /etc/exports 
+  409  cd /public/resources/admin/
+  410  ll
+  411  cd mysql/
+  412  ll
+  413  /etc/init.d/mysqld status
+  414  /etc/init.d/mysqld start
+  415  netstat | grep mysql
+  416  netstat tlnp| grep mysql
+  417  netstat tunp| grep mysql
+  418  netstat anp| grep mysql
+  419  netstat an| grep mysql
+  420  netstat -an| grep mysql
+  421  netstat -atn| grep mysql
+  422  netstat -altun| grep mysql
+  423  netstat -tunlp| grep mysql
+  424  /etc/init.d/mysqld stop
+  425  lscpu 
+  426  ls
+  427  ll
+  428  vim config 
+  429  ./install_mysql_linux.sh 
+  430  netstat -tunlp| grep mysql
+  431  cd ..
+  432  ls
+  433  cd clussoft
+  434  ls
+  435  cd clussoft-2.4
+  436  ls
+  437  ll
+  438  cat Version 
+  439  vim nodelist 
+  440  cat README 
+  441  pwd
+  442  ls
+  443  cd /opt/
+  444  ls
+  445  cat /etc/hosts
+  446  vim /opt/logon_list
+  447  vim /opt/node_list
+  448  top 
+  449  ls
+  450  cd /public/resources/admin/
+  451  ls
+  452  cd gridview4.6/
+  453  ls
+  454  sh gridview_4.6.0.53872.20190315.sh 
+  455  pest
+  456  cd ..
+  457  ls
+  458  module avail 
+  459  cd /public/resources/admin/
+  460  ls
+  461  cd clussoft
+  462  cd clussoft-2.4
+  463  ls
+  464  ./clussoft a
+  465  ./clussoft -L
+  466  ./clussoft -I benchmark
+  467  ./clussoft -L
+  468  cd 
+  469  cat /etc/passwd
+  470  cat /etc/passwd | grep /bin/bash
+  471  cd /public/
+  472  ls
+  473  mkdir home
+  474  cd resources/
+  475  ls
+  476  mv admin .admin
+  477  ll
+  478  cd centos6.9/
+  479  ls
+  480  cd 
+  481  lspci 
+  482  ls -ld /public/home/
+  483  cat /etc/passwd |grep /bin/bash
+  484  tail /etc/passwd
+  485  useradd -u 1001 ll -d /public/home/ll
+  486  cat /etc/passwd
+  487  passwd ll
+  488  su - ll
+  489  pestat 
+  490  ip a
+  491  pestat 
+  492  /etc/init.d/gridview_platform status
+  493  qstat -q
+  494  qstat -qf batch
+  495  qstat -Qf batch
+  496  cd 
+  497  vim /etc/passwd
+  498  cd 
+  499  ls
+  500  df -h
+  501  umount /mnt/
+  502  ls
+  503  df -h
+  504  cd /public/resources/admin/
+  505  ls
+  506  ll
+  507  mount Gridview4.6.0_Release.iso /mnt/
+  508  mount Gridview4.6.0_Release.iso /mnt/ -o loop
+  509  mkdir gridview4.6
+  510  cp -r /mnt/setup/gridview_4.6.0.53872.20190315.sh .
+  511  ls
+  512  mv gridview_4.6.0.53872.20190315.sh gridview4.6/
+  513  cd gridview4.6/
+  514  ll
+  515  sh gridview_4.6.0.53872.20190315.sh 
+  516  cd 
+  517  bash
+  518  service ypserv stop
+  519  exit
+  520  yum install yp-tools ypserv rpcbind xinetd
+  521  ssh login
+  522  nprsh -on node2..10 "sed -i 's/nfs/public/g' /etc/yum.repos.d/CentOS-Media.repo"
+  523  nprsh -on node1..10 ""
+  524  nprsh -on node1..10 "yum -y install ypbind rpcbind yp-tools xinetd"
+  525  ipmitool fru
+  526  clusconf -h
+  527  clusconf -sync-time
+  528  clusconf --sync-time
+  529  date
+  530  cd 
+  531  service ypserv status
+  532  yum reinstall ypserv
+  533  vim /etc/ypserv.conf
+  534  vim /var/yp/securenets 
+  535  service restart ypserv
+  536  service ypserv restart
+  537  /usr/lib64/yp/ypinit -m
+  538  service ypserv restart
+  539  service ypbind restart
+  540  service ypserv restart
+  541  service ypbind restart
+  542  /usr/lib64/yp/ypinit -m
+  543  authconfig-tui 
+  544  service ypbind status
+  545  service ypbind start
+  546  authconfig-tui 
+  547  service ypbind status
+  548  /usr/lib64/yp/ypinit -m
+  549  authconfig-tui 
+  550  /usr/lib64/yp/ypinit -m
+  551  authconfig-tui 
+  552  service ypserv restart
+  553  service ypbind status
+  554  service ypbind start
+  555  service rpcbind restart
+  556  service rpserv restart
+  557  service ypserv restart
+  558  service yppasswdd restart
+  559  service ypbind restart
+  560  ping admin
+  561  service ypbind restart
+  562  authconfig-tui 
+  563  ypwhich 
+  564  history 
+  565  nprsh -on node1..10 "echo '/bin/nisdomainname room324.hpc.com' >> /etc/rc.d/rc.local"
+  566  nprsh -on node1..10 "echo 'NISDOMAIN=room324.hpc.com' >> /etc/sysconfig/network"
+  567  ssh login
+  568  cd 
+  569  echo '/bin/nisdomainname room324.hpc.com' >> /etc/rc.d/rc.local
+  570  echo 'NISDOMAIN=room324.hpc.com' >> /etc/sysconfig/network
+  571  cat /etc/sysconfig/network
+  572  vim /var/yp/securenets
+  573  vim /etc/ypserv.conf
+  574  vim /var/yp/securenets
+  575  vim /etc/ypserv.conf
+  576  systemctl restart rpcbind ypserv yppasswdd ypbind
+  577  #rpcbind ypserv yppasswdd ypbind
+  578  vim /etc/hosts
+  579  cat /etc/yp.conf 
+  580  vim /etc/yp.conf 
+  581  service ypserv status
+  582  make -C /var/yp/
+  583  yum install ypbind yp-tools
+  584  nisdomainname 
+  585  yptest 
+  586  service NetworkManager stop
+  587  service NetworkManager status
+  588  yptest 
+  589  vim /etc/sysconfig/network
+  590  vim /etc/ypserv.conf
+  591  ssh login
+  592  history 
+  593  vim /etc/ypserv.conf
+  594  service ypserv restart
+  595  service rpcbind restart
+  596  service xinetd restart
+  597  service yppasswdd restart
+  598  service yppasswdd status
+  599  authconfig-tui 
+  600  hostname admin
+  601  service ypbind restart
+  602  clusconf --sync-hosts
+  603  clusconf --help
+  604  clusconf --sync-file /etc/hosts
+  605  pestat 
+  606  ping node1
+  607  /usr/lib64/yp/ypinit -m
+  608  service rpcbind start
+  609  service rpcbind restart
+  610  chkconfig rpcbind on
+  611  chkconfig ypserv on
+  612  ypwhich 
+  613  service ypserv restart
+  614  service ypbind restart
+  615  service ypbind statu
+  616  service ypbind status
+  617  chkconfig ypbind on
+  618  chkconfig rpcbind on
+  619  chkconfig xinetd on
+  620  history 
+  621  history  | grep chkconfig
+  622  which nprsh
+  623  ssh login
+  624  vim /opt/gridview/.gridview/conf/secidentify/authconf/authMethodEnv.properties 
+  625  /etc/init.d/gridview_platform restart
+  626  pestat 
+  627  /etc/init.d/pbs_server restart
+  628  /etc/init.d/maui.d restart
+  629  nprsh -on node1..10 "/etc/init.d/traqauthd restart"
+  630  nprsh -on node1..10 "/etc/init.d/trqauthd restart"
+  631  nprsh -on node1..10 "/etc/init.d/pbs_mom restart"
+  632  pestat 
+  633  cd /opt/
+  634  ls
+  635  cd gridview/
+  636  ls
+  637  cd pbs/
+  638  ls
+  639  ll
+  640  cd dispatcher
+  641  ls
+  642  ll
+  643  cd server_priv/
+  644  ls
+  645  vim nodes 
+  646  cd queues/
+  647  ls
+  648  vim batch 
+  649  qmgr -c "p s"
+  650  cd 
+  651  qmgr -c
+  652  qmgr 
+  653  pbsnodes -q
+  654  cat /etc/hosts
+  655  su - llcd 
+  656  cd 
+  657  cd /opt/
+  658  ls
+  659  cd gridview/
+  660  ls
+  661  cd pbs/
+  662  cd dispatcher
+  663  ls
+  664  ll
+  665  cat server_name 
+  666  cd server_priv/
+  667  ls
+  668  ll
+  669  cat nodes 
+  670  cd ..
+  671  ll
+  672  cd mom_priv/
+  673  ls
+  674  pwd
+  675  cd /opt/gridview/pbs/dispatcher-sched/
+  676  ls
+  677  ll
+  678  cd ..
+  679  ll
+  680  cd dispatcher
+  681  ls
+  682  cd server_priv/
+  683  ll
+  684  vim nodes 
+  685  c
+  686  ll
+  687  cat nodes 
+  688  qstat -
+  689  qstat -Q
+  690  su - ll
+  691  cat /public/home/te
+  692  cat /public/home/test
+  693  cat /public/home/
+  694  useradd whyx -d /public/home/whyx
+  695  passwd whyx
+  696  make -c /var/yp
+  697  make -C /var/yp
+  698  w
+  699  ls
+  700  su - 
+  701  ls
+  702  qstat a- 
+  703  qstat -a 
+  704  ls
+  705  useradd wei -d /public/home/wei
+  706  passwd wei
+  707  ls
+  708  cd /var/yp/
+  709  make
+  710  pestat
+  711  su - wei
+  712  which sbatch
+  713  su - yuxi
+  714  cat /etc/passwd
+  715  su - whyx
+  716  ls
+  717  su - we
+  718  su - wei
+  719  su  - ll
+  720  diff /public/home/ll/iozone.pbs /public/home/wei/test.pbs 
+  721  su - wei
+  722  su - ll
+  723  ls
+  724  cp -R /public/home/ll/test/ /public/home/wei/
+  725  cp /public/home/ll/iozone.pbs /public/home/wei/test.pbs 
+  726  ls -l /public/wei
+  727  ls -l /public/home
+  728  chown -R wei:wei /public/home/wei/
+  729  su - wei
+  730  ls
+  731  cat /public/home/ll/iozone_storage.o8 
+  732  ls
+  733  du -sh .
+  734  df 
+  735  cat /public/home/wei/iozone_storage.o13 
+  736  qstat -a 
+  737  top
+  738  pestat
+  739  ssh node10
+  740  ssh node1
+  741  ls
+  742  ls /opt/intel
+  743  ls /opt/intel/ism/
+  744  ls /opt/intel/ism/rm/
+  745  ls
+  746  ls /oopt
+  747  ls /opt
+  748  ls /opt/intel/
+  749  ls /opt/intel/ism/
+  750  df -h
+  751  ls
+  752  ls /mnt/
+  753  ls /mnt/setup/
+  754  ls
+  755  cd ../
+  756  ls
+  757  qstat -a 
+  758  ls
+  759  cd /public/home/wei/
+  760  ls
+  761  cat iozone_storage.o13 
+  762  ls
+  763  cat test.pbs 
+  764  su - wei
+  765  exit
+  766  ls
+  767  ssh inode6
+  768  ssh inode1
+  769  exit
+  770  qstat
+  771  qsub
+  772  pestat
+  773  ifconfig
+  774  qstat
+  775  pbs
+  776  qsub -h
+  777  pbsnodes
+  778  ssh node6
+  779  ls
+  780  cd /public
+  781  ls
+  782  cd home
+  783  ls
+  784  cd ..
+  785  ls
+  786  cd software
+  787  ls
+  788  cd ..
+  789  ls
+  790  cd resources
+  791  ls
+  792  history
+  793  qstat -q
+  794  qstat -a
+  795  pwd
+  796  ssh node1
+  797  exit
+  798  pbsnodes
+  799  pestat
+  800  qstat -an
+  801  qstat -s
+  802  qstat -a
+  803  xpbs
+  804  mpirun
+  805  ping baidu.com
+  806  ping www.baidu.com
+  807  exit
+  808  df -h
+  809  cd /public
+  810  ls
+  811  cd software
+  812  ls
+  813  cd mpi
+  814  ls
+  815  cd ..
+  816  ls
+  817  cat profile.d
+  818  cd profile.d
+  819  ls
+  820  bash benchmark_clusbench-1.4.sh 
+  821  basj mpi_openmpi-intel-2.1.2.sh 
+  822  bash mpi_openmpi-intel-2.1.2.sh 
+  823  cat mpi_openmpi-intel-2.1.2.sh 
+  824  bash mpi_intelmpi-2017.4.239.sh 
+  825  cat mpi_intelmpi-2017.4.239.sh 
+  826  exit
+  827  ls
+  828  df -h
+  829  pestat
+  830  ssh node1
+  831  ssh node2
+  832  ls
+  833  w
+  834  ifconfig
+  835  ls
+  836  s
+  837  pestat
+  838  ssh inode1
+  839  pestat
+  840  7
+  841  useradd pram -d /public/home/pram
+  842  passwd pram
+  843  make -C /var/yp
+  844  cat /var/yp/room324.hpc.com/hosts.byname
+  845  cd ~
+  846  ls
+  847  sudo reboot
+  848  ls
+  849  ssh node1
+  850  userdel pram
+  851  rm -rf pram
+  852  ls
+  853  locate useradd
+  854  cd /home/
+  855  ls
+  856  cd /public/home
+  857  ls
+  858  tail -3 passwd
+  859  tail -3 /etc/passwd
+  860  tail  /etc/passwd
+  861  ls
+  862  rm -rf pram/
+  863  ls
+  864  useradd pram -d /public/home/pram
+  865  cd ~
+  866  su pram
+  867  userdel -r pram
+  868  useradd pram -d /public/home/pram
+  869  passwd pram
+  870  make -C /var/yp
+  871  su pram
+  872  exit
+  873  ls
+  874  su pram
+  875  history
+  876  userdel -r pram
+  877  ls
+  878  cd /public/
+  879  ls
+  880  cd home/
+  881  ls
+  882  exit
+  883  userdel -r pram
+  884  cat /etc/passwd
+  885  make -C /var/yp
+  886  exit
+  887  useradd pram -d /public/home/pram
+  888  userdel -r pram
+  889  sudo userdel -r pram
+  890  exit
+  891  cd ~
+  892  ls
+  893  useradd pram -d /public/home/pram
+  894  ls
+  895  passwd pram
+  896  make -C /var/yp
+  897  exit
+  898  history
+  899  history > note_admin.bak
+  900  pwd
+  901  useradd swang -d /public/home/swang
+  902  passwd swang
+  903  cd /var/yp/
+  904  ls
+  905  make
+  906  cat nicknames 
+  907  su swang
+  908  exit
+  909  userdel -r pram
+  910  cd /var/yp/
+  911  make
+  912  cd ~
+  913  ls
+  914  useradd pram -d /public/home/pram
+  915  ls
+  916  passwd pram
+  917  cd /var/yp
+  918  make
+  919  su pram
+  920  cd ~
+  921  userdel -r pram
+  922  cd /var/yp/
+  923  make
+  924  ssh login
+  925  exit
+  926  useradd zzxin -d /public/home/zzxin
+  927  passwd zzxin
+  928  cd /var/yp/
+  929  ls
+  930  make
+  931  su zzxin
+  932  exit
+  933  pestat
+  934  ssh node10
+  935  exit
+  936  vi /etc/sudoers
+  937  visudo /etc/sudoers
+  938  cat /etc/sudoers
+  939  :q
+  940  visudo /etc/sudoers
+  941  visudo -f sudoers
+  942  visudo sudoers
+  943  chmod 777 /etc/sudoers
+  944  vi /etc/sudoers
+  945  su zzxin
+  946  chmod 440 /etc/sudoers
+  947  cat /var/spool/mail/root
+  948  sudo zzxin
+  949  su zzxin
+  950  history
+  951  cd var/yp
+  952  cd /var/yp
+  953  make
+  954  exit
+  955  yppasswd
+  956  passwd
+  957  usermod -g root zzxin
+  958  su zzxin
+  959  history
+  960  ssh login
+  961  history
+  962  cat /etc/passwd
+  963  cut -d : -f 1 /etc/passwd
+  964  /etc/group
+  965  cat /etc/group
+  966  vi /etc/sudoers
+  967  sudo vi /etc/sudoers
+  968  su
+  969  ssh login
+  970  adduser zklou -d /public/home/zklou
+  971  passwd zklou
+  972  cd /var/yp/
+  973  make
+  974  su zklou
+  975  for i in {1..10}; do scp "/etc/sudoers" node$i:/etc/sudoers ; done
+  976  scp "/etc/sudoers" login:/etc/sudoers
+  977  exit
+  978  id admin
+  979  id root
+  980  id zzxin
+  981  id swang
+  982  cat /etc/pam.d/su
+  983  ssh login
+  984  history
+  985  ypcat -k ypservers
+  986  yppasswd
+  987  rpcinfo
+  988  rpfinfo -u localhost yppasswdd
+  989  rpcfinfo -u localhost yppasswdd
+  990  rpcinfo -u localhost yppasswdd
+  991  rpcinfo -u localhost yppasswd
+  992  cat /etc/hosts
+  993  rpcinfo -p admin
+  994  cat /etc/yp.conf
+  995  visudo
+  996  ssh login
+  997  id zzxin
+  998  cat /etc/sudoer
+  999  cat /etc/sudoers
+ 1000  ssh login
+ 1001  history >> /public/home/adminhistory.bak

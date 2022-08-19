@@ -1,0 +1,213 @@
+# EasyX 学习笔记
+
+## 学习站点
+- EasyX教程推荐
+    - https://codeabc.cn/yangw/a/learning-resource
+    - 本笔记抄写自 https://codeabc.cn/bestans/a/concise-lesson-contents
+- VC绘图/游戏教程
+    - https://codeabc.cn/bestans/a/concise-lesson-contents
+
+
+## 基础操作
+- 头文件
+    - 绘图库 `<graphics.h>`
+        - EasyX带来的
+    - 控制台输入输出 `<conio.h>`
+        - 比如 `_getch()` 命令
+- 基础命令
+    - 更多命令参见 https://docs.easyx.cn
+    - `initgraph(width, height)` 初始化绘画屏幕
+        - 左上角为起始点, 所以y轴向下, x轴向左
+    - `closegraph()` 关闭绘图屏幕
+    - `_getch()` 来自 conio.h , 按任意键程序继续执行
+    - `sleep(millisec)` 进行millices毫秒的延迟
+    - `line(start_x, start_y, end_x, end_y)` 画线从start到end
+    - `circle(x, y, r)` 画圆, 圆心半径
+    - `putpixel(x, y, color)` 画点, 位置, 颜色
+    - `setlinestyle(PS_SOLID, 10)` 设置线宽为10, 使得效果明显
+    - `setlinecolor(RGB(200, 0, 0))` 画线前设置可以输出带颜色的线条, 通过这种方式绘制渐变色. 或可使用配置好的颜色, BLACK BLUE GREEN CYAN RED
+    - `setfillcolor(GREEN)` `fillcircle(x, 240, 20)` 画出填充的图形
+    - 可以和数学结合起来画出更好看的情况
+- 应当注意
+    - 建议通过函数封装绘图过程, 就是通过自定义函数进行封装绘图
+    - 并不是画面中并不是输出了一个对象, 仅仅只是输出了一个像素, 并且和之后的没什么关系
+    - 所以可以用**填充黑色**的方式"删除"之前输出的东西
+    - 建议仅仅将之前创建的有颜色的东西变成黑色
+    - 通过这样的方式, 实现画面的更新
+
+## 捕获按键
+- `_kbhit()` 返回当前用户是否有按键, 没有按键为`0`
+    - 如果有, 可以用`_getchar()`进行读取
+```C++
+while(c != 27) {    // ESC为27
+    if (_kbhit())   // 有输入
+        c = _getch();   // 读取
+    else c = '.';
+    printf("%c", c);
+    Sleep(100);
+}
+```
+- 通过 `switch(case)` 的方式对按键进行相应
+```C++
+while(c != 27) {    // ESC为27
+    c = _getch();   // 获取按键
+    // 先擦掉上次显示的旧图形
+    setlinecolor(BLACK);
+    setfillcolor(BLACK);
+    fillcircle(x, 240, 20);
+    switch(c) { // 根据输入，计算新的坐标
+        case 'a': x-=2; break;
+        case 'd': x+=2; break;
+        case 27: break;
+    }
+    // 绘制新的图形
+    setlinecolor(YELLOW);
+    setfillcolor(GREEN);
+    fillcircle(x, 240, 20);
+    Sleep(10);  // 延时
+}
+```
+## 随机函数 / 系统时间 / 输出文字
+- 随机数的生成和注意
+    - `srand((unsigned)time(NULL))` 播种随机数, srand/rand位于stdlib.h, time位于time.h
+    - `rand()` 产生[0, 32767]的随机数
+- 使用系统时间
+    - 可以自己去查定义
+```C++
+SYSTEM ti;
+GetLocalTime(ti);
+cout << ti.wHour << ti.wMinute << ti.wSecond << ti.wMilliseconds << endl;
+cout << ti.wYear << ti.wMonth << ti.wDayOfWeek << ti.Day << endl;
+```
+- 输出文字
+    - `outtextxy(0, 0, _T("BestAns"))` 文字左上角对其(0, 0)
+
+## 绘图中的位运算
+- `NOT` `AND` `OR` `XOR`
+    - 异或运算: `(a^b)^b = a`
+    - 画上两次之后会恢复
+    - 所以画和擦的操作时一样的.
+- `setWritemode(R2_XORPEN)` 设置为XOR绘图模式
+
+## 鼠标操作
+- 加油啊! 有点难度
+- 通过结构体保存鼠标信息, 这个已经在h里定义好了
+```C++
+struct MOUSEMSG {
+	UINT uMsg;      // 当前鼠标消息
+	bool mkCtrl;    // Ctrl 键是否按下
+	bool mkShift;   // Shift 键是否按下
+	bool mkLButton; // 鼠标左键是否按下
+	bool mkMButton; // 鼠标中键是否按下
+	bool mkRButton; // 鼠标右键是否按下
+	int x;          // 当前鼠标 x 坐标
+	int y;          // 当前鼠标 y 坐标
+	int wheel;      // 鼠标滚轮滚动值
+    // 当前鼠标消息uMsg 可取值:
+    // WM_MOUSEMOVE     鼠标移动消息
+    // WM_MOUSEWHEEL    鼠标滚轮拨动消息
+    // WM_LBUTTONDOWN   左键按下消息
+    // WM_LBUTTONUP     左键弹起消息
+    // WM_LBUTTONDBLCLK 左键双击消息
+    // WM_MBUTTONDOWN   中键按下消息
+    // WM_MBUTTONUP     中键弹起消息
+    // WM_MBUTTONDBLCLK 中键双击消息
+    // WM_RBUTTONDOWN   右键按下消息
+    // WM_RBUTTONUP     右键弹起消息
+    // WM_RBUTTONDBLCLK 右键双击消息
+};
+```
+```C++
+int main() {
+    MOUSEMSG m;
+    while (true) {
+        // 通过循环的方式不断获得鼠标的状态
+        m = GetMouseMsg();
+        // 后对本循环中读取到的信息进行操作
+        switch (m.uMsg) {
+            case WM_MOUSEMOVE:
+                break;
+            case WM_LBUTTONDOWN:
+                break;
+            case WM_RBUTTONUP:
+				return 0;   // 退出程序
+        }
+    }
+    if (MouseHit()) m = GetMouseMsg();
+    // 以上为了确定是否有鼠标 / 进行链接
+    if (m.uMsg == WM_LBUTTONDOWN);
+    // 判断鼠标左键是否按下
+}
+```
+
+## 数组
+- 使用数组对画面进行规律填充
+- 略
+
+## 关于 `image` 的操作
+- `getimage` `putimage` `loadimag` `saveimage` `IMAGE`
+- 加载图片
+    - 分为三步: 定义对象, 读取到对象, 显示对象到目标位置
+    - 如果只需要加载图片到绘图窗体上, 那么请将 `loadimage` 的第一个参数设置为 `NULL` 即可, 这样就不需要定义 `IMAGE` 对象了.
+```C++
+IMAGE img;	// 定义 IMAGE 对象
+loadimage(&img, _T("D:\\test.jpg"));	// 读取图片到 img 对象中
+putimage(0, 0, &img);	// 在坐标 (0, 0) 位置显示 IMAGE 对象, 左上角对其此坐标
+```
+- 保存屏幕区域
+    - 将图像某个区域加载到`IMAGE`对象, 再`putimage`到需要的地方
+    - `getimage(&img, pos_x, pos_y, width_x, width_y)` 读取到`img`, 左上角为pos, 大小为width
+    - `void saveimage(LPCTSTR strFileName, IMAGE* pImg = NULL)` 将图片保存至路径(bmp/gif/jpg/jpeg/png/tif), `NULL`指代控制窗口的`graph`.
+- 移动屏幕图案
+    - 避免重新绘制带来的屏幕闪烁
+- 更多功能
+    - `getimage` / `putimage` 有很多重载, 详见描述
+    - 读取图片的技巧: 将图片嵌入exe文件中, 详见 http://www.easyx.cn/skills/View.aspx?id=6
+- 建议学习`BeginBatchDraw` / `FlushBatchDraw` / `EndBatchDraw`
+    - 能够进一步优化移动的效果
+
+## 窗体句柄
+- 窗体句柄为`HWND`类型
+    - `HWND hwnd = GetHWnd()` 获取窗口句柄
+	- `SetWindowText(hwnd, L"Handle to a Window")` 设置窗口标题文字
+- 设置窗体标题文字的Windows API为
+    - `BOOL SetWindowText(HWND hWnd, LPCTSTR lpString)`
+    - `hWnd`: 要设置标题文字的窗口句柄
+    - `lpString`: 窗体的标题文字，是一个指向字符串的指针
+
+## 搭配Windows GDI使用
+- GDI使用过程中需要获取(对象的)HDC句柄, EasyX中有此功能`GetImageHDC()`
+- 即在知道对象HDC句柄的情况下使用GDI更改
+```C++
+#include <graphics.h>
+#include <conio.h>
+
+int main()
+{
+	// 初始化绘图窗口，并获取 HDC 句柄
+	initgraph(640, 480);
+	HDC hdc = GetImageHDC();
+
+	// 以下是标准 Windows GDI 操作画一条线（相关语句，请查阅 MSDN）
+	MoveToEx(hdc, 100, 100, NULL);
+	LineTo(hdc, 200, 200);
+	// 标准 Windows GDI 操作结束
+
+	// 创建 300x300 的 IMAGE 对象，并获取其 HDC 句柄
+	IMAGE img(300, 300);
+	HDC hdc = GetImageHDC(&img);
+
+	// 以下是标准 Windows GDI 操作画一条线（相关语句，请查阅 MSDN）
+	MoveToEx(hdc, 100, 100, NULL);
+	LineTo(hdc, 200, 200);
+	// 标准 Windows GDI 操作结束
+
+	// 将 img 贴到绘图窗口上：
+	putimage(0, 0, &img);
+
+	// 按任意键返回
+	_getch();
+	closegraph();
+	return 0;
+}
+```

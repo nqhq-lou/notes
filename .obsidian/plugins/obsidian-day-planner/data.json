@@ -1,0 +1,76 @@
+{
+  "customFolder": "Day Planners",
+  "mode": 1,
+  "mermaid": false,
+  "notesToDates": [
+    {
+      "notePath": "diary/07-30-22.md",
+      "date": "Sat Jul 30 2022"
+    },
+    {
+      "notePath": "diary/07-31-22.md",
+      "date": "Sun Jul 31 2022"
+    },
+    {
+      "notePath": "diary/08-01-22.md",
+      "date": "Mon Aug 01 2022"
+    },
+    {
+      "notePath": "diary/08-02-22.md",
+      "date": "Tue Aug 02 2022"
+    },
+    {
+      "notePath": "diary/08-03-22.md",
+      "date": "Wed Aug 03 2022"
+    },
+    {
+      "notePath": "diary/08-04-22.md",
+      "date": "Thu Aug 04 2022"
+    },
+    {
+      "notePath": "diary/08-05-22.md",
+      "date": "Fri Aug 05 2022"
+    },
+    {
+      "notePath": "diary/08-06-22.md",
+      "date": "Sat Aug 06 2022"
+    },
+    {
+      "notePath": "diary/08-07-22.md",
+      "date": "Sun Aug 07 2022"
+    },
+    {
+      "notePath": "diary/08-11-22.md",
+      "date": "Thu Aug 11 2022"
+    },
+    {
+      "notePath": "diary/08-12-22.md",
+      "date": "Fri Aug 12 2022"
+    },
+    {
+      "notePath": "diary/08-15-22.md",
+      "date": "Mon Aug 15 2022"
+    },
+    {
+      "notePath": "diary/08-16-22.md",
+      "date": "Tue Aug 16 2022"
+    },
+    {
+      "notePath": "diary/08-17-22.md",
+      "date": "Wed Aug 17 2022"
+    },
+    {
+      "notePath": "diary/08-18-22.md",
+      "date": "Thu Aug 18 2022"
+    },
+    {
+      "notePath": "diary/08-19-22.md",
+      "date": "Fri Aug 19 2022"
+    }
+  ],
+  "completePastItems": false,
+  "circularProgress": false,
+  "nowAndNextInStatusBar": true,
+  "showTaskNotification": true,
+  "timelineZoomLevel": 1
+}

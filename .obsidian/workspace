@@ -1,0 +1,177 @@
+{
+  "main": {
+    "id": "09996075e490f73e",
+    "type": "split",
+    "children": [
+      {
+        "id": "18f31bae752434bb",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "diary/08-19-22.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ecb9dc0e19272a48",
+    "type": "split",
+    "children": [
+      {
+        "id": "48cc874fda4765a3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8e87611e52bcd93a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "e76ed2277be5aafc",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#ML",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "byModifiedTime"
+              }
+            }
+          },
+          {
+            "id": "2d41e5151af95ee2",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 263.5036334991455,
+    "collapsed": true
+  },
+  "right": {
+    "id": "26e93629e1f71ecc",
+    "type": "split",
+    "children": [
+      {
+        "id": "77eac275ff8ce737",
+        "type": "tabs",
+        "dimension": 50.046772684752106,
+        "children": [
+          {
+            "id": "4f685e8aaefba4b6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "diary/08-19-22.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3bb328fc37f27e30",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "diary/08-19-22.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3e0f4cd53fa3f9a2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "alphabetical",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "37aa67c9ca4a4cb0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "diary/08-19-22.md"
+              }
+            }
+          },
+          {
+            "id": "495c7c090d35e60c",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "9c9db57bc1a340eb",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 4
+      },
+      {
+        "id": "5688eee11453d1ec",
+        "type": "tabs",
+        "dimension": 49.953227315247894,
+        "children": [
+          {
+            "id": "6bc131ea7d5f087b",
+            "type": "leaf",
+            "state": {
+              "type": "timeline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 282
+  },
+  "active": "8e87611e52bcd93a",
+  "lastOpenFiles": [
+    "code_course/pandas/basics.md",
+    "assets/figs/Pasted image 20220730215254.png",
+    "assets/github_mainpage.md",
+    "health/rhinitis.md",
+    "code_course/pandas/pandas basics.md",
+    "diary/08-19-22.md",
+    "code_course/STM32/createProject.md",
+    "diary/08-18-22.md",
+    "diary/archieve/08-09-22.md",
+    "diary/archieve/08-15-22.md"
+  ]
+}

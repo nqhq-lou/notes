@@ -1,0 +1,128 @@
+# Monte Carlo relaxation of perturbed 2d hex lattice
+
+# set these parameters
+# make sure neigh skin > 2*deltamove
+
+# 格式: 变量类型, 名称, 需求, 数值
+variable iter loop 30000            # number of Monte Carlo moves
+variable deltaperturb equal 0.2    # max size of initial perturbation per dim
+variable deltamove equal 0.1       # max size of MC move in one dimension
+variable density equal 1.0         # reduced LJ density of atoms on lattice
+variable kT equal 5              # effective T in Boltzmann factor
+variable seed equal 582783         # RNG seed
+
+# problem setup
+
+units		lj    # 单位制
+atom_style	atomic  # 设置好的
+atom_modify     map array sort 0 0.0  # ?
+
+dimension       2
+
+lattice		hex ${density}  # density之前定义过, hex是晶格类型
+region		box block 0 30 0 30 -0.5 0.5  # 查具体command
+
+# 初始化
+create_box	1 box   # 建立模拟区域
+create_atoms	1 box # 放满原子
+mass		1 1.0   # 赋予质量
+
+# 作用力
+pair_style	lj/cut 2.5    # lj势中参数cut
+pair_coeff	1 1 1.0 1.0 2.5 # 原子间系数
+pair_modify     shift yes
+
+
+neighbor	0.3 bin   # 相邻的粒子(要更新, 方便), 具体看细则
+neigh_modify	delay 0 every 1 check yes # 每隔多少部更新
+
+variable        e equal pe    # pe有可能是一个给定的数值
+
+# run 0 to get energy of perfect lattice
+# emin = minimum energy
+
+run             0
+variable        emin equal $e   # $的意思为取数值
+
+# disorder the system
+# estart = initial energy
+
+# 初始化位置的偏移
+variable        x atom x+v_deltaperturb*random(-1.0,1.0,${seed})
+variable        y atom y+v_deltaperturb*random(-1.0,1.0,${seed})
+
+# 看说明group
+set             group all x v_x
+set             group all y v_y
+
+# dump		1 all atom 25 dump.mc
+
+#dump		2 all image 25 image.*.jpg type type &
+#		zoom 1.6 adiam 1.0
+#dump_modify	2 pad 5
+
+dump		1 all movie 25 movie.mpg type type &
+		zoom 5 adiam 1.0
+dump_modify	1 pad 5
+
+variable        elast equal $e
+thermo_style    custom step v_emin v_elast pe
+
+run             0
+
+variable        estart equal $e
+variable        elast equal $e
+
+# loop over Monte Carlo moves
+
+variable        naccept equal 0
+variable        increment equal v_naccept+1
+variable        irandom equal floor(atoms*random(0.0,1.0,${seed})+1)
+variable        rn equal random(0.0,1.0,${seed})
+variable        boltzfactor equal "exp(atoms*(v_elast - v_e) / v_kT)"
+variable        xnew equal x[v_i]+v_deltamove*random(-1.0,1.0,${seed})
+variable        ynew equal y[v_i]+v_deltamove*random(-1.0,1.0,${seed})
+variable        xi equal x[v_i]
+variable        yi equal y[v_i]
+
+label           loop
+
+variable        i equal ${irandom}
+
+variable        x0 equal ${xi}
+variable        y0 equal ${yi}
+
+set             atom $i x ${xnew}
+set             atom $i y ${ynew}
+
+run             1 pre no post no
+
+if              "$e <= ${elast}" then &
+                  "variable elast equal $e" &
+                  "variable naccept equal ${increment}" &
+                elif "${rn} <= ${boltzfactor}" &
+                  "variable elast equal $e" &
+                  "variable naccept equal ${increment}" &
+                else &
+                  "set atom $i x ${x0}" &
+                  "set atom $i y ${y0}"
+
+next            iter
+jump            SELF loop
+
+# final energy and stats
+
+variable       nb equal nbuild
+variable       nbuild equal ${nb}
+
+run             0
+
+# 最后输出
+print           "MC stats:"
+print           "  starting energy = ${estart}"
+print           "  final energy = $e"
+print           "  minimum energy of perfect lattice = ${emin}"
+print           "  accepted MC moves = ${naccept}"
+print           "  neighbor list rebuilds = ${nbuild}"
+
+# 过程

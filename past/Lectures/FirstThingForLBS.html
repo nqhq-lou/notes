@@ -1,0 +1,1097 @@
+<!DOCTYPE html><html><head>
+      <title>FirstThingForLBS</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <style>
+      /*!
+* reveal.js 4.0.2
+* https://revealjs.com
+* MIT licensed
+*
+* Copyright (C) 2020 Hakim El Hattab, https://hakim.se
+*/
+.reveal .r-stretch,.reveal .stretch{max-width:none;max-height:none}.reveal pre.r-stretch code,.reveal pre.stretch code{height:100%;max-height:100%;box-sizing:border-box}.reveal .r-fit-text{display:inline-block;white-space:nowrap}.reveal .r-stack{display:grid}.reveal .r-stack>*{grid-area:1/1;margin:auto}.reveal .r-hstack,.reveal .r-vstack{display:flex}.reveal .r-hstack img,.reveal .r-hstack video,.reveal .r-vstack img,.reveal .r-vstack video{min-width:0;min-height:0;-o-object-fit:contain;object-fit:contain}.reveal .r-vstack{flex-direction:column;align-items:center;justify-content:center}.reveal .r-hstack{flex-direction:row;align-items:center;justify-content:center}.reveal .items-stretch{align-items:stretch}.reveal .items-start{align-items:flex-start}.reveal .items-center{align-items:center}.reveal .items-end{align-items:flex-end}.reveal .justify-between{justify-content:space-between}.reveal .justify-around{justify-content:space-around}.reveal .justify-start{justify-content:flex-start}.reveal .justify-center{justify-content:center}.reveal .justify-end{justify-content:flex-end}html.reveal-full-page{width:100%;height:100%;height:100vh;height:calc(var(--vh,1vh) * 100);overflow:hidden}.reveal-viewport{height:100%;overflow:hidden;position:relative;line-height:1;margin:0;background-color:#fff;color:#000}.reveal .slides section .fragment{opacity:0;visibility:hidden;transition:all .2s ease;will-change:opacity}.reveal .slides section .fragment.visible{opacity:1;visibility:inherit}.reveal .slides section .fragment.disabled{transition:none}.reveal .slides section .fragment.grow{opacity:1;visibility:inherit}.reveal .slides section .fragment.grow.visible{transform:scale(1.3)}.reveal .slides section .fragment.shrink{opacity:1;visibility:inherit}.reveal .slides section .fragment.shrink.visible{transform:scale(.7)}.reveal .slides section .fragment.zoom-in{transform:scale(.1)}.reveal .slides section .fragment.zoom-in.visible{transform:none}.reveal .slides section .fragment.fade-out{opacity:1;visibility:inherit}.reveal .slides section .fragment.fade-out.visible{opacity:0;visibility:hidden}.reveal .slides section .fragment.semi-fade-out{opacity:1;visibility:inherit}.reveal .slides section .fragment.semi-fade-out.visible{opacity:.5;visibility:inherit}.reveal .slides section .fragment.strike{opacity:1;visibility:inherit}.reveal .slides section .fragment.strike.visible{text-decoration:line-through}.reveal .slides section .fragment.fade-up{transform:translate(0,40px)}.reveal .slides section .fragment.fade-up.visible{transform:translate(0,0)}.reveal .slides section .fragment.fade-down{transform:translate(0,-40px)}.reveal .slides section .fragment.fade-down.visible{transform:translate(0,0)}.reveal .slides section .fragment.fade-right{transform:translate(-40px,0)}.reveal .slides section .fragment.fade-right.visible{transform:translate(0,0)}.reveal .slides section .fragment.fade-left{transform:translate(40px,0)}.reveal .slides section .fragment.fade-left.visible{transform:translate(0,0)}.reveal .slides section .fragment.current-visible,.reveal .slides section .fragment.fade-in-then-out{opacity:0;visibility:hidden}.reveal .slides section .fragment.current-visible.current-fragment,.reveal .slides section .fragment.fade-in-then-out.current-fragment{opacity:1;visibility:inherit}.reveal .slides section .fragment.fade-in-then-semi-out{opacity:0;visibility:hidden}.reveal .slides section .fragment.fade-in-then-semi-out.visible{opacity:.5;visibility:inherit}.reveal .slides section .fragment.fade-in-then-semi-out.current-fragment{opacity:1;visibility:inherit}.reveal .slides section .fragment.highlight-blue,.reveal .slides section .fragment.highlight-current-blue,.reveal .slides section .fragment.highlight-current-green,.reveal .slides section .fragment.highlight-current-red,.reveal .slides section .fragment.highlight-green,.reveal .slides section .fragment.highlight-red{opacity:1;visibility:inherit}.reveal .slides section .fragment.highlight-red.visible{color:#ff2c2d}.reveal .slides section .fragment.highlight-green.visible{color:#17ff2e}.reveal .slides section .fragment.highlight-blue.visible{color:#1b91ff}.reveal .slides section .fragment.highlight-current-red.current-fragment{color:#ff2c2d}.reveal .slides section .fragment.highlight-current-green.current-fragment{color:#17ff2e}.reveal .slides section .fragment.highlight-current-blue.current-fragment{color:#1b91ff}.reveal:after{content:'';font-style:italic}.reveal iframe{z-index:1}.reveal a{position:relative}@keyframes bounce-right{0%,10%,25%,40%,50%{transform:translateX(0)}20%{transform:translateX(10px)}30%{transform:translateX(-5px)}}@keyframes bounce-left{0%,10%,25%,40%,50%{transform:translateX(0)}20%{transform:translateX(-10px)}30%{transform:translateX(5px)}}@keyframes bounce-down{0%,10%,25%,40%,50%{transform:translateY(0)}20%{transform:translateY(10px)}30%{transform:translateY(-5px)}}.reveal .controls{display:none;position:absolute;top:auto;bottom:12px;right:12px;left:auto;z-index:11;color:#000;pointer-events:none;font-size:10px}.reveal .controls button{position:absolute;padding:0;background-color:transparent;border:0;outline:0;cursor:pointer;color:currentColor;transform:scale(.9999);transition:color .2s ease,opacity .2s ease,transform .2s ease;z-index:2;pointer-events:auto;font-size:inherit;visibility:hidden;opacity:0;-webkit-appearance:none;-webkit-tap-highlight-color:transparent}.reveal .controls .controls-arrow:after,.reveal .controls .controls-arrow:before{content:'';position:absolute;top:0;left:0;width:2.6em;height:.5em;border-radius:.25em;background-color:currentColor;transition:all .15s ease,background-color .8s ease;transform-origin:.2em 50%;will-change:transform}.reveal .controls .controls-arrow{position:relative;width:3.6em;height:3.6em}.reveal .controls .controls-arrow:before{transform:translateX(.5em) translateY(1.55em) rotate(45deg)}.reveal .controls .controls-arrow:after{transform:translateX(.5em) translateY(1.55em) rotate(-45deg)}.reveal .controls .controls-arrow:hover:before{transform:translateX(.5em) translateY(1.55em) rotate(40deg)}.reveal .controls .controls-arrow:hover:after{transform:translateX(.5em) translateY(1.55em) rotate(-40deg)}.reveal .controls .controls-arrow:active:before{transform:translateX(.5em) translateY(1.55em) rotate(36deg)}.reveal .controls .controls-arrow:active:after{transform:translateX(.5em) translateY(1.55em) rotate(-36deg)}.reveal .controls .navigate-left{right:6.4em;bottom:3.2em;transform:translateX(-10px)}.reveal .controls .navigate-left.highlight{animation:bounce-left 2s 50 both ease-out}.reveal .controls .navigate-right{right:0;bottom:3.2em;transform:translateX(10px)}.reveal .controls .navigate-right .controls-arrow{transform:rotate(180deg)}.reveal .controls .navigate-right.highlight{animation:bounce-right 2s 50 both ease-out}.reveal .controls .navigate-up{right:3.2em;bottom:6.4em;transform:translateY(-10px)}.reveal .controls .navigate-up .controls-arrow{transform:rotate(90deg)}.reveal .controls .navigate-down{right:3.2em;bottom:-1.4em;padding-bottom:1.4em;transform:translateY(10px)}.reveal .controls .navigate-down .controls-arrow{transform:rotate(-90deg)}.reveal .controls .navigate-down.highlight{animation:bounce-down 2s 50 both ease-out}.reveal .controls[data-controls-back-arrows=faded] .navigate-up.enabled{opacity:.3}.reveal .controls[data-controls-back-arrows=faded] .navigate-up.enabled:hover{opacity:1}.reveal .controls[data-controls-back-arrows=hidden] .navigate-up.enabled{opacity:0;visibility:hidden}.reveal .controls .enabled{visibility:visible;opacity:.9;cursor:pointer;transform:none}.reveal .controls .enabled.fragmented{opacity:.5}.reveal .controls .enabled.fragmented:hover,.reveal .controls .enabled:hover{opacity:1}.reveal:not(.rtl) .controls[data-controls-back-arrows=faded] .navigate-left.enabled{opacity:.3}.reveal:not(.rtl) .controls[data-controls-back-arrows=faded] .navigate-left.enabled:hover{opacity:1}.reveal:not(.rtl) .controls[data-controls-back-arrows=hidden] .navigate-left.enabled{opacity:0;visibility:hidden}.reveal.rtl .controls[data-controls-back-arrows=faded] .navigate-right.enabled{opacity:.3}.reveal.rtl .controls[data-controls-back-arrows=faded] .navigate-right.enabled:hover{opacity:1}.reveal.rtl .controls[data-controls-back-arrows=hidden] .navigate-right.enabled{opacity:0;visibility:hidden}.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-down,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-up{display:none}.reveal:not(.has-vertical-slides) .controls .navigate-left,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-left{bottom:1.4em;right:5.5em}.reveal:not(.has-vertical-slides) .controls .navigate-right,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-right{bottom:1.4em;right:.5em}.reveal:not(.has-horizontal-slides) .controls .navigate-up{right:1.4em;bottom:5em}.reveal:not(.has-horizontal-slides) .controls .navigate-down{right:1.4em;bottom:.5em}.reveal.has-dark-background .controls{color:#fff}.reveal.has-light-background .controls{color:#000}.reveal.no-hover .controls .controls-arrow:active:before,.reveal.no-hover .controls .controls-arrow:hover:before{transform:translateX(.5em) translateY(1.55em) rotate(45deg)}.reveal.no-hover .controls .controls-arrow:active:after,.reveal.no-hover .controls .controls-arrow:hover:after{transform:translateX(.5em) translateY(1.55em) rotate(-45deg)}@media screen and (min-width:500px){.reveal .controls[data-controls-layout=edges]{top:0;right:0;bottom:0;left:0}.reveal .controls[data-controls-layout=edges] .navigate-down,.reveal .controls[data-controls-layout=edges] .navigate-left,.reveal .controls[data-controls-layout=edges] .navigate-right,.reveal .controls[data-controls-layout=edges] .navigate-up{bottom:auto;right:auto}.reveal .controls[data-controls-layout=edges] .navigate-left{top:50%;left:.8em;margin-top:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-right{top:50%;right:.8em;margin-top:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-up{top:.8em;left:50%;margin-left:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-down{bottom:-.3em;left:50%;margin-left:-1.8em}}.reveal .progress{position:absolute;display:none;height:3px;width:100%;bottom:0;left:0;z-index:10;background-color:rgba(0,0,0,.2);color:#fff}.reveal .progress:after{content:'';display:block;position:absolute;height:10px;width:100%;top:-10px}.reveal .progress span{display:block;height:100%;width:100%;background-color:currentColor;transition:transform .8s cubic-bezier(.26,.86,.44,.985);transform-origin:0 0;transform:scaleX(0)}.reveal .slide-number{position:absolute;display:block;right:8px;bottom:8px;z-index:31;font-family:Helvetica,sans-serif;font-size:12px;line-height:1;color:#fff;background-color:rgba(0,0,0,.4);padding:5px}.reveal .slide-number a{color:currentColor}.reveal .slide-number-delimiter{margin:0 3px}.reveal{position:relative;width:100%;height:100%;overflow:hidden;touch-action:pinch-zoom}.reveal.embedded{touch-action:pan-y}.reveal .slides{position:absolute;width:100%;height:100%;top:0;right:0;bottom:0;left:0;margin:auto;pointer-events:none;overflow:visible;z-index:1;text-align:center;perspective:600px;perspective-origin:50% 40%}.reveal .slides>section{perspective:600px}.reveal .slides>section,.reveal .slides>section>section{display:none;position:absolute;width:100%;pointer-events:auto;z-index:10;transform-style:flat;transition:transform-origin .8s cubic-bezier(.26,.86,.44,.985),transform .8s cubic-bezier(.26,.86,.44,.985),visibility .8s cubic-bezier(.26,.86,.44,.985),opacity .8s cubic-bezier(.26,.86,.44,.985)}.reveal[data-transition-speed=fast] .slides section{transition-duration:.4s}.reveal[data-transition-speed=slow] .slides section{transition-duration:1.2s}.reveal .slides section[data-transition-speed=fast]{transition-duration:.4s}.reveal .slides section[data-transition-speed=slow]{transition-duration:1.2s}.reveal .slides>section.stack{padding-top:0;padding-bottom:0;pointer-events:none;height:100%}.reveal .slides>section.present,.reveal .slides>section>section.present{display:block;z-index:11;opacity:1}.reveal .slides>section:empty,.reveal .slides>section>section:empty,.reveal .slides>section>section[data-background-interactive],.reveal .slides>section[data-background-interactive]{pointer-events:none}.reveal.center,.reveal.center .slides,.reveal.center .slides section{min-height:0!important}.reveal .slides>section:not(.present),.reveal .slides>section>section:not(.present){pointer-events:none}.reveal.overview .slides>section,.reveal.overview .slides>section>section{pointer-events:auto}.reveal .slides>section.future,.reveal .slides>section.past,.reveal .slides>section>section.future,.reveal .slides>section>section.past{opacity:0}.reveal.slide section{-webkit-backface-visibility:hidden;backface-visibility:hidden}.reveal .slides>section[data-transition=slide].past,.reveal .slides>section[data-transition~=slide-out].past,.reveal.slide .slides>section:not([data-transition]).past{transform:translate(-150%,0)}.reveal .slides>section[data-transition=slide].future,.reveal .slides>section[data-transition~=slide-in].future,.reveal.slide .slides>section:not([data-transition]).future{transform:translate(150%,0)}.reveal .slides>section>section[data-transition=slide].past,.reveal .slides>section>section[data-transition~=slide-out].past,.reveal.slide .slides>section>section:not([data-transition]).past{transform:translate(0,-150%)}.reveal .slides>section>section[data-transition=slide].future,.reveal .slides>section>section[data-transition~=slide-in].future,.reveal.slide .slides>section>section:not([data-transition]).future{transform:translate(0,150%)}.reveal.linear section{-webkit-backface-visibility:hidden;backface-visibility:hidden}.reveal .slides>section[data-transition=linear].past,.reveal .slides>section[data-transition~=linear-out].past,.reveal.linear .slides>section:not([data-transition]).past{transform:translate(-150%,0)}.reveal .slides>section[data-transition=linear].future,.reveal .slides>section[data-transition~=linear-in].future,.reveal.linear .slides>section:not([data-transition]).future{transform:translate(150%,0)}.reveal .slides>section>section[data-transition=linear].past,.reveal .slides>section>section[data-transition~=linear-out].past,.reveal.linear .slides>section>section:not([data-transition]).past{transform:translate(0,-150%)}.reveal .slides>section>section[data-transition=linear].future,.reveal .slides>section>section[data-transition~=linear-in].future,.reveal.linear .slides>section>section:not([data-transition]).future{transform:translate(0,150%)}.reveal .slides section[data-transition=default].stack,.reveal.default .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=default].past,.reveal .slides>section[data-transition~=default-out].past,.reveal.default .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=default].future,.reveal .slides>section[data-transition~=default-in].future,.reveal.default .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=default].past,.reveal .slides>section>section[data-transition~=default-out].past,.reveal.default .slides>section>section:not([data-transition]).past{transform:translate3d(0,-300px,0) rotateX(70deg) translate3d(0,-300px,0)}.reveal .slides>section>section[data-transition=default].future,.reveal .slides>section>section[data-transition~=default-in].future,.reveal.default .slides>section>section:not([data-transition]).future{transform:translate3d(0,300px,0) rotateX(-70deg) translate3d(0,300px,0)}.reveal .slides section[data-transition=convex].stack,.reveal.convex .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=convex].past,.reveal .slides>section[data-transition~=convex-out].past,.reveal.convex .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=convex].future,.reveal .slides>section[data-transition~=convex-in].future,.reveal.convex .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=convex].past,.reveal .slides>section>section[data-transition~=convex-out].past,.reveal.convex .slides>section>section:not([data-transition]).past{transform:translate3d(0,-300px,0) rotateX(70deg) translate3d(0,-300px,0)}.reveal .slides>section>section[data-transition=convex].future,.reveal .slides>section>section[data-transition~=convex-in].future,.reveal.convex .slides>section>section:not([data-transition]).future{transform:translate3d(0,300px,0) rotateX(-70deg) translate3d(0,300px,0)}.reveal .slides section[data-transition=concave].stack,.reveal.concave .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=concave].past,.reveal .slides>section[data-transition~=concave-out].past,.reveal.concave .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=concave].future,.reveal .slides>section[data-transition~=concave-in].future,.reveal.concave .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(-90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=concave].past,.reveal .slides>section>section[data-transition~=concave-out].past,.reveal.concave .slides>section>section:not([data-transition]).past{transform:translate3d(0,-80%,0) rotateX(-70deg) translate3d(0,-80%,0)}.reveal .slides>section>section[data-transition=concave].future,.reveal .slides>section>section[data-transition~=concave-in].future,.reveal.concave .slides>section>section:not([data-transition]).future{transform:translate3d(0,80%,0) rotateX(70deg) translate3d(0,80%,0)}.reveal .slides section[data-transition=zoom],.reveal.zoom .slides section:not([data-transition]){transition-timing-function:ease}.reveal .slides>section[data-transition=zoom].past,.reveal .slides>section[data-transition~=zoom-out].past,.reveal.zoom .slides>section:not([data-transition]).past{visibility:hidden;transform:scale(16)}.reveal .slides>section[data-transition=zoom].future,.reveal .slides>section[data-transition~=zoom-in].future,.reveal.zoom .slides>section:not([data-transition]).future{visibility:hidden;transform:scale(.2)}.reveal .slides>section>section[data-transition=zoom].past,.reveal .slides>section>section[data-transition~=zoom-out].past,.reveal.zoom .slides>section>section:not([data-transition]).past{transform:scale(16)}.reveal .slides>section>section[data-transition=zoom].future,.reveal .slides>section>section[data-transition~=zoom-in].future,.reveal.zoom .slides>section>section:not([data-transition]).future{transform:scale(.2)}.reveal.cube .slides{perspective:1300px}.reveal.cube .slides section{padding:30px;min-height:700px;-webkit-backface-visibility:hidden;backface-visibility:hidden;box-sizing:border-box;transform-style:preserve-3d}.reveal.center.cube .slides section{min-height:0}.reveal.cube .slides section:not(.stack):before{content:'';position:absolute;display:block;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.1);border-radius:4px;transform:translateZ(-20px)}.reveal.cube .slides section:not(.stack):after{content:'';position:absolute;display:block;width:90%;height:30px;left:5%;bottom:0;background:0 0;z-index:1;border-radius:4px;box-shadow:0 95px 25px rgba(0,0,0,.2);transform:translateZ(-90px) rotateX(65deg)}.reveal.cube .slides>section.stack{padding:0;background:0 0}.reveal.cube .slides>section.past{transform-origin:100% 0;transform:translate3d(-100%,0,0) rotateY(-90deg)}.reveal.cube .slides>section.future{transform-origin:0 0;transform:translate3d(100%,0,0) rotateY(90deg)}.reveal.cube .slides>section>section.past{transform-origin:0 100%;transform:translate3d(0,-100%,0) rotateX(90deg)}.reveal.cube .slides>section>section.future{transform-origin:0 0;transform:translate3d(0,100%,0) rotateX(-90deg)}.reveal.page .slides{perspective-origin:0 50%;perspective:3000px}.reveal.page .slides section{padding:30px;min-height:700px;box-sizing:border-box;transform-style:preserve-3d}.reveal.page .slides section.past{z-index:12}.reveal.page .slides section:not(.stack):before{content:'';position:absolute;display:block;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.1);transform:translateZ(-20px)}.reveal.page .slides section:not(.stack):after{content:'';position:absolute;display:block;width:90%;height:30px;left:5%;bottom:0;background:0 0;z-index:1;border-radius:4px;box-shadow:0 95px 25px rgba(0,0,0,.2);-webkit-transform:translateZ(-90px) rotateX(65deg)}.reveal.page .slides>section.stack{padding:0;background:0 0}.reveal.page .slides>section.past{transform-origin:0 0;transform:translate3d(-40%,0,0) rotateY(-80deg)}.reveal.page .slides>section.future{transform-origin:100% 0;transform:translate3d(0,0,0)}.reveal.page .slides>section>section.past{transform-origin:0 0;transform:translate3d(0,-40%,0) rotateX(80deg)}.reveal.page .slides>section>section.future{transform-origin:0 100%;transform:translate3d(0,0,0)}.reveal .slides section[data-transition=fade],.reveal.fade .slides section:not([data-transition]),.reveal.fade .slides>section>section:not([data-transition]){transform:none;transition:opacity .5s}.reveal.fade.overview .slides section,.reveal.fade.overview .slides>section>section{transition:none}.reveal .slides section[data-transition=none],.reveal.none .slides section:not([data-transition]){transform:none;transition:none}.reveal .pause-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;visibility:hidden;opacity:0;z-index:100;transition:all 1s ease}.reveal .pause-overlay .resume-button{position:absolute;bottom:20px;right:20px;color:#ccc;border-radius:2px;padding:6px 14px;border:2px solid #ccc;font-size:16px;background:0 0;cursor:pointer}.reveal .pause-overlay .resume-button:hover{color:#fff;border-color:#fff}.reveal.paused .pause-overlay{visibility:visible;opacity:1}.reveal .no-transition,.reveal .no-transition *,.reveal .slides.disable-slide-transitions section{transition:none!important}.reveal .slides.disable-slide-transitions section{transform:none!important}.reveal .backgrounds{position:absolute;width:100%;height:100%;top:0;left:0;perspective:600px}.reveal .slide-background{display:none;position:absolute;width:100%;height:100%;opacity:0;visibility:hidden;overflow:hidden;background-color:rgba(0,0,0,0);transition:all .8s cubic-bezier(.26,.86,.44,.985)}.reveal .slide-background-content{position:absolute;width:100%;height:100%;background-position:50% 50%;background-repeat:no-repeat;background-size:cover}.reveal .slide-background.stack{display:block}.reveal .slide-background.present{opacity:1;visibility:visible;z-index:2}.print-pdf .reveal .slide-background{opacity:1!important;visibility:visible!important}.reveal .slide-background video{position:absolute;width:100%;height:100%;max-width:none;max-height:none;top:0;left:0;-o-object-fit:cover;object-fit:cover}.reveal .slide-background[data-background-size=contain] video{-o-object-fit:contain;object-fit:contain}.reveal>.backgrounds .slide-background[data-background-transition=none],.reveal[data-background-transition=none]>.backgrounds .slide-background{transition:none}.reveal>.backgrounds .slide-background[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background{opacity:1;-webkit-backface-visibility:hidden;backface-visibility:hidden}.reveal>.backgrounds .slide-background.past[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background.past{transform:translate(-100%,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background.future{transform:translate(100%,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background>.slide-background.past{transform:translate(0,-100%)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background>.slide-background.future{transform:translate(0,100%)}.reveal>.backgrounds .slide-background.past[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background.past{opacity:0;transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background.future{opacity:0;transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background>.slide-background.past{opacity:0;transform:translate3d(0,-100%,0) rotateX(90deg) translate3d(0,-100%,0)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background>.slide-background.future{opacity:0;transform:translate3d(0,100%,0) rotateX(-90deg) translate3d(0,100%,0)}.reveal>.backgrounds .slide-background.past[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background.past{opacity:0;transform:translate3d(-100%,0,0) rotateY(90deg) translate3d(-100%,0,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background.future{opacity:0;transform:translate3d(100%,0,0) rotateY(-90deg) translate3d(100%,0,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background>.slide-background.past{opacity:0;transform:translate3d(0,-100%,0) rotateX(-90deg) translate3d(0,-100%,0)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background>.slide-background.future{opacity:0;transform:translate3d(0,100%,0) rotateX(90deg) translate3d(0,100%,0)}.reveal>.backgrounds .slide-background[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background{transition-timing-function:ease}.reveal>.backgrounds .slide-background.past[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background.past{opacity:0;visibility:hidden;transform:scale(16)}.reveal>.backgrounds .slide-background.future[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background.future{opacity:0;visibility:hidden;transform:scale(.2)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background>.slide-background.past{opacity:0;visibility:hidden;transform:scale(16)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background>.slide-background.future{opacity:0;visibility:hidden;transform:scale(.2)}.reveal[data-transition-speed=fast]>.backgrounds .slide-background{transition-duration:.4s}.reveal[data-transition-speed=slow]>.backgrounds .slide-background{transition-duration:1.2s}.reveal [data-auto-animate-target^=unmatched]{will-change:opacity}.reveal section[data-auto-animate]:not(.stack):not([data-auto-animate=running]) [data-auto-animate-target^=unmatched]{opacity:0}.reveal.overview{perspective-origin:50% 50%;perspective:700px}.reveal.overview .slides{-moz-transform-style:preserve-3d}.reveal.overview .slides section{height:100%;top:0!important;opacity:1!important;overflow:hidden;visibility:visible!important;cursor:pointer;box-sizing:border-box}.reveal.overview .slides section.present,.reveal.overview .slides section:hover{outline:10px solid rgba(150,150,150,.4);outline-offset:10px}.reveal.overview .slides section .fragment{opacity:1;transition:none}.reveal.overview .slides section:after,.reveal.overview .slides section:before{display:none!important}.reveal.overview .slides>section.stack{padding:0;top:0!important;background:0 0;outline:0;overflow:visible}.reveal.overview .backgrounds{perspective:inherit;-moz-transform-style:preserve-3d}.reveal.overview .backgrounds .slide-background{opacity:1;visibility:visible;outline:10px solid rgba(150,150,150,.1);outline-offset:10px}.reveal.overview .backgrounds .slide-background.stack{overflow:visible}.reveal.overview .slides section,.reveal.overview-deactivating .slides section{transition:none}.reveal.overview .backgrounds .slide-background,.reveal.overview-deactivating .backgrounds .slide-background{transition:none}.reveal.rtl .slides,.reveal.rtl .slides h1,.reveal.rtl .slides h2,.reveal.rtl .slides h3,.reveal.rtl .slides h4,.reveal.rtl .slides h5,.reveal.rtl .slides h6{direction:rtl;font-family:sans-serif}.reveal.rtl code,.reveal.rtl pre{direction:ltr}.reveal.rtl ol,.reveal.rtl ul{text-align:right}.reveal.rtl .progress span{transform-origin:100% 0}.reveal.has-parallax-background .backgrounds{transition:all .8s ease}.reveal.has-parallax-background[data-transition-speed=fast] .backgrounds{transition-duration:.4s}.reveal.has-parallax-background[data-transition-speed=slow] .backgrounds{transition-duration:1.2s}.reveal>.overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1000;background:rgba(0,0,0,.9);transition:all .3s ease}.reveal>.overlay .spinner{position:absolute;display:block;top:50%;left:50%;width:32px;height:32px;margin:-16px 0 0 -16px;z-index:10;background-image:url(data:image/gif;base64,R0lGODlhIAAgAPMAAJmZmf%2F%2F%2F6%2Bvr8nJybW1tcDAwOjo6Nvb26ioqKOjo7Ozs%2FLy8vz8%2FAAAAAAAAAAAACH%2FC05FVFNDQVBFMi4wAwEAAAAh%2FhpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh%2BQQJCgAAACwAAAAAIAAgAAAE5xDISWlhperN52JLhSSdRgwVo1ICQZRUsiwHpTJT4iowNS8vyW2icCF6k8HMMBkCEDskxTBDAZwuAkkqIfxIQyhBQBFvAQSDITM5VDW6XNE4KagNh6Bgwe60smQUB3d4Rz1ZBApnFASDd0hihh12BkE9kjAJVlycXIg7CQIFA6SlnJ87paqbSKiKoqusnbMdmDC2tXQlkUhziYtyWTxIfy6BE8WJt5YJvpJivxNaGmLHT0VnOgSYf0dZXS7APdpB309RnHOG5gDqXGLDaC457D1zZ%2FV%2FnmOM82XiHRLYKhKP1oZmADdEAAAh%2BQQJCgAAACwAAAAAIAAgAAAE6hDISWlZpOrNp1lGNRSdRpDUolIGw5RUYhhHukqFu8DsrEyqnWThGvAmhVlteBvojpTDDBUEIFwMFBRAmBkSgOrBFZogCASwBDEY%2FCZSg7GSE0gSCjQBMVG023xWBhklAnoEdhQEfyNqMIcKjhRsjEdnezB%2BA4k8gTwJhFuiW4dokXiloUepBAp5qaKpp6%2BHo7aWW54wl7obvEe0kRuoplCGepwSx2jJvqHEmGt6whJpGpfJCHmOoNHKaHx61WiSR92E4lbFoq%2BB6QDtuetcaBPnW6%2BO7wDHpIiK9SaVK5GgV543tzjgGcghAgAh%2BQQJCgAAACwAAAAAIAAgAAAE7hDISSkxpOrN5zFHNWRdhSiVoVLHspRUMoyUakyEe8PTPCATW9A14E0UvuAKMNAZKYUZCiBMuBakSQKG8G2FzUWox2AUtAQFcBKlVQoLgQReZhQlCIJesQXI5B0CBnUMOxMCenoCfTCEWBsJColTMANldx15BGs8B5wlCZ9Po6OJkwmRpnqkqnuSrayqfKmqpLajoiW5HJq7FL1Gr2mMMcKUMIiJgIemy7xZtJsTmsM4xHiKv5KMCXqfyUCJEonXPN2rAOIAmsfB3uPoAK%2B%2BG%2Bw48edZPK%2BM6hLJpQg484enXIdQFSS1u6UhksENEQAAIfkECQoAAAAsAAAAACAAIAAABOcQyEmpGKLqzWcZRVUQnZYg1aBSh2GUVEIQ2aQOE%2BG%2BcD4ntpWkZQj1JIiZIogDFFyHI0UxQwFugMSOFIPJftfVAEoZLBbcLEFhlQiqGp1Vd140AUklUN3eCA51C1EWMzMCezCBBmkxVIVHBWd3HHl9JQOIJSdSnJ0TDKChCwUJjoWMPaGqDKannasMo6WnM562R5YluZRwur0wpgqZE7NKUm%2BFNRPIhjBJxKZteWuIBMN4zRMIVIhffcgojwCF117i4nlLnY5ztRLsnOk%2BaV%2BoJY7V7m76PdkS4trKcdg0Zc0tTcKkRAAAIfkECQoAAAAsAAAAACAAIAAABO4QyEkpKqjqzScpRaVkXZWQEximw1BSCUEIlDohrft6cpKCk5xid5MNJTaAIkekKGQkWyKHkvhKsR7ARmitkAYDYRIbUQRQjWBwJRzChi9CRlBcY1UN4g0%2FVNB0AlcvcAYHRyZPdEQFYV8ccwR5HWxEJ02YmRMLnJ1xCYp0Y5idpQuhopmmC2KgojKasUQDk5BNAwwMOh2RtRq5uQuPZKGIJQIGwAwGf6I0JXMpC8C7kXWDBINFMxS4DKMAWVWAGYsAdNqW5uaRxkSKJOZKaU3tPOBZ4DuK2LATgJhkPJMgTwKCdFjyPHEnKxFCDhEAACH5BAkKAAAALAAAAAAgACAAAATzEMhJaVKp6s2nIkolIJ2WkBShpkVRWqqQrhLSEu9MZJKK9y1ZrqYK9WiClmvoUaF8gIQSNeF1Er4MNFn4SRSDARWroAIETg1iVwuHjYB1kYc1mwruwXKC9gmsJXliGxc%2BXiUCby9ydh1sOSdMkpMTBpaXBzsfhoc5l58Gm5yToAaZhaOUqjkDgCWNHAULCwOLaTmzswadEqggQwgHuQsHIoZCHQMMQgQGubVEcxOPFAcMDAYUA85eWARmfSRQCdcMe0zeP1AAygwLlJtPNAAL19DARdPzBOWSm1brJBi45soRAWQAAkrQIykShQ9wVhHCwCQCACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiRMDjI0Fd30%2FiI2UA5GSS5UDj2l6NoqgOgN4gksEBgYFf0FDqKgHnyZ9OX8HrgYHdHpcHQULXAS2qKpENRg7eAMLC7kTBaixUYFkKAzWAAnLC7FLVxLWDBLKCwaKTULgEwbLA4hJtOkSBNqITT3xEgfLpBtzE%2FjiuL04RGEBgwWhShRgQExHBAAh%2BQQJCgAAACwAAAAAIAAgAAAE7xDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfZiCqGk5dTESJeaOAlClzsJsqwiJwiqnFrb2nS9kmIcgEsjQydLiIlHehhpejaIjzh9eomSjZR%2BipslWIRLAgMDOR2DOqKogTB9pCUJBagDBXR6XB0EBkIIsaRsGGMMAxoDBgYHTKJiUYEGDAzHC9EACcUGkIgFzgwZ0QsSBcXHiQvOwgDdEwfFs0sDzt4S6BK4xYjkDOzn0unFeBzOBijIm1Dgmg5YFQwsCMjp1oJ8LyIAACH5BAkKAAAALAAAAAAgACAAAATwEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GGl6NoiPOH16iZKNlH6KmyWFOggHhEEvAwwMA0N9GBsEC6amhnVcEwavDAazGwIDaH1ipaYLBUTCGgQDA8NdHz0FpqgTBwsLqAbWAAnIA4FWKdMLGdYGEgraigbT0OITBcg5QwPT4xLrROZL6AuQAPUS7bxLpoWidY0JtxLHKhwwMJBTHgPKdEQAACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GAULDJCRiXo1CpGXDJOUjY%2BYip9DhToJA4RBLwMLCwVDfRgbBAaqqoZ1XBMHswsHtxtFaH1iqaoGNgAIxRpbFAgfPQSqpbgGBqUD1wBXeCYp1AYZ19JJOYgH1KwA4UBvQwXUBxPqVD9L3sbp2BNk2xvvFPJd%2BMFCN6HAAIKgNggY0KtEBAAh%2BQQJCgAAACwAAAAAIAAgAAAE6BDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfYIDMaAFdTESJeaEDAIMxYFqrOUaNW4E4ObYcCXaiBVEgULe0NJaxxtYksjh2NLkZISgDgJhHthkpU4mW6blRiYmZOlh4JWkDqILwUGBnE6TYEbCgevr0N1gH4At7gHiRpFaLNrrq8HNgAJA70AWxQIH1%2BvsYMDAzZQPC9VCNkDWUhGkuE5PxJNwiUK4UfLzOlD4WvzAHaoG9nxPi5d%2BjYUqfAhhykOFwJWiAAAIfkECQoAAAAsAAAAACAAIAAABPAQyElpUqnqzaciSoVkXVUMFaFSwlpOCcMYlErAavhOMnNLNo8KsZsMZItJEIDIFSkLGQoQTNhIsFehRww2CQLKF0tYGKYSg%2BygsZIuNqJksKgbfgIGepNo2cIUB3V1B3IvNiBYNQaDSTtfhhx0CwVPI0UJe0%2Bbm4g5VgcGoqOcnjmjqDSdnhgEoamcsZuXO1aWQy8KAwOAuTYYGwi7w5h%2BKr0SJ8MFihpNbx%2B4Erq7BYBuzsdiH1jCAzoSfl0rVirNbRXlBBlLX%2BBP0XJLAPGzTkAuAOqb0WT5AH7OcdCm5B8TgRwSRKIHQtaLCwg1RAAAOwAAAAAAAAAAAA%3D%3D);visibility:visible;opacity:.6;transition:all .3s ease}.reveal>.overlay header{position:absolute;left:0;top:0;width:100%;padding:5px;z-index:2;box-sizing:border-box}.reveal>.overlay header a{display:inline-block;width:40px;height:40px;line-height:36px;padding:0 10px;float:right;opacity:.6;box-sizing:border-box}.reveal>.overlay header a:hover{opacity:1}.reveal>.overlay header a .icon{display:inline-block;width:20px;height:20px;background-position:50% 50%;background-size:100%;background-repeat:no-repeat}.reveal>.overlay header a.close .icon{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABkklEQVRYR8WX4VHDMAxG6wnoJrABZQPYBCaBTWAD2g1gE5gg6OOsXuxIlr40d81dfrSJ9V4c2VLK7spHuTJ/5wpM07QXuXc5X0opX2tEJcadjHuV80li/FgxTIEK/5QBCICBD6xEhSMGHgQPgBgLiYVAB1dpSqKDawxTohFw4JSEA3clzgIBPCURwE2JucBR7rhPJJv5OpJwDX+SfDjgx1wACQeJG1aChP9K/IMmdZ8DtESV1WyP3Bt4MwM6sj4NMxMYiqUWHQu4KYA/SYkIjOsm3BXYWMKFDwU2khjCQ4ELJUJ4SmClRArOCmSXGuKma0fYD5CbzHxFpCSGAhfAVSSUGDUk2BWZaff2g6GE15BsBQ9nwmpIGDiyHQddwNTMKkbZaf9fajXQca1EX44puJZUsnY0ObGmITE3GVLCbEhQUjGVt146j6oasWN+49Vph2w1pZ5EansNZqKBm1txbU57iRRcZ86RWMDdWtBJUHBHwoQPi1GV+JCbntmvok7iTX4/Up9mgyTc/FJYDTcndgH/AA5A/CHsyEkVAAAAAElFTkSuQmCC)}.reveal>.overlay header a.external .icon{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAcElEQVRYR+2WSQoAIQwEzf8f7XiOMkUQxUPlGkM3hVmiQfQR9GYnH1SsAQlI4DiBqkCMoNb9y2e90IAEJPAcgdznU9+engMaeJ7Azh5Y1U67gAho4DqBqmB1buAf0MB1AlVBek83ZPkmJMGc1wAR+AAqod/B97TRpQAAAABJRU5ErkJggg==)}.reveal>.overlay .viewport{position:absolute;display:flex;top:50px;right:0;bottom:0;left:0}.reveal>.overlay.overlay-preview .viewport iframe{width:100%;height:100%;max-width:100%;max-height:100%;border:0;opacity:0;visibility:hidden;transition:all .3s ease}.reveal>.overlay.overlay-preview.loaded .viewport iframe{opacity:1;visibility:visible}.reveal>.overlay.overlay-preview.loaded .viewport-inner{position:absolute;z-index:-1;left:0;top:45%;width:100%;text-align:center;letter-spacing:normal}.reveal>.overlay.overlay-preview .x-frame-error{opacity:0;transition:opacity .3s ease .3s}.reveal>.overlay.overlay-preview.loaded .x-frame-error{opacity:1}.reveal>.overlay.overlay-preview.loaded .spinner{opacity:0;visibility:hidden;transform:scale(.2)}.reveal>.overlay.overlay-help .viewport{overflow:auto;color:#fff}.reveal>.overlay.overlay-help .viewport .viewport-inner{width:600px;margin:auto;padding:20px 20px 80px 20px;text-align:center;letter-spacing:normal}.reveal>.overlay.overlay-help .viewport .viewport-inner .title{font-size:20px}.reveal>.overlay.overlay-help .viewport .viewport-inner table{border:1px solid #fff;border-collapse:collapse;font-size:16px}.reveal>.overlay.overlay-help .viewport .viewport-inner table td,.reveal>.overlay.overlay-help .viewport .viewport-inner table th{width:200px;padding:14px;border:1px solid #fff;vertical-align:middle}.reveal>.overlay.overlay-help .viewport .viewport-inner table th{padding-top:20px;padding-bottom:20px}.reveal .playback{position:absolute;left:15px;bottom:20px;z-index:30;cursor:pointer;transition:all .4s ease;-webkit-tap-highlight-color:transparent}.reveal.overview .playback{opacity:0;visibility:hidden}.reveal .hljs{min-height:100%}.reveal .hljs table{margin:initial}.reveal .hljs-ln-code,.reveal .hljs-ln-numbers{padding:0;border:0}.reveal .hljs-ln-numbers{opacity:.6;padding-right:.75em;text-align:right;vertical-align:top}.reveal .hljs.has-highlights tr:not(.highlight-line){opacity:.4}.reveal .hljs:not(:first-child).fragment{position:absolute;top:0;left:0;width:100%;box-sizing:border-box}.reveal pre[data-auto-animate-target]{overflow:hidden}.reveal pre[data-auto-animate-target] code{height:100%}.reveal .roll{display:inline-block;line-height:1.2;overflow:hidden;vertical-align:top;perspective:400px;perspective-origin:50% 50%}.reveal .roll:hover{background:0 0;text-shadow:none}.reveal .roll span{display:block;position:relative;padding:0 2px;pointer-events:none;transition:all .4s ease;transform-origin:50% 0;transform-style:preserve-3d;-webkit-backface-visibility:hidden;backface-visibility:hidden}.reveal .roll:hover span{background:rgba(0,0,0,.5);transform:translate3d(0,0,-45px) rotateX(90deg)}.reveal .roll span:after{content:attr(data-title);display:block;position:absolute;left:0;top:0;padding:0 2px;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform-origin:50% 0;transform:translate3d(0,110%,0) rotateX(-90deg)}.reveal aside.notes{display:none}.reveal .speaker-notes{display:none;position:absolute;width:33.33333%;height:100%;top:0;left:100%;padding:14px 18px 14px 18px;z-index:1;font-size:18px;line-height:1.4;border:1px solid rgba(0,0,0,.05);color:#222;background-color:#f5f5f5;overflow:auto;box-sizing:border-box;text-align:left;font-family:Helvetica,sans-serif;-webkit-overflow-scrolling:touch}.reveal .speaker-notes .notes-placeholder{color:#ccc;font-style:italic}.reveal .speaker-notes:focus{outline:0}.reveal .speaker-notes:before{content:'Speaker notes';display:block;margin-bottom:10px;opacity:.5}.reveal.show-notes{max-width:75%;overflow:visible}.reveal.show-notes .speaker-notes{display:block}@media screen and (min-width:1600px){.reveal .speaker-notes{font-size:20px}}@media screen and (max-width:1024px){.reveal.show-notes{border-left:0;max-width:none;max-height:70%;max-height:70vh;overflow:visible}.reveal.show-notes .speaker-notes{top:100%;left:0;width:100%;height:42.85714%;height:30vh;border:0}}@media screen and (max-width:600px){.reveal.show-notes{max-height:60%;max-height:60vh}.reveal.show-notes .speaker-notes{top:100%;height:66.66667%;height:40vh}.reveal .speaker-notes{font-size:14px}}.zoomed .reveal *,.zoomed .reveal :after,.zoomed .reveal :before{-webkit-backface-visibility:visible!important;backface-visibility:visible!important}.zoomed .reveal .controls,.zoomed .reveal .progress{opacity:0}.zoomed .reveal .roll span{background:0 0}.zoomed .reveal .roll span:after{visibility:hidden}html.print-pdf *{-webkit-print-color-adjust:exact}html.print-pdf{width:100%;height:100%;overflow:visible}html.print-pdf body{margin:0 auto!important;border:0;padding:0;float:none!important;overflow:visible}html.print-pdf .nestedarrow,html.print-pdf .reveal .controls,html.print-pdf .reveal .playback,html.print-pdf .reveal .progress,html.print-pdf .reveal.overview,html.print-pdf .state-background{display:none!important}html.print-pdf .reveal pre code{overflow:hidden!important;font-family:Courier,'Courier New',monospace!important}html.print-pdf .reveal{width:auto!important;height:auto!important;overflow:hidden!important}html.print-pdf .reveal .slides{position:static;width:100%!important;height:auto!important;zoom:1!important;pointer-events:initial;left:auto;top:auto;margin:0!important;padding:0!important;overflow:visible;display:block;perspective:none;perspective-origin:50% 50%}html.print-pdf .reveal .slides .pdf-page{position:relative;overflow:hidden;z-index:1;page-break-after:always}html.print-pdf .reveal .slides section{visibility:visible!important;display:block!important;position:absolute!important;margin:0!important;padding:0!important;box-sizing:border-box!important;min-height:1px;opacity:1!important;transform-style:flat!important;transform:none!important}html.print-pdf .reveal section.stack{position:relative!important;margin:0!important;padding:0!important;page-break-after:avoid!important;height:auto!important;min-height:auto!important}html.print-pdf .reveal img{box-shadow:none}html.print-pdf .reveal .backgrounds{display:none}html.print-pdf .reveal .slide-background{display:block!important;position:absolute;top:0;left:0;width:100%;height:100%;z-index:auto!important}html.print-pdf .reveal.show-notes{max-width:none;max-height:none}html.print-pdf .reveal .speaker-notes-pdf{display:block;width:100%;height:auto;max-height:none;top:auto;right:auto;bottom:auto;left:auto;z-index:100}html.print-pdf .reveal .speaker-notes-pdf[data-layout=separate-page]{position:relative;color:inherit;background-color:transparent;padding:20px;page-break-after:always;border:0}html.print-pdf .reveal .slide-number-pdf{display:block;position:absolute;font-size:14px}html.print-pdf .aria-status{display:none}@media print{html:not(.print-pdf){background:#fff;width:auto;height:auto;overflow:visible}html:not(.print-pdf) body{background:#fff;font-size:20pt;width:auto;height:auto;border:0;margin:0 5%;padding:0;overflow:visible;float:none!important}html:not(.print-pdf) .controls,html:not(.print-pdf) .fork-reveal,html:not(.print-pdf) .nestedarrow,html:not(.print-pdf) .reveal .backgrounds,html:not(.print-pdf) .reveal .progress,html:not(.print-pdf) .reveal .slide-number,html:not(.print-pdf) .share-reveal,html:not(.print-pdf) .state-background{display:none!important}html:not(.print-pdf) body,html:not(.print-pdf) li,html:not(.print-pdf) p,html:not(.print-pdf) td{font-size:20pt!important;color:#000}html:not(.print-pdf) h1,html:not(.print-pdf) h2,html:not(.print-pdf) h3,html:not(.print-pdf) h4,html:not(.print-pdf) h5,html:not(.print-pdf) h6{color:#000!important;height:auto;line-height:normal;text-align:left;letter-spacing:normal}html:not(.print-pdf) h1{font-size:28pt!important}html:not(.print-pdf) h2{font-size:24pt!important}html:not(.print-pdf) h3{font-size:22pt!important}html:not(.print-pdf) h4{font-size:22pt!important;font-variant:small-caps}html:not(.print-pdf) h5{font-size:21pt!important}html:not(.print-pdf) h6{font-size:20pt!important;font-style:italic}html:not(.print-pdf) a:link,html:not(.print-pdf) a:visited{color:#000!important;font-weight:700;text-decoration:underline}html:not(.print-pdf) div,html:not(.print-pdf) ol,html:not(.print-pdf) p,html:not(.print-pdf) ul{visibility:visible;position:static;width:auto;height:auto;display:block;overflow:visible;margin:0;text-align:left!important}html:not(.print-pdf) .reveal pre,html:not(.print-pdf) .reveal table{margin-left:0;margin-right:0}html:not(.print-pdf) .reveal pre code{padding:20px}html:not(.print-pdf) .reveal blockquote{margin:20px 0}html:not(.print-pdf) .reveal .slides{position:static!important;width:auto!important;height:auto!important;left:0!important;top:0!important;margin-left:0!important;margin-top:0!important;padding:0!important;zoom:1!important;transform:none!important;overflow:visible!important;display:block!important;text-align:left!important;perspective:none;perspective-origin:50% 50%}html:not(.print-pdf) .reveal .slides section{visibility:visible!important;position:static!important;width:auto!important;height:auto!important;display:block!important;overflow:visible!important;left:0!important;top:0!important;margin-left:0!important;margin-top:0!important;padding:60px 20px!important;z-index:auto!important;opacity:1!important;page-break-after:always!important;transform-style:flat!important;transform:none!important;transition:none!important}html:not(.print-pdf) .reveal .slides section.stack{padding:0!important}html:not(.print-pdf) .reveal section:last-of-type{page-break-after:avoid!important}html:not(.print-pdf) .reveal section .fragment{opacity:1!important;visibility:visible!important;transform:none!important}html:not(.print-pdf) .reveal section img{display:block;margin:15px 0;background:#fff;border:1px solid #666;box-shadow:none}html:not(.print-pdf) .reveal section small{font-size:.8em}html:not(.print-pdf) .reveal .hljs{max-height:100%;white-space:pre-wrap;word-wrap:break-word;word-break:break-word;font-size:15pt}html:not(.print-pdf) .reveal .hljs .hljs-ln-numbers{white-space:nowrap}html:not(.print-pdf) .reveal .hljs td{font-size:inherit!important;color:inherit!important}}
+      
+      </style>
+      <link rel="stylesheet" href="file:///c:\Users\zekun\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.0\node_modules\@shd101wyy\mume\dependencies\reveal\css\theme\simple.css">
+      <link rel="stylesheet" href="file:///c:\Users\zekun\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.0\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+        <script src="file:///c:\Users\zekun\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.0\node_modules\@shd101wyy\mume\dependencies\reveal\lib\js\head.min.js"></script>
+        <script src="file:///c:\Users\zekun\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.0\node_modules\@shd101wyy\mume\dependencies\reveal\js\reveal.js"></script>
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export" data-presentation-mode>
+      <div class="mume markdown-preview  " data-presentation-mode>
+      
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js" integrity="sha256-F/Xda58SPdcUCr+xhSGz9MA2zQBPb0ASEYKohl8UCHc=" crossorigin="anonymous">
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css">
+<script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js">
+</script>
+
+    <div style="display:none;">
+	<meta charset="utf-8">
+	<title>HTML&#x8BBE;&#x7F6E;&#x8D85;&#x94FE;&#x63A5;&#x989C;&#x8272;</title>
+	<style type="text/css">
+		a:link {
+			/* color:cyan; */
+			color:pink;
+			text-decoration:none;
+		}
+		a:visited {
+			color:pink;
+			text-decoration:none;
+		}
+		a:hover {
+			color:blue;
+			text-decoration:none;
+		}
+		a:active {
+			color:pink;
+			text-decoration:none;
+		}
+	</style>
+</div>
+    <div class="reveal">
+      <div class="slides">
+        <section lineno="41" class="slide " data-line="41" data-h="0" data-v="0">
+<h2 class="mume-header" id="%E7%90%86%E8%BE%A9%E7%A4%BE">&#x7406;&#x8FA9;&#x793E;</h2>
+
+<h1 class="mume-header" id="%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%9F%B9%E8%AE%AD">&#x7B2C;&#x4E00;&#x6B21;&#x57F9;&#x8BAD;</h1>
+
+<h4 class="mume-header" id="phylabhttpphylabfudaneducn-%E4%BB%A5%E5%8F%8A%E4%B8%80%E4%BA%9B%E5%A4%B9%E5%B8%A6%E7%A7%81%E8%B4%A7"><a href="http://phylab.fudan.edu.cn/">phylab</a> &#x4EE5;&#x53CA;(&#x4E00;&#x4E9B;)&#x5939;&#x5E26;&#x79C1;&#x8D27;</h4>
+
+<h3 class="mume-header" id="by-19-%E7%89%A9%E7%90%86-%E5%A8%84%E6%B3%BD%E5%9D%A4">by 19 &#x7269;&#x7406; &#x5A04;&#x6CFD;&#x5764;</h3>
+
+<p><a href="mailto:nqhqnqhq@outlook.com">&#x2709;&#xFE0F;myEmailAddr&#x2709;&#xFE0F;</a></p>
+</section><section lineno="57" class="slide " data-line="57" data-h="1" data-v="0">
+<h2 class="mume-header" id="%E6%8F%90%E7%BA%B2">&#x63D0;&#x7EB2;</h2>
+
+<ul>
+<li>
+<p><a href="http://phylab.fudan.edu.cn/">phylab</a> &amp; <a href="https://zh.wikipedia.org/wiki/DokuWiki">DokuWiki</a></p>
+<ul>
+<li>
+<p>phylab&#x7B80;&#x4ECB;, DokuWiki&#x7684;&#x57FA;&#x7840;&#x8BED;&#x6CD5;</p>
+</li>
+<li>
+<p>How it works?</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Markdown</p>
+<ul>
+<li>
+<p>&#x63A8;&#x8350;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x548C;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;</p>
+</li>
+<li>
+<p>&#x57FA;&#x7840;&#x8BED;&#x6CD5;</p>
+</li>
+</ul>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span></p>
+<ul>
+<li>&#x662F;&#x4EC0;&#x4E48;, &#x4E3A;&#x4EC0;&#x4E48;, &#x600E;&#x4E48;&#x505A;</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p>&#x7BA1;&#x597D;&#x4F60;&#x7684; <strong>Windows</strong> !!! &#x1F431;&#x200D;&#x1F4BB;&#x1F431;&#x200D;&#x1F464;&#x1F431;&#x200D;&#x1F3CD;&#x1F431;&#x200D;&#x1F409;&#x1F431;&#x200D;&#x1F453;&#x1F431;&#x200D;&#x1F680;s</p>
+<ul>
+<li>
+<p>C&#x76D8;: &#x6325;&#x4E4B;&#x4E0D;&#x53BB;&#x7684;&#x5669;&#x68A6;</p>
+</li>
+<li>
+<p>&#x9632;&#x62A4;&#x8F6F;&#x4EF6;&#x7684;&#x4E00;&#x4E9B;&#x60F3;&#x6CD5;</p>
+</li>
+<li>
+<p>&#x5FEB;&#x6377;&#x952E;</p>
+</li>
+<li>
+<p>&#x547D;&#x4EE4;&#x884C;&#x1F41A;, scoop&#x1F527;, Linux(yes!)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>&#x53C2;&#x8003;&#x6587;&#x732E;</p>
+<ul>
+<li>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x4E00;&#x770B;, &#x8BF4;&#x4E0D;&#x5B9A;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#x7684;&#x5185;&#x5BB9;</p>
+</li>
+<li>
+<p><s>&#x4E3A;&#x4E86;&#x597D;&#x770B;&#x7684;&#x5360;&#x4F4D;&#x6587;&#x5B57;</s></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>&#x57FA;&#x7840;&#x90E8;&#x5206;</strong>: &#x5E26;&#x7740;&#x5927;&#x5BB6;&#x505A;&#x4E00;&#x904D;</p>
+<p><strong>&#x56F0;&#x96BE;&#x90E8;&#x5206;</strong>: &#x4E0D;&#x4F5C;&#x5F3A;&#x5236;&#x8981;&#x6C42;, &#x7ED9;&#x51FA;&#x6307;&#x5BFC;&#x94FE;&#x63A5;&#x1F517;</p>
+<p><font color="red">&#x6240;&#x6709;&#x5185;&#x5BB9;&#x90FD;&#x4F1A;&#x653E;&#x5230;&#x7FA4;&#x91CC;, <strong>&#x4E0D;&#x9700;&#x8981;&#x8BB0;&#x5F55;</strong>&#x54E6;</font></p>
+</section><section lineno="101" class="slide " data-line="101" data-h="2" data-v="0">
+<h2 class="mume-header" id="phylab-fudanhttpphylabfudaneducn-%E7%AE%80%E4%BB%8B"><a href="http://phylab.fudan.edu.cn/">phylab @ fudan</a> &#x7B80;&#x4ECB;</h2>
+
+<ul>
+<li>
+<p><img src="http://phylab.fudan.edu.cn/lib/exe/fetch.php?cache=&amp;media=fudan2d3.png" alt="QRCode"></p>
+</li>
+<li>
+<p><em><strong>&#x590D;&#x65E6;&#x5927;&#x5B66;&#x7269;&#x7406;&#x6559;&#x5B66;&#x5B9E;&#x9A8C;&#x4E2D;&#x5FC3;</strong></em></p>
+</li>
+<li>
+<p>&#x8BFE;&#x7A0B;&#x5B89;&#x6392;, &#x8D44;&#x6599;&#x5F52;&#x6863;, &#x6280;&#x672F;&#x4EA4;&#x6D41;, &#x6210;&#x679C;&#x5C55;&#x793A;</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>&#x67E5;&#x8BE2;&#x8BFE;&#x7A0B;&#x4FE1;&#x606F;, &#x8001;&#x5E08;&#x548C;&#x52A9;&#x6559;&#x8054;&#x7CFB;&#x65B9;&#x5F0F;</p>
+</li>
+<li>
+<p>&#x67E5;&#x8BE2;&#x8BFE;&#x7A0B;&#x8D44;&#x6599;: &#x6BCF;&#x8282;&#x8BFE;&#x5747;&#x6709;&#x4E2A;&#x5BF9;&#x5E94;&#x9875;&#x9762;</p>
+</li>
+<li>
+<p>&#x53C2;&#x52A0;&#x8BA8;&#x8BBA;: &#x9875;&#x9762;&#x540E;&#x8BA8;&#x8BBA;&#x533A;</p>
+</li>
+<li>
+<p>&#x6587;&#x4EF6;&#x4F20;&#x9012;: &#x4E0B;&#x8F7D;&#x8D44;&#x6599;, &#x63D0;&#x4EA4;&#x4F5C;&#x4E1A;</p>
+</li>
+<li>
+<p>&#x642D;&#x5EFA;&#x7F51;&#x9875;: &#x653E;&#x4E00;&#x4E9B;&#x81EA;&#x5DF1;&#x5199;&#x7684;&#x6559;&#x7A0B;</p>
+</li>
+<li>
+<p>&#x9875;&#x9762;&#x5B58;&#x6863;: &#x65B9;&#x4FBF;&#x56DE;&#x6EAF;</p>
+</li>
+</ul>
+</section><section lineno="123" class="slide " data-line="123" data-h="3" data-v="0">
+<h2 class="mume-header" id="phylab-runs-on-dokuwikihttpszhwikipediaorgwikidokuwiki">phylab runs on <a href="https://zh.wikipedia.org/wiki/DokuWiki">DokuWiki</a></h2>
+
+<ul>
+<li>&#x597D;&#x1F434;&#x4F69;&#x597D;&#x978D;</li>
+<li><img src="https://tse4-mm.cn.bing.net/th/id/OIP-C.c1_gHtUmXEtJ9mMUbySYAgHaHd?pid=ImgDet&amp;rs=1" alt></li>
+</ul>
+<ul>
+<li>Wiki&#x5F15;&#x64CE;, &#x9002;&#x5408;&#x4E2D;&#x5C0F;&#x4F01;&#x4E1A;&#x548C;&#x4E2A;&#x4EBA;&#x4F7F;&#x7528;</li>
+<li>&#x4E0D;&#x9700;&#x8981;&#x6570;&#x636E;&#x5E93;: &#x57FA;&#x4E8E;&#x6587;&#x672C;&#x5B58;&#x50A8;</li>
+<li>&#x529F;&#x80FD;&#x9F50;&#x5168;(&#x94FE;&#x63A5;, &#x7F16;&#x8F91;&#x9875;&#x9762;, &#x76EE;&#x5F55;)</li>
+<li>&#x7528;&#x4F5C;&#x8D44;&#x6599;&#x7F51;&#x7AD9;, &#x5F52;&#x6863;, &#x6307;&#x5357;, &#x8BFB;&#x4E66;&#x7B14;&#x8BB0;&#x7B49;</li>
+</ul>
+</section><section lineno="140" class="slide " data-line="140" data-h="4" data-v="0">
+<h2 class="mume-header" id="phylab%E7%9A%84%E4%BA%A4%E4%BA%92">phylab&#x7684;&#x4EA4;&#x4E92;</h2>
+
+<ul>
+<li>&#x7533;&#x8BF7;&#x8D26;&#x6237;</li>
+<li>&#x9875;&#x9762;&#x5C42;&#x6B21;(&#x7F51;&#x7AD9;&#x5730;&#x56FE;)</li>
+<li>&#x9875;&#x9762;&#x7F16;&#x8F91;</li>
+</ul>
+<ul>
+<li>&#x7F16;&#x8F91;&#x8BF4;&#x660E;
+<ul>
+<li>&#x9884;&#x89C8;&#x6309;&#x94AE;</li>
+<li>&#x51B2;&#x7A81;&#x7F16;&#x8F91;</li>
+<li>&#x5386;&#x53F2;&#x56DE;&#x6EAF;</li>
+<li>&#x6743;&#x9650;</li>
+</ul>
+</li>
+</ul>
+<p>&#x83AB;&#x7740;&#x6025;! &#x8BFE;&#x4EF6;&#x4E0A;&#x4F20;<br>
+&#x56DE;&#x53BB;&#x518D;&#x8BD5;, &#x670D;&#x52A1;&#x5668;&#x627F;&#x8F7D;&#x80FD;&#x529B;&#x6709;&#x9650;</p>
+</section><section lineno="159" class="slide " data-line="159" data-h="5" data-v="0">
+<h2 class="mume-header" id="dokuwiki%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95">DokuWiki&#x7684;&#x57FA;&#x7840;&#x8BED;&#x6CD5;</h2>
+
+<p><a href="http://phylab.fudan.edu.cn/doku.php?id=home:students:nqhq:grammarplayground">&#x8FD9;&#x6B21;&#x7684;playground</a></p>
+<ul>
+<li>&#x6807;&#x9898;</li>
+<li>&#x5217;&#x8868;&#x53CA;&#x7F29;&#x8FDB;</li>
+<li>&#x8868;&#x683C;</li>
+<li>&#x63D2;&#x5165;&#x8D44;&#x6E90;</li>
+<li>&#x6570;&#x5B66;&#x516C;&#x5F0F;</li>
+<li>&#x4EE3;&#x7801;&#x5757;</li>
+</ul>
+<p>&#x66F4;&#x52A0;&#x8BE6;&#x7EC6;&#x7684;&#x8BED;&#x6CD5;&#x5185;&#x5BB9;, &#x8BF7;&#x89C1;:<br>
+<a href="https://www.dokuwiki.org/wiki:syntax#code_blocks">dokuwiki&#x5B98;&#x65B9;&#x8BED;&#x6CD5;&#x5B66;&#x4E60;&#x9875;&#x9762;</a></p>
+<p>tips: &#x591F;&#x7528;&#x5C31;&#x884C;, &#x9700;&#x8981;&#x518D;&#x67E5;</p>
+</section><section lineno="181" class="slide " data-line="181" data-h="6" data-v="0">
+<h2 class="mume-header" id="dokuwiki%E5%AF%B9%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%8D%E8%B6%B3">DokuWiki&#x5BF9;&#x4E2A;&#x4EBA;&#x4F7F;&#x7528;&#x7684;&#x4E0D;&#x8DB3;</h2>
+
+<ul>
+<li>
+<p>&#x4E0D;&#x5C3D;&#x4EBA;&#x610F;</p>
+<ul>
+<li>&#x6765;&#x56DE;&#x70B9;&#x51FB;&#x9884;&#x89C8;&#x6309;&#x952E;, &#x4E2A;&#x4EBA;&#x4F7F;&#x7528;&#x65F6;&#x64CD;&#x4F5C;&#x6548;&#x7387;&#x4F4E;</li>
+<li>&#x5947;&#x5947;&#x602A;&#x602A;: &#x5217;&#x8868;&#x9700;&#x8981;&#x7A7A;&#x4E24;&#x683C;</li>
+<li>&#x4E0D;&#x662F;&#x672C;&#x5730;&#x5185;&#x5BB9;</li>
+</ul>
+</li>
+<li>
+<p>&#x76EE;&#x6807;&#x9700;&#x6C42;</p>
+<ul>
+<li>&#x5FEB;&#x901F;&#x8BB0;&#x5F55;, &#x53EF;&#x79FB;&#x690D;&#x6027;, &#x8D44;&#x6E90;&#x5360;&#x7528;&#x5C0F;</li>
+<li>&#x81EA;&#x7531;&#x8F93;&#x5165;, &#x683C;&#x5F0F;&#x53EF;&#x63A7;, &#x4E0D;&#x7528;&#x62C5;&#x5FC3;&#x6392;&#x7248;</li>
+<li>&#x597D;&#x770B;, &#x597D;&#x770B;, &#x597D;&#x770B;&#x1F604;</li>
+</ul>
+</li>
+</ul>
+</section><section lineno="199" class="slide " data-line="199" data-h="7" data-v="0">
+<h2 class="mume-header" id="font-facefira-codemarkdownfont-noaliashttpswwwrunoobcomwp-contentuploads201903iconfinder_markdown_298823png"><font face="Fira Code">Markdown</font> <img src="https://www.runoob.com/wp-content/uploads/2019/03/iconfinder_markdown_298823.png" alt="noAlias"></h2>
+
+<p>&#x7B80;&#x5355;&#x7684;&#x7EAF;&#x6587;&#x672C;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo><mover><mo><mo>&#x27F6;</mo><mo>&#x27F6;</mo><mo>&#x27F6;</mo></mo><mstyle mathcolor="red"><mtext>markdown&#x7684;&#x89C4;&#x5219;</mtext></mstyle></mover></mo></mrow><annotation encoding="application/x-tex">\stackrel{\color{red}\text{markdown&#x7684;&#x89C4;&#x5219;}}{\longrightarrow\longrightarrow\longrightarrow}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.308108em;vertical-align:-0.011em;"></span><span class="mrel"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2971080000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">&#x27F6;&#x27F6;&#x27F6;</span></span></span><span style="top:-3.7110000000000003em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight" style="color:red;"><span class="mord mtight" style="color:red;">markdown</span><span class="mord cjk_fallback mtight" style="color:red;">&#x7684;&#x89C4;&#x5219;</span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span></span></span></span></span>&#x8F83;&#x597D;&#x7684;&#x6587;&#x6863;&#x6548;&#x679C;</p>
+<ul>
+<li>&#x8F7B;&#x91CF;&#x7EA7;&#x6807;&#x8BB0;&#x8BED;&#x8A00;: &#x7528;&#x6613;&#x8BFB;&#x6613;&#x5199;&#x7684;&#x7EAF;&#x6587;&#x672C;&#x683C;&#x5F0F;&#x7F16;&#x5199;&#x6587;&#x6863;.</li>
+<li>&#x5728; 2004 &#x5E74;&#x7531; <s>XX &#xB7; XXXX</s> &#x521B;&#x5EFA;.</li>
+<li>&#x53EF;&#x4EE5;&#x5BFC;&#x51FA; <code>html</code>, <code>word</code>, <code>img</code>, <code>pdf</code>, <code>epub</code>&#x7B49;&#x591A;&#x79CD;&#x683C;&#x5F0F;&#x7684;&#x6587;&#x6863; (&#x9700;&#x8981;<code>pandoc</code>)
+<ul>
+<li><code>pandoc -f gfm -t dokuwiki &lt;filename.md&gt; -o &lt;filename.txt&gt;</code></li>
+</ul>
+</li>
+<li>&#x6587;&#x4EF6;&#x540E;&#x7F00;&#x4E3A; <code>.md</code> &#x6216; <code>.markdown</code>
+<ul>
+<li>&#x6587;&#x4EF6;&#x4E2D;&#x53EA;&#x6709;<u>&#x6587;&#x5B57;</u>&#x548C;<u>&#x89C4;&#x5219;&#x4E0B;&#x7684;&#x6807;&#x8BB0;</u>, &#x9700;&#x8981;&#x76F8;&#x5E94;&#x7684;&#x6E32;&#x67D3;</li>
+</ul>
+</li>
+</ul>
+<pre data-role="codeBlock" data-info="markdown" class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">noAlias</span>](<span class="token url">https://www.runoob.com/wp-content/uploads/2019/03/iconfinder_markdown_298823.png</span>)</span>
+&#x7B80;&#x5355;&#x7684;&#x7EAF;&#x6587;&#x672C;$\stackrel{\color{red}\text{markdown&#x7684;&#x89C4;&#x5219;}}{\longrightarrow\longrightarrow\longrightarrow}$&#x8F83;&#x597D;&#x7684;&#x6587;&#x6863;&#x6548;&#x679C;
+
+<span class="token list punctuation">-</span> &#x8F7B;&#x91CF;&#x7EA7;&#x6807;&#x8BB0;&#x8BED;&#x8A00;: &#x7528;&#x6613;&#x8BFB;&#x6613;&#x5199;&#x7684;&#x7EAF;&#x6587;&#x672C;&#x683C;&#x5F0F;&#x7F16;&#x5199;&#x6587;&#x6863;.
+<span class="token list punctuation">-</span> &#x5728; 2004 &#x5E74;&#x7531; <span class="token strike"><span class="token punctuation">~~</span><span class="token content">XX &#xB7; XXXX</span><span class="token punctuation">~~</span></span> &#x521B;&#x5EFA;.
+<span class="token list punctuation">-</span> &#x53EF;&#x4EE5;&#x5BFC;&#x51FA; <span class="token code-snippet code keyword">`html`</span>, <span class="token code-snippet code keyword">`word`</span>, <span class="token code-snippet code keyword">`img`</span>, <span class="token code-snippet code keyword">`pdf`</span>, <span class="token code-snippet code keyword">`epub`</span>&#x7B49;&#x591A;&#x79CD;&#x683C;&#x5F0F;&#x7684;&#x6587;&#x6863; (&#x9700;&#x8981;<span class="token code-snippet code keyword">`pandoc`</span>)
+  <span class="token list punctuation">-</span> <span class="token code-snippet code keyword">`pandoc -f gfm -t dokuwiki &lt;filename.md&gt; -o &lt;filename.txt&gt;`</span>
+<span class="token list punctuation">-</span> &#x6587;&#x4EF6;&#x540E;&#x7F00;&#x4E3A; <span class="token code-snippet code keyword">`.md`</span> &#x6216; <span class="token code-snippet code keyword">`.markdown`</span>
+  <span class="token list punctuation">-</span> &#x6587;&#x4EF6;&#x4E2D;&#x53EA;&#x6709;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>u</span><span class="token punctuation">&gt;</span></span>&#x6587;&#x5B57;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>u</span><span class="token punctuation">&gt;</span></span>&#x548C;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>u</span><span class="token punctuation">&gt;</span></span>&#x89C4;&#x5219;&#x4E0B;&#x7684;&#x6807;&#x8BB0;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>u</span><span class="token punctuation">&gt;</span></span>, &#x9700;&#x8981;&#x76F8;&#x5E94;&#x7684;&#x6E32;&#x67D3;
+</pre></section><section lineno="227" class="slide " data-line="227" data-h="8" data-v="0">
+<h2 class="mume-header" id="why-font-facefira-codemarkdownfont">Why <font face="Fira Code">Markdown</font>?</h2>
+
+<ul>
+<li>
+<p>&#x5FEB;&#x901F;&#x8BB0;&#x5F55;, &#x683C;&#x5F0F;&#x591A;&#x53D8;, &#x53EF;&#x79FB;&#x690D;&#x6027;, &#x8D44;&#x6E90;&#x5360;&#x7528;&#x5C0F;</p>
+<ul>
+<li>&#x90FD;&#x6EE1;&#x8DB3;! <font size="3">&#x6210;&#x5E74;&#x4EBA;&#x7684;&#x5FEB;&#x4E50;, &#x5C0F;&#x5B69;&#x5B50;&#x624D;&#x505A;&#x9009;&#x62E9;.</font></li>
+</ul>
+</li>
+<li>
+<p>&#x5DF2;&#x7ECF;&#x88AB;&#x5E7F;&#x6CDB;&#x91C7;&#x7528;: github, gitbook</p>
+</li>
+<li>
+<p>&#x5C40;&#x9650;:</p>
+<ul>
+<li>
+<p>&#x975E;&#x5E38;&#x9002;&#x5408;&#x4EE3;&#x7801;&#x5DE5;&#x4F5C;</p>
+<ul>
+<li>&#x1F389;&#x1F3A8;&#x26A1;&#xFE0F;&#x1F525;&#x1F41B;&#x1F691;&#x1F4DD;&#x2728;&#x1F680;&#x1F37B;</li>
+</ul>
+</li>
+<li>
+<p>&#x8F7B;&#x5EA6;&#x9002;&#x5408;&#x6570;&#x5B66;&#x4E66;&#x5199; (&#x8003;&#x8651;<a href="https://www.mathcha.io/">Math<img src="https://cdn.mathcha.io/image/logo.svg" alt="none"></a>)(&#x5F3A;&#x70C8;&#x63A8;&#x8350;!)</p>
+</li>
+<li>
+<p>&#x6781;&#x4E0D;&#x9002;&#x5408;&#x5927;&#x91CF;&#x8BB0;&#x5F55;&#x6570;&#x636E; (&#x8003;&#x8651;&#x1F64C;&#x1F4DD;)</p>
+</li>
+</ul>
+</li>
+</ul>
+</section><section lineno="250" class="slide " data-line="250" data-h="9" data-v="0">
+<h2 class="mume-header" id="font-facefira-codemarkdownfont-where"><font face="Fira Code">Markdown</font> where?</h2>
+
+<ul>
+<li>
+<p>Typora</p>
+<ul>
+<li>WYSIWYG: what you see is what you get</li>
+</ul>
+</li>
+<li>
+<p>VS Code (individual, <strong>system</strong>) (recommended)</p>
+<ul>
+<li><code>Markdown Preview Enhanced</code> yyds!</li>
+<li>&#x4E5F;&#x6709;&#x5176;&#x4ED6;&#x9009;&#x62E9;: <a href="https://zhuanlan.zhihu.com/p/139140492">&#x642D;&#x5EFA; Markdown &#x8212;&#x9002;&#x5199;&#x4F5C;&#x73AF;&#x5883;</a></li>
+</ul>
+</li>
+<li>
+<p>jupyter lab / jupyter notebook (while coding, hybrid)</p>
+</li>
+<li>
+<p>markdown&#x5236;&#x4F5C;&#x5E7B;&#x706F;&#x7247;: <a href="https://sli.dev/">sli.dev</a></p>
+</li>
+</ul>
+</section><section lineno="267" class="slide " data-line="267" data-h="10" data-v="0">
+<h2 class="mume-header" id="font-facefira-codemarkdownfont%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><font face="Fira Code">Markdown</font>&#x57FA;&#x7840;&#x8BED;&#x6CD5;</h2>
+
+<h6 class="mume-header" id="%E6%9C%AC%E8%BA%AB%E5%B0%B1%E6%98%AF%E4%B8%BA%E4%BA%86%E6%96%B9%E4%BE%BF%E8%80%8C%E8%AF%9E%E7%94%9F%E7%9A%84%E4%B8%9C%E8%A5%BF-%E6%80%8E%E4%B9%88%E4%BC%9A%E4%B8%8D%E6%96%B9%E4%BE%BF%E5%91%A2">&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x800C;&#x8BDE;&#x751F;&#x7684;&#x4E1C;&#x897F;, &#x600E;&#x4E48;&#x4F1A;&#x4E0D;&#x65B9;&#x4FBF;&#x5462;?</h6>
+
+<p><a href="C:%5CUsers%5Czekun%5CDocuments%5CNotes%5CLectures%5CgrammarPlayground.md">&#x672C;&#x673A;&#x7684;playground</a></p>
+<ul>
+<li>&#x6807;&#x9898;
+<ul>
+<li>from <code>#</code> to <code>######</code></li>
+</ul>
+</li>
+<li>&#x5217;&#x8868;&#x53CA;&#x7F29;&#x8FDB;
+<ul>
+<li><code>-</code> or <code>*</code></li>
+<li><code>1.</code> and <code>1.</code> and <code>1.</code></li>
+<li><code>tab</code></li>
+</ul>
+</li>
+<li>&#x8868;&#x683C;
+<ul>
+<li><code>|||</code></li>
+</ul>
+</li>
+<li>&#x63D2;&#x5165;&#x8D44;&#x6E90;
+<ul>
+<li><code>[avator](address)</code></li>
+<li><code>![avator](address)</code></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>&#x975E;&#x57FA;&#x7840;&#x8BED;&#x6CD5;
+<ul>
+<li>&#x7528;html&#x5728;&#x91CC;&#x9762;&#x5199;
+<ul>
+<li><code>&lt;u&gt;</code>&#x4E0B;&#x5212;&#x7EBF;</li>
+<li><code>&lt;font&gt;</code>&#x66F4;&#x6539;&#x5B57;&#x4F53;/&#x5B57;&#x53F7;/&#x989C;&#x8272;</li>
+</ul>
+</li>
+<li><font color="red" size="25">f</font><font color="orange" size="25">a</font><font color="brown" size="25">a</font><font color="green" size="25">n</font><font color="cyan" size="25">c</font><font color="blue" size="25">y</font><font color="purple" size="25">y</font></li>
+</ul>
+</li>
+</ul>
+<p>&#x66F4;&#x52A0;&#x8BE6;&#x7EC6;&#x7684;&#x6559;&#x7A0B;, &#x8BF7;&#x8BBF;&#x95EE;<a href="https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/markdown-basics">markdown preview enhanced documentation</a></p>
+</section><section lineno="298" class="slide " data-line="298" data-h="11" data-v="0">
+<h2 class="mume-header" id="latex-httpsuploadwikimediaorgwikipediacommonsthumb445latex_project_logo_birdsvg316px-latex_project_logo_birdsvgpng"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/LaTeX_project_logo_bird.svg/316px-LaTeX_project_logo_bird.svg.png" alt></h2>
+
+<ul>
+<li>
+<p>&#x7B80;&#x4ECB;</p>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/LaTeX"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> from WikiPedia</a></li>
+<li>&#x4E00;&#x79CD;&#x57FA;&#x4E8E;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>TeX</mtext></mrow><annotation encoding="application/x-tex">\TeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span>&#x7684;&#x6392;&#x7248;&#x7CFB;&#x7EDF;, &#x751F;&#x6210;&#x9AD8;&#x8D28;&#x91CF;&#x5370;&#x5237;&#x54C1;.
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>TeX</mtext></mrow><annotation encoding="application/x-tex">\TeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span>: MIT&#x9AD8;&#x5FB7;&#x7EB3;&#x6559;&#x6388;, &quot;&#x6BCF;&#x6307;&#x51FA;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>TeX</mtext></mrow><annotation encoding="application/x-tex">\TeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span>&#x7684;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#xFF0C;&#x5C31;&#x80FD;&#x5F97;&#x5230;2.56&#x7F8E;&#x5143;&quot;.</li>
+</ul>
+</li>
+<li>&#x59CB;&#x4E8E;1984&#x5E74;, &#x7ECF;&#x8FC7;&#x53D1;&#x5C55;, &#x73B0;&#x5728;&#x7248;&#x672C;&#x4E3A;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX&#xA0;</mtext><msub><mn>2</mn><mi>&#x3B5;</mi></msub></mrow><annotation encoding="application/x-tex">\LaTeX \ 2_\varepsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span><span class="mspace">&#xA0;</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">&#x3B5;</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+</li>
+<li>
+<p>&#x4EFB;&#x4F55;&#x60F3;&#x5F97;&#x5230;&#x7684;&#x4E1C;&#x897F;, &#x90FD;&#x80FD;&#x6392;&#x51FA;&#x6765;!</p>
+<ul>
+<li>&#x4E50;&#x8C31;, &#x68CB;&#x8C31;(&#x53EF;&#x52A8;&#x6001;), &#x5316;&#x5B66;&#x7ED3;&#x6784;&#x5F0F;, &#x7535;&#x8DEF;&#x56FE;, &#x8D39;&#x66FC;&#x56FE;...</li>
+<li>&#x5DF2;&#x6709;&#x89C4;&#x5219;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2192;</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">&#x2192;</span></span></span></span>&#x5199;&#x5B8F;&#x5305;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2192;</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">&#x2192;</span></span></span></span>&#x7B80;&#x5355;&#x8BED;&#x6CD5;&#x6392;&#x7248;</li>
+</ul>
+</li>
+<li>
+<p>&#x903B;&#x8F91;&#x63CF;&#x8FF0;</p>
+<ul>
+<li>&#x8F6C;&#x6362;&#x7A0B;&#x5E8F; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2297;</mo></mrow><annotation encoding="application/x-tex">\otimes</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">&#x2297;</span></span></span></span> ((&#x683C;&#x5F0F;)&#x5B8F;&#x5305; + &#x8F93;&#x5165;&#x7684;&#x5185;&#x5BB9;) == &#x6F02;&#x6F02;&#x4EAE;&#x4EAE;&#x7684;pdf</li>
+<li>&#x7EAF;&#x6587;&#x672C;&#x8F93;&#x5165;, &#x901A;&#x8FC7;&#x7A0B;&#x5E8F;&#x8F6C;&#x6362;&#x4E3A;pdf</li>
+<li>&#x901A;&#x8FC7;&#x9884;&#x8BBE;&#x683C;&#x5F0F;&#x7684;&quot;&#x5B8F;&#x5305;&quot;, &#x80FD;&#x591F;&#x5728;&#x539F;&#x5148;&#x8F6F;&#x4EF6;&#x7684;&#x89C4;&#x8303;&#x4E0B;, &#x5B9E;&#x73B0;&#x66F4;&#x591A;&#x683C;&#x5F0F;</li>
+</ul>
+</li>
+</ul>
+</section><section lineno="321" class="slide " data-line="321" data-h="12" data-v="0">
+<h2 class="mume-header" id="latex-%E9%85%8D%E7%BD%AE%E5%AF%BC%E5%BC%95"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> &#x914D;&#x7F6E;&#x5BFC;&#x5F15;</h2>
+
+<ul>
+<li>
+<p>MiKTeX</p>
+<ul>
+<li>&#x53C2;&#x8003;&#x914D;&#x7F6E;&#x6307;&#x5BFC;: <a href="https://zhuanlan.zhihu.com/p/139210056">&#x642D;&#x5EFA; LaTeX &#x8F7B;&#x91CF;&#x7EA7;&#x5199;&#x4F5C;&#x73AF;&#x5883; (MiKTeX+VSCode)</a></li>
+</ul>
+</li>
+<li>
+<p>&#x5E0C;&#x671B;&#x4E0A;&#x624B;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>&#x7684;&#x53C2;&#x8003;</p>
+<ul>
+<li>&#x6700;&#x65B0;&#x7248;&#x7684;&#x5B98;&#x65B9;&#x8BF4;&#x660E;: <a href="https://ctan.math.washington.edu/tex-archive/info/lshort/chinese/lshort-zh-cn.pdf">112&#x5206;&#x949F;&#x4E86;&#x89E3;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX&#xA0;</mtext><msub><mn>2</mn><mi>&#x3B5;</mi></msub></mrow><annotation encoding="application/x-tex">\LaTeX \ 2_\varepsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span><span class="mspace">&#xA0;</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">&#x3B5;</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></a></li>
+</ul>
+</li>
+</ul>
+</section><section lineno="335" class="slide " data-line="335" data-h="13" data-v="0">
+<h2 class="mume-header" id="%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86%E5%A5%BD-s">&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x597D; &#x1F431;&#x200D;&#x1F4BB;&#x1F431;&#x200D;&#x1F464;&#x1F431;&#x200D;&#x1F3CD;&#x1F431;&#x200D;&#x1F409;&#x1F431;&#x200D;&#x1F453;&#x1F431;&#x200D;&#x1F680;s</h2>
+
+<h3 class="mume-header" id="%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D">&#x57FA;&#x7840;&#x5DE5;&#x5177;&#x4ECB;&#x7ECD;</h3>
+
+<ul>
+<li>&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x5668; <code>ctrl</code>+<code>shift</code>+<code>esc</code>: &#x7535;&#x8111;&#x8FDB;&#x7A0B;&#x67E5;&#x770B;</li>
+<li>&#x6CE8;&#x518C;&#x8868; <code>win</code>+<code>R</code> &amp;&amp; <code>regedit</code> &amp;&amp; <code>enter</code> &#x4E0D;&#x8981;&#x4E71;&#x52A8;!!!!</li>
+<li>&#x6076;&#x610F;&#x8F6F;&#x4EF6;&#x5378;&#x8F7D; <code>win</code>+<code>R</code> &amp;&amp; <code>mrt</code> &amp;&amp; <code>enter</code></li>
+<li>&#x5168;&#x5C40;&#x641C;&#x7D22;<code>win</code>+<code>Q</code> &amp;&amp; <code>&lt;toCheck&gt;</code> &amp;&amp; <code>enter</code>
+<ul>
+<li>&#x9AD8;&#x7EA7;&#x7CFB;&#x7EDF;&#x8BBE;&#x7F6E;, &#x4E8B;&#x4EF6;&#x67E5;&#x770B;&#x5668;</li>
+<li>&#x5DF2;&#x5B89;&#x88C5;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;</li>
+</ul>
+</li>
+</ul>
+</section><section lineno="352" class="slide " data-line="352" data-h="14" data-v="0">
+<h2 class="mume-header" id="%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86%E5%A5%BD-s-1">&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x597D; &#x1F431;&#x200D;&#x1F4BB;&#x1F431;&#x200D;&#x1F464;&#x1F431;&#x200D;&#x1F3CD;&#x1F431;&#x200D;&#x1F409;&#x1F431;&#x200D;&#x1F453;&#x1F431;&#x200D;&#x1F680;s</h2>
+
+<ul>
+<li>&#x5173;&#x95ED;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x670D;&#x52A1;
+<ul>
+<li><s>&#x591A;&#x5634;&#x7684;</s>&#x5C0F;&#x5A1C; (&#x63A8;&#x8350;Dism++)</li>
+<li>Xbox, etc</li>
+</ul>
+</li>
+<li>&#x81EA;&#x542F;&#x52A8;&#x7BA1;&#x7406;
+<ul>
+<li>&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x5668; &#x4E2D; &#x542F;&#x52A8; &#x9009;&#x9879;&#x5361;</li>
+</ul>
+</li>
+<li>&#x9AD8;&#x7EA7;&#x7CFB;&#x7EDF;&#x8BBE;&#x7F6E;
+<ul>
+<li>&#x6027;&#x80FD;&#x8BBE;&#x7F6E;</li>
+</ul>
+</li>
+<li>&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x5668;
+<ul>
+<li>&#x76D1;&#x89C6;&#x5947;&#x602A;&#x8FDB;&#x7A0B; &amp; <code>kill</code></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>&#x7981;&#x5FCC;
+<ul>
+<li>&#x4E2D;&#x6587;&#x8DEF;&#x5F84;, &#x8DEF;&#x5F84;&#x5E26;&#x7A7A;&#x683C;</li>
+<li><code>C:/</code> &#x6839;&#x76EE;&#x5F55;&#x4E71;&#x641E;</li>
+</ul>
+</li>
+<li>&#x96F6;&#x96F6;&#x788E;&#x788E;
+<ul>
+<li>&#x4EFB;&#x52A1;&#x680F;&#x7684;&#x641C;&#x7D22;&#x6846;, &#x5C0F;&#x5A1C;, &#x65B0;&#x95FB;</li>
+<li>&#x8BE6;&#x89C1;&#x5FEB;&#x6377;&#x952E;&#x90E8;&#x5206;</li>
+<li><code>alt</code>+<code>tab</code> &#x6D4F;&#x89C8;&#x5668;&#x5355;&#x7A97;&#x683C;</li>
+<li><code>win</code>+<code>tab</code> &#x901F;&#x89C8;&#x89C6;&#x56FE;</li>
+<li><code>ctrl</code>+<code>win</code>+<code>&#x2190;/&#x2192;</code> &#x5207;&#x6362;&#x684C;&#x9762;</li>
+</ul>
+</li>
+</ul>
+</section><section lineno="380" class="slide " data-line="380" data-h="15" data-v="0">
+<h2 class="mume-header" id="%E9%98%B2%E6%8A%A4%E8%BD%AF%E4%BB%B6-for-s">&#x9632;&#x62A4;&#x8F6F;&#x4EF6; for &#x1F431;&#x200D;&#x1F4BB;&#x1F431;&#x200D;&#x1F464;&#x1F431;&#x200D;&#x1F3CD;&#x1F431;&#x200D;&#x1F409;&#x1F431;&#x200D;&#x1F453;&#x1F431;&#x200D;&#x1F680;s</h2>
+
+<ul>
+<li>&#x1F60A; windows defender
+<ul>
+<li>&#x5B89;&#x9759;, &#x4E56;, &#x4E0D;&#x4E71;&#x641E;</li>
+</ul>
+</li>
+<li>&#x1F603; &#x706B;&#x7ED2;&#x5B89;&#x5168;
+<ul>
+<li>&#x5B89;&#x9759;, &#x4E56;, &#x4E0D;&#x4E71;&#x641E;, &#x81EA;&#x5B9A;&#x4E49;&#x96BE;</li>
+<li>&#x5F39;&#x7A97;&#x62E6;&#x622A;&#x1F197;, &#x4F46;&#x662F;&#x67E5;&#x6740;&#x7387;&#x4F4E;</li>
+</ul>
+</li>
+<li>&#x1F606; &#x5361;&#x5DF4;&#x65AF;&#x57FA;
+<ul>
+<li>&#x5168;&#x80FD;&#x1F44D;&#x5361;&#x5DF4;&#x4E0D;&#x5361;</li>
+<li>&#x514D;&#x8D39;&#x7248;&#x6740;&#x6BD2;&#x591F;&#x7528;</li>
+</ul>
+</li>
+<li>&#x2753; &#x5176;&#x4ED6;&#x7684;
+<ul>
+<li>&#x4E0D;&#x592A;&#x6E05;&#x695A;, &#x81EA;&#x884C;&#x767E;&#x5EA6;</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>&#x1F605; &#x8054;&#x60F3;&#x7535;&#x8111;&#x7BA1;&#x5BB6;
+<ul>
+<li>&#x66FE;&#x7ECF;&#x8D3C;&#x558A;&#x6349;&#x8D3C;</li>
+<li>&#x4ED6;&#x7684;&#x5144;&#x5F1F;&#x4EEC;&#x4F9D;&#x7136;&#x662F;&#x8D3C;</li>
+</ul>
+</li>
+<li>&#x1F607; &#x1F552;&#x1F555;&#x1F55B;
+<ul>
+<li>3&#x6070;6&#x70C2;0&#x94B1;!</li>
+<li>&#x9002;&#x5408;&#x7535;&#x8111;&#x76F2;, &#x5360;&#x7528;&#x5DE8;&#x5927;&#x8D44;&#x6E90;</li>
+</ul>
+</li>
+<li>&#x1F613; &#x1F4AF;deg, &#x1F232;&#x26F0;deg&#x9738;</li>
+<li>&#x1F4A9; &#x9C81;&#x5927;&#x5E08;, &#x817E;&#x8BAF;&#x7535;&#x8111;&#x7BA1;&#x5BB6;, &#x9A71;&#x52A8;&#x7CBE;&#x7075;</li>
+</ul>
+<p>&#x603B;&#x4E4B;: &#x5B98;&#x65B9;&#x4E0B;&#x8F7D;, &#x6B63;&#x7248;&#x638F;&#x94B1;, &#x76D7;&#x7248;&#x5C0F;&#x5FC3;, &#x62D2;&#x7EDD;<font size="5">&#x5C0F;&#x7F51;&#x7AD9;</font></p>
+</section><section lineno="410" class="slide " data-line="410" data-h="16" data-v="0">
+<h2 class="mume-header" id="%E5%BF%AB%E6%8D%B7%E9%94%AE-%E7%9B%B8%E5%BA%94%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F">&#x5FEB;&#x6377;&#x952E; &amp; &#x76F8;&#x5E94;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x5FEB;&#x6377;&#x952E;</th>
+<th style="text-align:center">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>alt</code>+<code>tab</code></td>
+<td style="text-align:center">&#x5207;&#x6362;&#x684C;&#x9762;&#x6700;&#x524D;&#x65B9;&#x7684;&#x8FDB;&#x7A0B;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>win</code>+<code>tab</code></td>
+<td style="text-align:center">&#x591A;&#x684C;&#x9762;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>win</code>+<code>V</code></td>
+<td style="text-align:center">&#x526A;&#x5207;&#x677F;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>win</code>+<code>Q</code></td>
+<td style="text-align:center">&#x5168;&#x5C40;&#x641C;&#x7D22;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>win</code>+<code>X</code></td>
+<td style="text-align:center">menu&#x53F3;&#x952E;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>win</code>+<code>R</code></td>
+<td style="text-align:center">&#x8FD0;&#x884C;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>win</code>+<code>&lt;num&gt;</code></td>
+<td style="text-align:center">&#x6253;&#x5F00;&#x4EFB;&#x52A1;&#x680F;&#x7684;&#x56FE;&#x6807;</td>
+</tr>
+</tbody>
+</table>
+</section><section lineno="427" class="slide " data-line="427" data-h="17" data-v="0">
+<h2 class="mume-header" id="%E5%91%BD%E4%BB%A4%E8%A1%8C-%E5%AF%BC%E5%BC%95">&#x547D;&#x4EE4;&#x884C; &#x5BFC;&#x5F15;</h2>
+
+<h5 class="mume-header" id="%E5%9F%BA%E4%BA%8E%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3">(&#x57FA;&#x4E8E;&#x4E2A;&#x4EBA;&#x7406;&#x89E3;)</h5>
+
+<ul>
+<li>
+<p>&#x4E00;&#x79CD;&#x548C;&#x7535;&#x8111;&#x4EA4;&#x4E92;&#x7684;&#x65B9;&#x5F0F;, &#x6709;&#x7684;&#x65F6;&#x5019;&#x6BD4;&#x56FE;&#x5F62;&#x754C;&#x9762;&#x4EA4;&#x4E92;&#x6548;&#x7387;&#x66F4;&#x9AD8;</p>
+</li>
+<li>
+<p>&#x4E0D;&#x8981;&#x5BB3;&#x6015;! &#x7406;&#x89E3;&#x64CD;&#x4F5C;&#x903B;&#x8F91;. &#x6709;&#x5F88;&#x591A;&#x5E2E;&#x52A9;(&#x7F51;&#x9875;, &#x6587;&#x6863;).</p>
+</li>
+<li>
+<p>&#x63A8;&#x8350;&#x7B80;&#x5355;&#x5B66;&#x4E60;linux&#x7684;&#x547D;&#x4EE4;&#x884C;&#x57FA;&#x7840;, &#x56E0;&#x4E3A;&#x540E;&#x6765;&#x53EF;&#x80FD;&#x4F1A;&#x7528;&#x5230;</p>
+</li>
+<li>
+<p>&#x4E00;&#x4E9B;&#x533A;&#x5206;&#x4E0D;&#x6E05;&#x7684;&#x6982;&#x5FF5;</p>
+<ul>
+<li>u? x?: unix, linux, macos, freeBSD</li>
+<li>linux&#x7684;&#x53D1;&#x884C;&#x7248;: centos, ubuntu, etc.</li>
+</ul>
+</li>
+</ul>
+</section><section lineno="445" class="slide " data-line="445" data-h="18" data-v="0">
+<h2 class="mume-header" id="wsl-windows-subsystem-for-linux-%E5%AF%BC%E5%BC%95">WSL == Windows Subsystem for Linux &#x5BFC;&#x5F15;</h2>
+
+<ul>
+<li><code>Linux</code>&#x7684;&#x597D;&#x5904;
+<ul>
+<li>&#x65B9;&#x4FBF;&#x7684;&#x73AF;&#x5883;&#x914D;&#x7F6E;: &#x514D;&#x9664;&quot;&#x67E5;&#x8BE2;&#x4E00;&#x5C0F;&#x65F6;, &#x5F00;&#x53D1;5min&quot;&#x7684;&#x75DB;&#x82E6;</li>
+<li>&#x7EDF;&#x4E00;&#x7684;&#x8F6F;&#x4EF6;&#x5B89;&#x88C5;&#x7BA1;&#x7406;: <code>apt</code>, <code>yum</code>, &#x7B49;&#x7B49;</li>
+<li>&#x5173;&#x4E8E;window&#x548C;linux&#x7684;&#x8BC4;&#x4EF7;: <a href="https://zhuanlan.zhihu.com/p/78988945">windows&#x548C;Linux&#x6BD4;&#x8F83; from zhihu</a></li>
+</ul>
+</li>
+<li><code>WSL</code>&#x4ECB;&#x7ECD;
+<ul>
+<li>&#x62E5;&#x6709;(&#x8FD1;&#x4F3C;)&#x5B8C;&#x6574;&#x7684;<code>linux</code>&#x5185;&#x6838;, &#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x76F8;&#x5E94;&#x7684;&#x7CFB;&#x7EDF;&#x64CD;&#x4F5C;</li>
+<li>&#x521A;&#x5B89;&#x88C5;&#x65F6;, &#x53EA;&#x6709;&#x547D;&#x4EE4;&#x884C;(&#x540E;&#x7EED;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x5B89;&#x88C5;&#x684C;&#x9762;&#x5E76;&#x4E14;&#x663E;&#x793A;)</li>
+</ul>
+</li>
+<li>&#x4E24;&#x4E2A;&#x7248;&#x672C;:
+<ul>
+<li><code>WSL1</code>: &#x76F4;&#x63A5;&#x5199;&#x8FDB;windows&#x7684;&#x8FDB;&#x7A0B;&#x4E2D; (win10&#x9ED8;&#x8BA4;)</li>
+<li><code>WSL2</code>: &#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x673A;, &#x4F46;&#x662F;&#x9002;&#x914D;&#x505A;&#x7684;&#x597D;</li>
+</ul>
+</li>
+<li>&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;: <code>VSCode</code> &amp; <code>Terminal</code></li>
+<li>&#x540E;&#x7EED;&#x7248;&#x672C;: <code>WSLg</code> (win11&#x9ED8;&#x8BA4;)
+<ul>
+<li>&#x539F;&#x751F;&#x652F;&#x6301;windows&#x4E2D;&#x7684;&#x7A97;&#x53E3;</li>
+<li>&#x589E;&#x52A0;&#x5BF9;GPU&#x7684;&#x652F;&#x6301;</li>
+</ul>
+</li>
+</ul>
+</section><section lineno="467" class="slide " data-line="467" data-h="19" data-v="0">
+<h2 class="mume-header" id="font-facefira-codescoopfont-%E5%AF%BC%E5%BC%95"><font face="Fira Code">scoop</font> &#x5BFC;&#x5F15;</h2>
+
+<ul>
+<li>Linux&#x4E0A;&#x5B89;&#x88C5;gcc
+<ul>
+<li><code>sudo apt-get install gcc</code></li>
+<li>&#x597D;&#x998B;!</li>
+</ul>
+</li>
+<li>windows&#x5B89;&#x88C5;gcc
+<ul>
+<li>&#x63A0;&#x8FC7;10+&#x6761;&quot;&#x1F4A9;&#x8F6F;&#x4EF6;&#x56ED;&quot;&#x7684;&#x5E7F;&#x544A;</li>
+<li>&#x627E;sourceforge, &#x7528;5min&#x52A0;&#x8F7D;&#x7F51;&#x9875;</li>
+<li>&#x5728;14&#x4E2A;&#x4E0B;&#x8F7D;&#x9009;&#x9879;&#x4E2D;&#x627E;&#x5230;&#x8981;&#x7684;tar</li>
+<li>&#x4E0B;&#x8F7D;tar&#x4E4B;&#x540E;&#x89E3;&#x538B;, &#x7528;&#x65F6;10min</li>
+<li>&#x5C06;&#x89E3;&#x538B;&#x6587;&#x4EF6;&#x653E;&#x5728;&#x5408;&#x9002;&#x7684;&#x4F4D;&#x7F6E;</li>
+<li>&#x6DFB;&#x52A0;&#x73AF;&#x5883;&#x53D8;&#x91CF;</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>windows&#x7528;scoop&#x5B89;&#x88C5;gcc
+<ul>
+<li><code>scoop install gcc</code></li>
+<li>&#x6548;&#x679C;&#x4E3A;&#x4EE5;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x1F389;</li>
+</ul>
+</li>
+<li><font face="Fira Code">scoop</font>&#x4F18;&#x7F3A;&#x70B9;
+<ul>
+<li>&#x1F44D;&#x4E00;&#x884C;&#x5B89;&#x88C5;, &#x65E0;&#x76EE;&#x5F55;/&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x6C61;&#x67D3;</li>
+<li>&#x1F44D;&#x65B9;&#x4FBF;&#x540E;&#x7EED;&#x7BA1;&#x7406;/&#x5347;&#x7EA7;</li>
+<li>&#x1F609;&#x7EA6;20k&#x4E2A;&#x8F6F;&#x4EF6;&#x6536;&#x5F55;</li>
+<li>&#x1F44E;&#x9700;&#x8981;&#x914D;&#x7F6E;&#x4EE3;&#x7406;(vpn, &#x68AF;&#x5B50;)</li>
+<li>&#x1F44E;&#x66F4;&#x65B0;&#x4E2D;&#x65AD;&#x5BFC;&#x81F4;&#x5D29;&#x574F;</li>
+</ul>
+</li>
+<li>&#x5EFA;&#x8BAE;: &#x8BB0;&#x5F97;&#x5907;&#x4EFD;<code>~/scoop/apps/scoop/</code></li>
+</ul>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8BD5;&#x8BD5;:<br>
+<a href="https://zhuanlan.zhihu.com/p/54822449">&#x300C;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x300D;&#x641E;&#x5B9A;&#x8F6F;&#x4EF6;&#x5B89;&#x88C5;&#x5378;&#x8F7D;&#xFF0C;&#x7528; Scoop &#x7BA1;&#x7406;&#x4F60;&#x7684; Windows &#x8F6F;&#x4EF6; from zhihu</a></p>
+</section><section lineno="500" class="slide " data-line="500" data-h="20" data-v="0">
+<h2 class="mume-header" id="%E9%9C%80%E8%A6%81%E5%A4%A7%E5%AE%B6%E8%87%AA%E5%B7%B1%E6%8E%A2%E7%B4%A2%E7%9A%84">&#x9700;&#x8981;&#x5927;&#x5BB6;&#x81EA;&#x5DF1;&#x63A2;&#x7D22;&#x7684;</h2>
+
+<ol>
+<li>&#x79D1;&#x5B66;&#x4E0A;&#x7F51; <a href="https://www.iszy.cc/page/bgfw/">|</a>
+<ol>
+<li>Google Scholar, Zotero, WikiPedia</li>
+</ol>
+</li>
+<li>&#x5B66;&#x6821;&#x56FE;&#x4E66;&#x9986;&#x7684;&#x597D;&#x7528;&#x529F;&#x80FD;: <a href="http://www.library.fudan.edu.cn/">library.fudan.edu.cn</a></li>
+<li>&#x60F3;&#x8981;&#x7684;&#x4E66;&#x57FA;&#x672C;&#x90FD;&#x6709;: <a href="https://libgen.is/">library genisis</a></li>
+<li>&#x597D;&#x7528;&#x7684;&#x8F6F;&#x4EF6;
+<ol>
+<li>everything, utools, Dism++, wiztree</li>
+<li>terminal, terminus, potplayer, etc.</li>
+</ol>
+</li>
+</ol>
+<p>&#x88AB;&#x6276;&#x7740;&#x8D70;&#x8DEF;-&gt;-&gt;&#x81EA;&#x5DF1;&#x8D70;&#x8DEF;</p>
+</section><section lineno="518" class="slide " data-line="518" data-h="21" data-v="0">
+<h2 class="mume-header" id="%E4%B8%80%E4%BA%9B%E5%BB%BA%E8%AE%AE">&#x4E00;&#x4E9B;&#x5EFA;&#x8BAE;</h2>
+
+<h5 class="mume-header" id="%E6%9C%89%E4%BA%9B%E5%BB%BA%E8%AE%AE-%E6%9D%83%E4%BD%9C%E5%BB%BA%E8%AE%AE-%E4%B8%8D%E5%90%AC%E4%B9%9F%E6%97%A0%E5%A6%A8">&lt;&#x6709;&#x4E9B;&#x5EFA;&#x8BAE;, &#x6743;&#x4F5C;&#x5EFA;&#x8BAE;, &#x4E0D;&#x542C;&#x4E5F;&#x65E0;&#x59A8;&gt;</h5>
+
+<ol>
+<li>&#x9047;&#x4E8B;&#x4E0D;&#x51B3;
+<ul>
+<li><a href="https://www.zhihu.com/">zhihu</a> &amp; <a href="https://www.csdn.net/">csdn</a> &amp; <a href="https://docs.microsoft.com/zh-cn/">msdn</a> &amp; <a href="http://findYourSelf_thisIsNotALink">Documentation</a></li>
+</ul>
+</li>
+<li>&#x7BA1;&#x7406;&#x597D;&#x7535;&#x8111;
+<ul>
+<li>&#x6EE1;&#x8DB3;&#x65E5;&#x5E38;&#x9700;&#x6C42; || &#x4E3A;&#x4E86;&#x7BA1;&#x7406;&#x800C;&#x7BA1;&#x7406;</li>
+</ul>
+</li>
+<li>&#x4E0D;&#x8981;&#x8FC7;&#x5206;&#x8FFD;&#x6C42;<font color="red" size="25">f</font><font color="orange" size="25">a</font><font color="brown" size="25">a</font><font color="green" size="25">n</font><font color="cyan" size="25">c</font><font color="blue" size="25">y</font><font color="purple" size="25">y</font>&#x7684;&#x6548;&#x679C;
+<ul>
+<li>&#x6BD4;&#x5982;<a href="https://www.w3cschool.cn/article/25797017.html">cyan&#x8272;&#x7684;&#x8D85;&#x94FE;&#x63A5;</a>, &#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x540E;&#x7EED;&#x6548;&#x679C;</li>
+<li>&#x53C8;&#x6216;&#x8005;, &#x4E3A;&#x4E86;<font face="Fira Code">Fira Code Retina</font>&#x5B57;&#x4F53;, <s><font color="red" size="25">&#x6012;</font>&#x5220;&#x7CFB;&#x7EDF;&#x5B57;&#x4F53;</s></li>
+<li>&#x6743;&#x8861;: &#x4E4B;&#x540E;&#x7684;&#x9700;&#x6C42; / &#x672C;&#x6B21;&#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x95F4;</li>
+</ul>
+</li>
+<li>&#x65F6;&#x95F4;&#x7BA1;&#x7406;
+<ul>
+<li>&#x795D;&#x4F60;&#x6210;&#x4E3A;&#x231A;&#xFE0F;&#x65F6;&#x95F4;&#x7BA1;&#x1F64C;&#x7406;&#x5927;&#x5E08;&#x23F0;</li>
+<li>Microsoft TODO, Notion, Wolai</li>
+</ul>
+</li>
+</ol>
+</section><section lineno="538" class="slide " data-line="538" data-h="22" data-v="0">
+<h2 class="mume-header" id="%E4%BB%A5%E5%8F%8A%E4%B8%80%E4%B8%AA%E7%94%9F%E5%8A%A8%E7%9A%84%E6%95%99%E5%AD%A6%E6%A1%88%E4%BE%8B">&#x4EE5;&#x53CA;&#x4E00;&#x4E2A;&#x751F;&#x52A8;&#x7684;&#x6559;&#x5B66;&#x6848;&#x4F8B;</h2>
+
+<h3 class="mume-header" id="%E4%B8%8A%E4%B8%80%E4%B8%AAslides%E7%9A%84%E4%BB%A3%E7%A0%81">&#x4E0A;&#x4E00;&#x4E2A;slides&#x7684;&#x4EE3;&#x7801;</h3>
+
+<pre data-role="codeBlock" data-info="html" class="language-html">## &#x4E00;&#x4E9B;&#x5EFA;&#x8BAE;
+##### <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x6709;&#x4E9B;&#x5EFA;&#x8BAE;,</span> <span class="token attr-name">&#x6743;&#x4F5C;&#x5EFA;&#x8BAE;,</span> <span class="token attr-name">&#x4E0D;&#x542C;&#x4E5F;&#x65E0;&#x59A8;</span><span class="token punctuation">&gt;</span></span>
+1. &#x9047;&#x4E8B;&#x4E0D;&#x51B3;
+   - [zhihu](https://www.zhihu.com/) &amp; [csdn](https://www.csdn.net/) &amp; [msdn](https://docs.microsoft.com/zh-cn/) &amp; [Documentation](http://findYourSelf_thisIsNotALink)
+2. &#x7BA1;&#x7406;&#x597D;&#x7535;&#x8111;
+   - &#x6EE1;&#x8DB3;&#x65E5;&#x5E38;&#x9700;&#x6C42; || &#x4E3A;&#x4E86;&#x7BA1;&#x7406;&#x800C;&#x7BA1;&#x7406;
+3. &#x4E0D;&#x8981;&#x8FC7;&#x5206;&#x8FFD;&#x6C42;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>font</span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>red</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>25</span><span class="token punctuation">&gt;</span></span>f<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>font</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>font</span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>orange</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>25</span><span class="token punctuation">&gt;</span></span>a<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>font</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>font</span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>brown</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>25</span><span class="token punctuation">&gt;</span></span>a<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>font</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>font</span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>green</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>25</span><span class="token punctuation">&gt;</span></span>n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>font</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>font</span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>cyan</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>25</span><span class="token punctuation">&gt;</span></span>c<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>font</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>font</span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>blue</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>25</span><span class="token punctuation">&gt;</span></span>y<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>font</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>font</span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>purple</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>25</span><span class="token punctuation">&gt;</span></span>y<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>font</span><span class="token punctuation">&gt;</span></span>&#x7684;&#x6548;&#x679C;
+   - &#x6BD4;&#x5982;[cyan&#x8272;&#x7684;&#x8D85;&#x94FE;&#x63A5;](https://www.w3cschool.cn/article/25797017.html), &#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x540E;&#x7EED;&#x6548;&#x679C;
+   - &#x53C8;&#x6216;&#x8005;, &#x4E3A;&#x4E86;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>font</span> <span class="token attr-name">face</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Fira Code<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Fira Code Retina<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>font</span><span class="token punctuation">&gt;</span></span>&#x5B57;&#x4F53;, ~~<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>font</span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>red</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>25</span><span class="token punctuation">&gt;</span></span>&#x6012;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>font</span><span class="token punctuation">&gt;</span></span>&#x5220;&#x7CFB;&#x7EDF;&#x5B57;&#x4F53;~~
+   - &#x6743;&#x8861;: &#x4E4B;&#x540E;&#x7684;&#x9700;&#x6C42; / &#x672C;&#x6B21;&#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x95F4;
+4. &#x65F6;&#x95F4;&#x7BA1;&#x7406;
+   - &#x795D;&#x4F60;&#x6210;&#x4E3A;:watch:&#x65F6;&#x95F4;&#x7BA1;:raised_hands:&#x7406;&#x5927;&#x5E08;:alarm_clock:
+   - Microsoft TODO, Notion, Wolai
+</pre><ul>
+<li>&#x8FD9;&#x4E0A;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x4E00;&#x5171;&#x7528;&#x4E86; 30min</li>
+</ul>
+</section><section lineno="565" class="slide " data-line="565" data-h="23" data-v="0">
+<h2 class="mume-header" id="%E4%BB%A5%E5%8F%8A%E5%8F%A6%E5%A4%96%E4%B8%80%E4%B8%AA%E7%94%9F%E5%8A%A8%E7%9A%84%E4%BE%8B%E5%AD%90">&#x4EE5;&#x53CA;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x751F;&#x52A8;&#x7684;&#x4F8B;&#x5B50;</h2>
+
+<h3 class="mume-header" id="lzk%E7%9A%840920%E8%BF%99%E4%B8%80%E5%A4%A9%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%87%E5%8E%BB%E7%9A%84">lzk&#x7684;0920&#x8FD9;&#x4E00;&#x5929;&#x662F;&#x600E;&#x4E48;&#x8FC7;&#x53BB;&#x7684;</h3>
+
+<ul>
+<li>&lt;&#x8981;&#x505A;&#x7684;&#x4E8B;&#x60C5;&gt;
+<ul>
+<li>&lt;&#x53D1;&#x751F;&#x7684;&#x95EE;&#x9898;list&gt;</li>
+</ul>
+</li>
+<li>&#x8BA1;&#x7B97;&#x7269;&#x7406;, &#x4F5C;&#x4E1A;&#x8981;&#x5199;readme
+<ul>
+<li>&#x8FD8;&#x6CA1;&#x5B89;&#x88C5;miktex&#x548C;&#x914D;&#x7F6E;&#x73AF;&#x5883;</li>
+</ul>
+</li>
+<li>&#x5B89;&#x88C5;miktex&#x5E76;&#x914D;&#x7F6E;&#x73AF;&#x5883;</li>
+<li>&#x7528;latex&#x5199;&#x4F2A;&#x4EE3;&#x7801;
+<ul>
+<li>&#x4E0D;&#x4F1A;, &#x5B66;</li>
+<li>&#x5206;&#x4E0D;&#x6E05;<code>algorithmic</code>&#x7B49;&#x4E00;&#x5806;&#x5305;&#x7684;&#x533A;&#x522B;</li>
+<li>&#x7FFB;&#x4E86;&#x5F88;&#x591A;&#x7F51;&#x9875;, &#x5B66;&#x4F1A;&#x5E76;&#x4E14;&#x5199;&#x5B8C;&#x4F5C;&#x4E1A;</li>
+<li>&#x770B;&#x7740;<code>.tex</code>&#x6587;&#x4EF6;&#x5F88;&#x4E71;, (* &#xFFE3;&#xFE3F;&#xFFE3;)</li>
+</ul>
+</li>
+<li><code>.tex</code>&#x6587;&#x4EF6;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x6574;&#x7406;
+<ul>
+<li>&#x4F7F;&#x7528;<code>scoop</code>&#x4E0B;&#x8F7D;perl</li>
+</ul>
+</li>
+<li><code>scoop install perl</code>
+<ul>
+<li><code>scoop update</code>&#x5931;&#x8D25;</li>
+<li>&#x5E76;&#x4E14;&#x81EA;&#x5DF1;&#x628A;&#x81EA;&#x5DF1;&#x5220;&#x9664;&#x4E86;</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>&#x91CD;&#x88C5;<code>scoop</code></li>
+<li>&#x914D;&#x7F6E;&#x547D;&#x4EE4;&#x884C;&#x4EE3;&#x7406;
+<ul>
+<li>&#x627E;&#x4E86;&#x5F88;&#x591A;&#x7F51;&#x9875;</li>
+<li>&#x6CA1;&#x6709;&#x6548;&#x679C;</li>
+</ul>
+</li>
+<li>&#x91CD;&#x88C5;scoop, &#x914D;&#x7F6E;git&#x4EE3;&#x7406;
+<ul>
+<li>&#x627E;&#x4E86;&#x5F88;&#x591A;&#x7F51;&#x9875;</li>
+<li>&#x95EE;&#x9898;&#x89E3;&#x51B3;</li>
+</ul>
+</li>
+<li>&#x4EE5;&#x4E3A;&#x4E0B;&#x73ED;&#x4E86;
+<ul>
+<li>&#x53D1;&#x73B0;<code>julia</code>&#x4E5F;&#x6CA1;&#x4E86;</li>
+</ul>
+</li>
+<li><code>scoop install julia</code>
+<ul>
+<li>&#x53D1;&#x73B0;<code>julia Pkg</code>&#x51B2;&#x7A81;</li>
+</ul>
+</li>
+<li>&#x5220;&#x9664;&#x539F;&#x6709;<code>Pkg</code>, &#x91CD;&#x65B0;&#x5B89;&#x88C5;
+<ul>
+<li>&#x65E0;&#x6CD5;&#x5B89;&#x88C5;</li>
+</ul>
+</li>
+<li>&#x914D;&#x7F6E;&#x4EE3;&#x7406;, &#x91CD;&#x8BBE;&#x547D;&#x4EE4;&#x884C;&#x4EE3;&#x7406;</li>
+<li>&#x4E0B;&#x73ED;&#x5403;&#x665A;&#x996D;, &#x665A;&#x4E0A;&#x7EE7;&#x7EED;&#x5B66;&#x4E60;</li>
+</ul>
+</section><section lineno="606" class="slide " data-line="606" data-h="24" data-v="0">
+<h2 class="mume-header" id="%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">&#x53C2;&#x8003;&#x6587;&#x732E;</h2>
+
+<ul>
+<li>&#x63A8;&#x8350;&#x9605;&#x8BFB;: <a href="https://www.runoob.com/markdown/md-tutorial.html">MarkDown &#x6559;&#x7A0B; from RUNOOB.com</a></li>
+<li>&#x51C6;&#x5907;&#x8FC7;&#x7A0B;&#x4E2D;&#x53D1;&#x73B0;&#x7684;&#x53EF;&#x80FD;&#x5BF9;&#x5927;&#x5BB6;&#x5B66;python&#x6709;&#x5E2E;&#x52A9;&#x7684;&#x4E1C;&#x897F;
+<ul>
+<li><a href="https://github.com/neolee/wop-ecnu-pub">&#x534E;&#x4E1C;&#x5E08;&#x8303;&#x5927;&#x5B66;&#x300A;&#x7F16;&#x7A0B;&#x601D;&#x7EF4;&#x4E0E;&#x5B9E;&#x8DF5;&#x300B;&#x8BFE;&#x7A0B;&#x4E3B;&#x7AD9; from github</a></li>
+</ul>
+</li>
+<li>&#x770B;&#x8D77;&#x6765;&#x6BD4;&#x8F83;&#x9760;&#x8C31;&#x7684;git&#x548C;github&#x5165;&#x95E8;: <a href="https://github.com/neolee/wop-ecnu-pub/blob/master/x3-git-github.ipynb">wop-ecnu-pub/x3-git-github.ipynb</a></li>
+<li>&#x4EE5;&#x53CA;&#x5148;&#x524D;&#x9875;&#x9762;&#x91CC;&#x5F15;&#x7528;&#x7684;&#x9875;&#x9762;, &#x4E0D;&#x518D;&#x4E00;&#x4E00;&#x5217;&#x4E3E;</li>
+</ul>
+</section><section lineno="620" class="slide " data-line="620" data-h="25" data-v="0">
+<p><img src="https://tse1-mm.cn.bing.net/th/id/R-C.f17c8d5471bffa1453e42b19ab2b4282?rik=SAinVuC8ZK9CqA&amp;riu=http%3a%2f%2fwx2.sinaimg.cn%2flarge%2f005J4OU5ly1gel48i9wk7g306o06odgj.gif&amp;ehk=O%2bNlLxXRY0%2b2cZu3a5Eac41Ts%2fDKxmpnsGmB87tAj4s%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" alt="&#x8001;&#x5E74;&#x52A8;&#x56FE;1"><img src="https://tse1-mm.cn.bing.net/th/id/R-C.83ff4d8ed3cfff14ebad9d9501f13928?rik=sf7yZv5F9eCUuQ&amp;riu=http%3a%2f%2f2f.zol-img.com.cn%2fproduct%2f12_800x600%2f983%2fceu2fQKlPAaWI.gif&amp;ehk=t1YnhrXgyv8cHoXXqCL89z0yQ0DJqvWJ3oXYDiAbH84%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" alt="&#x8001;&#x5E74;&#x52A8;&#x56FE;2"><img src="https://tse1-mm.cn.bing.net/th/id/R-C.7b2196942adb5c243b96c01264b7224d?rik=PSc%2fBbKEFGWDpQ&amp;riu=http%3a%2f%2f5b0988e595225.cdn.sohucs.com%2fimages%2f20180704%2f702f9f6479904b0cba76cd505c50036c.gif&amp;ehk=xVv8reyqFuvz0nj2FoY2Pb6Pj1WBhdh7yZGFZ2%2by7cU%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" alt="&#x8001;&#x5E74;&#x52A8;&#x56FE;"></p>
+</section><section lineno="628" class="slide " data-line="628" data-h="26" data-v="0">
+<h2 class="mume-header" id="btw">BTW</h2>
+
+<h3 class="mume-header" id="%E4%B8%A4%E4%B8%AA%E8%87%AA%E5%B7%B1%E6%9C%80%E8%BF%91%E5%86%8D%E7%9C%8B%E7%9A%84%E4%B8%9C%E8%A5%BF">&#x4E24;&#x4E2A;&#x81EA;&#x5DF1;&#x6700;&#x8FD1;&#x518D;&#x770B;&#x7684;&#x4E1C;&#x897F;:</h3>
+
+<h4 class="mume-header" id="%E5%81%87%E8%A3%85%E8%87%AA%E5%B7%B1%E5%BE%88%E5%8E%89%E5%AE%B3%E7%9A%84%E6%A0%B7%E5%AD%90">(&#x5047;&#x88C5;&#x81EA;&#x5DF1;&#x5F88;&#x5389;&#x5BB3;&#x7684;&#x6837;&#x5B50;)</h4>
+
+<p><img src="https://julialang.org/assets/infra/logo.svg" alt></p>
+<p><img src="https://raw.githubusercontent.com/Qiskit/qiskit/master/images/qiskit_header.png" alt></p>
+<p>&#x6709;&#x5174;&#x8DA3;&#x7684;&#x540C;&#x5B66;&#x53EF;&#x4EE5;&#x4E0A;&#x7F51;&#x641C;&#x4E00;&#x641C;, &#x5982;&#x679C;&#x6709;&#x5174;&#x8DA3;&#x7684;&#x8BDD;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x79C1;&#x4E0B;&#x4EA4;&#x6D41;</p>
+</section>
+      </div>
+    </div>
+    
+<script>
+elements = document.getElementsByClassName("pseudocode");
+for (var i = 1; i <= elements.length; i++) {
+    setTimeout(function() {
+        var element = document.getElementsByClassName("pseudocode")[0];
+        pseudocode.renderElement(element, { lineNumber: element.getAttribute("lineNumber") == "true" });
+    }, i * 100);
+}
+</script>
+      </div>
+      
+      
+    
+    
+      <script>
+        Reveal.initialize({"margin":0.1,"theme":"simple.css","mouseWheel":true,"width":1600,"height":1000,"slideNumber":true,"controls":false,"dependencies":[]})
+      </script>
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
