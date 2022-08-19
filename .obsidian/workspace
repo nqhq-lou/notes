@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "diary/08-19-22.md",
+            "file": "code_tech/Git/remove all commit.md",
             "mode": "source",
             "source": false
           }
@@ -61,8 +61,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 263.5036334991455,
-    "collapsed": true
+    "width": 263.5036334991455
   },
   "right": {
     "id": "26e93629e1f71ecc",
@@ -79,7 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "diary/08-19-22.md",
+                "file": "code_tech/Git/remove all commit.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,7 +95,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "diary/08-19-22.md",
+                "file": "code_tech/Git/remove all commit.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,7 +118,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "diary/08-19-22.md"
+                "file": "code_tech/Git/remove all commit.md"
               }
             }
           },
@@ -161,17 +160,17 @@
     "direction": "horizontal",
     "width": 282
   },
-  "active": "8e87611e52bcd93a",
+  "active": "18f31bae752434bb",
   "lastOpenFiles": [
+    "code_tech/Untitled.md",
+    "diary/08-19-22.md",
     "code_course/pandas/basics.md",
     "assets/figs/Pasted image 20220730215254.png",
     "assets/github_mainpage.md",
     "health/rhinitis.md",
     "code_course/pandas/pandas basics.md",
-    "diary/08-19-22.md",
     "code_course/STM32/createProject.md",
     "diary/08-18-22.md",
-    "diary/archieve/08-09-22.md",
-    "diary/archieve/08-15-22.md"
+    "diary/archieve/08-09-22.md"
   ]
 }
