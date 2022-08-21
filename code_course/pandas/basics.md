@@ -1,3 +1,8 @@
+---
+title: python data processing basics
+tags: [python/module/pandas, data_processing]
+---
+
 ## Python basics on data proc
 
 - list comprehension
