@@ -52,6 +52,7 @@ print(df_csv.to_latex())  # 转latex表格
 - 对应一维结构
 - 要素: values, index, dtype, name
 	- 也是类的属性, 可以直接访问
+	- 注意! index并不是唯一的! 可以有重复的index
 ```python
 s := pd.Series(data = [100, 'a', {'dic1':5}],
           index = pd.Index(['id1', 20, 'third'], name='my_idx'),
