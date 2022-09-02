@@ -124,6 +124,13 @@ col_1     a     b     c
 col_2   1.2   2.2   3.2
 ```
 
+- 插入一列, 使用insert方法
+```python
+df.insert(pos, colname, content)
+df.insert(0, "head", None)
+df.insert(0, "index_new", list(range(df.shape[0])))
+```
+
 
 ## 常用基本函数
 
