@@ -12,5 +12,9 @@ tags: [shell/ssh]
 
 ## quickref
 - `ssh-keygen -t rsa -b 1024 -f yourkeyname -C "备注"`
+- `ssh -L 6006:127.0.0.1:6006 admin@192.168.31.53`
+	- 创建管道连接
+
+
 
 ****
