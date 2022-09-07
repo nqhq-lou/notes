@@ -5,6 +5,7 @@ tags: [physics/DFT]
 
 
 ## pseudo-potential
+- the counterpart to pseudopotential method (PP) is all-electron method (AE).
 
 ### NC
 - norm-conserving pseudopotential, 模守恒赝势
