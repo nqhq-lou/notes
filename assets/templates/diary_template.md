@@ -12,7 +12,7 @@ tags: [daily/diary, ideas, reading]
 
 
 ## To-Do
-- [ ] with check-in boxes
+- [ ] 0
 - [ ] 1
 - [ ] 2
 - [ ] 3
@@ -22,13 +22,13 @@ tags: [daily/diary, ideas, reading]
 ## Schedule
 This is corresponded to day planner plugin.
 - [ ] 7:00 get up
-- [ ] 7:30 breakfast
-- [ ] 9:00 nucleus acid
+- [ ] 7:30 route
+- [ ] 9:00 
 - [ ] 11:30 lunch
 - [ ] 12:30 break
-- [ ] 13:30 work
-- [ ] 17:00 dinner
-- [ ] 
+- [ ] 13:30 
+- [ ] 18:00 dinner
+- [ ] 19:30 nucleus acid
 
 | No. | duration    | No. | duration    | No. | duration    |
 | --- | ----------- | --- | ----------- | --- | ----------- |

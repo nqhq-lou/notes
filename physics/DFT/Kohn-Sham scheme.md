@@ -1,6 +1,6 @@
 ---
 title: Kohn-Sham scheme in DFT calculationn
-tags: [physics/solidstate, physics/DFT, physics/Kohn-Sham]
+tags: [physics/DFT, physics/Kohn-Sham]
 ---
 
 
@@ -31,3 +31,8 @@ $$
 
 - The XC term is the key term in KS scheme.
 - Many methods came up with, like LDA, GGA, etc.
+
+
+
+
+
