@@ -6,7 +6,7 @@ tags: [physics/DFT/streamline]
 
 ## purpose
 - main problem is that the exact/accurate form functional of the XC term.
-- based on [[KS-DFT basics]] ideas, we should list the detailed operational procedures of calculation.
+- based on [[KS-DFT_basics]] ideas, we should list the detailed operational procedures of calculation.
 
 ## plane wave
 - 本节讨论平面波基矢下, KS方程求解的相关事宜.
@@ -124,7 +124,6 @@ $$
 $$
 
 
-
 ## XC functional
 - How the functionals are developed
 - and how ML are applied
@@ -136,22 +135,121 @@ $$
 	- but LSDA tells us that fcc is more stable, which is incorrect
 	- while GGA tells the right answer
 	- the reason is that LSDA considers only $n$, while GGA considers $n$ and $\nabla n$
+- GGA
+	- $\nabla n$ used, where is actually a Fourier Transform of real space functions
+- metaGGA
+	- electron kinetic density is considered
+- hybrid methods
+	- $10^2$ times cost compared to GGA method
 
 ### Jacob's ladder
-![[DFT_procedure_Jacobs_ladder.png|300]]
+![[DFT_procedure_Jacobs_ladder1.png|300]]
+![[DFT_procedure_Jacobs_ladder2.png|400]]
+
 
 
 
 ## SCF iteration method
 - self-consistent field = SCF
 - electron density 2 Hamiltonian 2 eigen problem 2 new wave function and new electron density
+	- $\rho \rightarrow H \rightarrow \{ \epsilon, \ket{\psi_{l}} \} \rightarrow \rho \rightarrow \ldots$
 - so iterative, actually self-consistent field method (SCF)
-- d 
+
+- 迭代的基础: KS方程
+	- $n$为本征值问题中为单电子波函数的count
+$$
+H_{KS}^\sigma \psi_n^\sigma (r) = E_n \psi_n^\sigma (r)
+\quad
+\text{while}
+\quad
+H_{KS}^\sigma
+= -\dfrac{1}{2}\nabla^2 + V_{ext}[\rho](r) + V_{H}[\rho](r) + V_{XC}^\sigma[\rho] (r)
+$$
+- 单电子波函数和电子密度的关系
+$$
+\rho(r) = \sum_{n=1}^{N_e} \sum_\sigma |\psi_n^\sigma (r)|^2
+$$
+
+### SCF in KS-DFT
+
+#### 迭代流程简述
+- 每个iter开始, 有一个电子密度
+- 根据电子密度, 可以构建Hamiltonian的矩阵
+- 程序开始为猜测的电子密度, 每次迭代都会修改电子密度. 迭代到最后电子密度将会趋于稳定.- 
+![[DFT_procedure_fig3.png]]
+
+#### SCF的迭代步骤
+	- 初始的电子密度是随便猜的
+	- 当完成一个循环后, 会有基于已经尝试的电子密度, 进行更加有效猜测的方法 (最优化问题的范畴)
+> **QUESTION**
+> 这里的动能是怎么搞出来的?
+![[DFT_procedure_fig4.png]]
+
+#### ABACUS中关于SCF的输出
+![[DFT_procedure_fig5.png]]
+
+#### 自洽和非自洽的区别
+- 自洽计算, 用于求解可信的电子密度
+	- 计算中k点的数量足够多而且均匀, 是为了通过积分电子密度, 确定电子数量的约束
+	- 这是计算能带, 不要计算太高的能带, 因为过高的非占据的能带, 对自洽计算的迭代没有用处
+		- 如Si晶体, 只需要关注最低的四个能带就可.
+- 非自洽计算为对一个电子密度下, 物理性质的计算
+	- 可以通过电子密度, 构造得到Hamiltonian的矩阵!
+	- 常用来计算能带, 或者加密k点来计算态密度的分布
+	- 如通过自洽计算得到可信的电子密度, 然后计算k空间某个轴上的能带情况
+		- 这里能带计算, 就可以多算几条能带, 因为这时是在计算材料性质, 是需要这些额外的特征的
+> **QUESTION**
+> 自洽计算, 第一布里渊区中的均匀去点, 这样是迭代中的哪一步会用到?
+
+![[DFT_procedure_fig6.png]]
+ 
+
+### diagonalize Hamiltonian
+- 怎么基于知道电子密度得到的Hamiltonian矩阵, 得到单电子波函数和能量
+
+#### 问题简述
+- 这时是KS方程是一个(广义)本征值问题
+	- 如果使用USPP, 那么就会有$S$矩阵非零
+	- 对NCPP, 就是普通的本征值问题, 平面波基矢仍然是正交的
+- 在平面波基矢下, 原子数对应平面波个数的例子: $\{2, 16, 128\} \rightarrow \{ 1591, 12627, 101549 \}$
+- 矩阵如此大, 因此需要(特指在平面波基矢下)
+	- 非显式存储哈密顿矩阵
+	- 使用迭代法对本征值进行有效求解
+
+#### 迭代法求解Hermite矩阵本征值问题
+- 迭代算法有 Conjugate-Gradient (CG), Blocked Davidson (DAV2), Residual minimization method (RMM), LOBPCG, etc.
+	- 如CG法中需要倒数, 因此需要计算很多次$\dfrac{d E}{d\psi^*} = \hat{H} \ket{\psi}$
+	- 这里可以非显式的存储哈密顿矩阵, 从而节省内存空间
+- 对于不同的物理体系和求解问题, 不同的算法可能效率和可用性不一样, 因此需要适当的选择
+- 同时算法最好能够使用cpu并行或者gpu加速求解
 
 
-**这里有几个图可以参考一下**
+### SCF tricks
 
-**明天继续!**
+#### 电子密度混合方法
+- 原始的就是用新的电子密度代替老的电子密度
+- 最常用的比如Pulay-Mixing
+	- 基础想法是, 使用一组系数, 新的电子密度是老电子密度的线性组合
+	- $\rho_{new}^{i+1} = \sum_{j=1}^{i} C_j \cdot \rho_{old}^j (r)$
+
+#### Smearing方法
+- 计算中问题:
+	- 现象: 半导体SCF比较容易收敛, 而金属的SCF不容易收敛
+	- 半导体的能带在费米面附近差别较大, 也就是本征值差别较大
+		- SCF中, 由于半导体本身的性质, 能带位置在费米面附近间距较大
+		- 不会出现费米面附近能带的大幅度变化, 导致电子密度的大幅变化, 进而导致下一轮哈密顿量大幅变化
+	- 但金属在费米面附近为导带, 能带之间相互非常接近
+		- 有一定概率在两轮相邻迭代中, 费米面附近相邻能带发生接连的反转
+		- 导致程序计算得到的电子密度大幅度变化 (因为不断使用两条费米面附近不同的能带进行计算)
+		- 导致难以收敛
+- 基础想法是, 对费米面附近的能带使用加权平均, 让电子密度的计算结果更加稳定
+- Smearing除了权重这个关键参数之外, Smearning在费米面附近的window大小也很重要
+	- 一般情况下, 大window容易收敛, 但是必然导致结果偏离和不准确
+	- 可以采用的改进是, 在大windows下得到电子密度, 然后不断缩小window, 一步步更新电子密度, 最后得到稳定的准确结果
+
+
+> **COMMENT**
+> 逻辑很连贯, 有点爽!
 
 
 ## references
