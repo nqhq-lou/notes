@@ -194,9 +194,47 @@ index_2 cat big    1.0  1.0
 ## 其他变形函数
 
 ### crosstab
+- `crosstab`能够实现的功能, `pivot_table`都能实现
+- 默认情况下`crosstab`统计元素组合出现的频数
+```python
+pd.crosstab(index=df.School, columns=df.Transfer)  # 统计不同学校transfer的情况
+
+pd.crosstab(index=df.School, columns=df.Transfer, values=df.shape[0], aggfunc='count')  # 完整的写法
+pd.crosstab(index=df.School, columns=df.Transfer, values=df.Transfer, aggfunc='count')  # 完整的写法, 第二种
+
+df.pivot_table(index = 'School', columns = 'Transfer',
+               values = 'Name', aggfunc = 'count')  # pivot的等效写法
+
+pd.crosstab(index = df.School, columns = df.Transfer,
+			values = df.Height, aggfunc = 'mean')  # 统计对应(School,Transfer)组合的身高平均值
+
+```
+
+### explode
+- `explode`参数能够对某一列的元素进行纵向的展开，被展开的单元格必须存储`list, tuple, Series, np.ndarray`中的一种类型
+```python
+# column A这里是神奇的组合
+df_ex = pd.DataFrame({'A': [[1, 2], 'my_str', {1, 2}, pd.Series([3, 4])], 'B': 1})
+df_ex.explode('A')
+# col A 变成: [1, 2, 'my_str', 1, 2, 3, 4]
+```
+
+### get_dummies
+`get_dummies`是用于特征构建的重要函数之一，其作用是把类别特征转为指示变量。例如，对年级一列转为指示变量，属于某一个年级的对应列标记为1，否则为0
+```python
+pd.get_dummies(df.Grade).head()
+```
+|     | Freshman | Junior | Senior | Sophomore |
+| ---:| --------:| ------:| ------:| ---------:|
+|   0 |        1 |      0 |      0 |         0 |
+|   1 |        1 |      0 |      0 |         0 |
+|   2 |        0 |      0 |      1 |         0 |
+|   3 |        0 |      0 |      0 |         1 |
+|   4 |        0 |      0 |      0 |         1 |
 
 
 
 
+## Ex 
 
-## 
+没时间做了, 之后吧!
