@@ -96,7 +96,7 @@ dtype: object
 - `*`有五种合法内容, 单个元素, 元素列表, 元素切片, 布尔列表, 函数
 ```python
 df_demo = df.set_index('Name')  # 设置'Name'列为index
-df_demo.head().to_markdown()
+df_demo.head()
 ```
 | Name           | School                        | Grade     | Gender | Weight | Transfer |
 |:-------------- |:----------------------------- |:--------- |:------ | ------:|:-------- |
