@@ -235,6 +235,50 @@ pd.get_dummies(df.Grade).head()
 
 
 
-## Ex 
+## HW
 
-没时间做了, 之后吧!
+### Ex 1
+
+```python
+df = pd.read_csv('../data/drugs.csv').sort_values(
+		['State', 'COUNTY', 'SubstanceName'], ignore_index=True)
+df.head(3)
+
+# 1 pivot
+df1 = df.pivot(index=['State', 'COUNTY', 'SubstanceName'], columns='YYYY', values='DrugReports')
+df1.columns.name = None  # 有点傻, 但是没有想到更好的方法
+df1.reset_index(inplaace=True)
+df1.head(3)
+
+# 2 melt
+df2 = df1.melt(id_vars=['State', 'COUNTY', 'SubstanceName'],
+               value_vars=list(range(2010, 2018)),
+               var_name='YYYY',
+               value_name='DrugReports')
+df2 = df2.loc[:, ['YYYY', 'State', 'COUNTY', 'SubstanceName', 'DrugReports']]
+df2.head(3)
+
+# 3 pivot_table and groupby
+df31 = df.pivot_table(index='YYYY', columns='State', values='DrugReports', aggfunc='sum')
+df32 = df.groupby(['YYYY', 'State'])['DrugReports'].sum().unstack(level=-1)  # resolve the State index level
+```
+
+### Ex2
+- do `melt` by `wide_to_long`
+```python
+df = pd.DataFrame({'Class':[1,2],
+                   'Name':['San Zhang', 'Si Li'],
+                   'Chinese':[80, 90],
+                   'Math':[80, 75]})
+df.columns = ['Class', 'Name', 'Grade_Chinese', 'Grade_Math']  # 修改列名称
+
+df1 = pd.wide_to_long(
+    df,
+    stubnames=['Grade'],
+    i=['Class', 'Name'],
+    j='Subject',
+    sep='_',
+    suffix="\w+",
+)
+df1.sort_values(['Subject']).reset_index()  # 把序号也设置好
+```

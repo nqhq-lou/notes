@@ -1,6 +1,6 @@
 ---
 title: summary on gentle intro to GNN, distill
-tags: [GNN/intro]
+tags: [ML/GNN/intro]
 ---
 
 
