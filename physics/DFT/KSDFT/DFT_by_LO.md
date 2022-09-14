@@ -10,6 +10,7 @@ tags: [physics/DFT]
 ## 基于LO的软件介绍
 - 略, 自己看视频
 	- 有SIESTA, OpenMX, FHI-aims
+	- FHI-aims是全电子计算的软件
 
 ![[DFT_by_LO_KSDFT_basis_categories.png|500]]
 - Grid 空间格点法, Gaussian的好处是可以解析, 虽然需要的波的数量仍然很多很多

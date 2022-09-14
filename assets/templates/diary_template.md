@@ -12,6 +12,7 @@ tags: [daily/diary, ideas, reading]
 
 
 ## To-Do
+- You could refer to [[daily_tips]]
 - [ ] 0
 - [ ] 1
 - [ ] 2

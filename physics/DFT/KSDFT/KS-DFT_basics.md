@@ -4,7 +4,6 @@ tags: [physics/DFT]
 ---
 
 - most of the content is in reference to 陈默涵
-- 
 
 
 

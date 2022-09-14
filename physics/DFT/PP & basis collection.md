@@ -6,6 +6,7 @@ tags: [physics/DFT]
 
 ## pseudo-potential
 - the counterpart to pseudopotential method (PP) is all-electron method (AE).
+- 应当注意到, XC泛函和赝势是关联的, 因为需要赝势+XC泛函的计算结果, 根据原子能级进行对齐!
 
 ### NC
 - norm-conserving pseudopotential, 模守恒赝势
@@ -44,7 +45,7 @@ tags: [physics/DFT]
 
 ### LAPW
 - linearized augmented plane wave
-- 
+- maybe [[APW method]] tells the same thing?
 
 
 
