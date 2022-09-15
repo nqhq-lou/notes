@@ -4,7 +4,9 @@ tags: [AI4Science/NNPs]
 ---
 
 - relevant notes
-	- [[DFT_ABACUS_DeePKS]]
+	- [[DFT_ABACUS_DeePKS#基于机器学习的密度泛函]]
+
+
 
 ## basics
 - Deep Potential Kohn-Sham model, a ML-based DFT model
@@ -26,3 +28,4 @@ tags: [AI4Science/NNPs]
 
 ## references
 - 
+

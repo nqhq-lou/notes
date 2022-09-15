@@ -11,10 +11,10 @@ tags: [shell/ssh]
 - 然后配置本地`~/.ssh/config`文件
 
 ## quickref
-- `ssh-keygen -t rsa -b 1024 -f yourkeyname -C "备注"`
+- `ssh-keygen -t rsa -b 1024 -f yourkeyname -C "comment"`
 - `ssh -L 6006:127.0.0.1:6006 admin@192.168.31.53`
 	- 创建管道连接
-
+- `ssh-keygen -t ed25519 -C "comment"`
 
 
 ****

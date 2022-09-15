@@ -188,6 +188,13 @@ ABACUS关注的事情
 	- 多了一个基矢, 这使得数据存储和矩阵并行稍微变得复杂了一些
 ![[DFT_ABACUS_ML_V_F_periodic.png|600]]
 
+- 根据文章(Chen et al., 2021), 电子密度也加入了loss, 使用的是一个penalty, 实际上会引入一个penalty带来的势能, 让电子密度更快趋于收敛, 同时收敛效果更好.
+
+Chen Y, Zhang L, Wang H, E W. DeePKS: A Comprehensive Data-Driven Approach toward Chemically Accurate Density Functional Theory. _J Chem Theory Comput_. 2021;17(1):170-181. doi:[10.1021/acs.jctc.0c00872](https://doi.org/10.1021/acs.jctc.0c00872)
+
+
+
+
 ### DeePKS中的关键点和难点
 - 理解网络的输入: 为什么使用源于单电子波函数的描述子, 而不是电子密度, 作为神经网络输入
 	- 电子密度往往被表示在实空间格点上
@@ -223,7 +230,7 @@ ABACUS关注的事情
 ## reference
 - [陈默涵：ABACUS和基于机器学习的密度泛函](https://www.bilibili.com/video/BV1se411g7KL)
 - [DeePKS+ABACUS：AI辅助的电子结构方法](https://www.bilibili.com/video/BV1bt4y137Xj)
-	- 24:25
+	- 24:25, pySCF无法处理周期性体系
 
 
 
