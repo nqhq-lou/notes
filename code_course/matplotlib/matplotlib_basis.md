@@ -31,7 +31,7 @@ import numpy as np
 fig, ax = plt.subplots()  # 创建一个包含一个axes的figure
 ax.plot([1, 2, 3, 4], [1, 4, 2, 3]);  # 绘制图像
 ```
-
+![just_example_1](https://datawhalechina.github.io/fantastic-matplotlib/_images/index_2_0.png)
 
 
 ## figure的组成
