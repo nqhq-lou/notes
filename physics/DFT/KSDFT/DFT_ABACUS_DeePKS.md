@@ -142,7 +142,7 @@ ABACUS关注的事情
 	- 根据高精度的target functional, 计算体系的$E$和$F$, 之后的NN model中将会用到
 	- 选取一组数值原子轨道$\alpha_{nlm}^I$, localize在各个原子$I$周围, 作为投影用
 - 第一次操作
-	- 使用baseline的functional, 计算得到单电子波函数们$\ket{\psi_i}$, $E_{baseline}$和$F_{baseline}$, 进一步计算得到密度矩阵$\rho = \sum_i^N \ket{\psi_i}\bra{\psi_i}$ (这里的密度矩阵我感觉还是不了解)
+	- 使用baseline的functional, 计算得到单电子波函数们$\ket{\psi_i}$, $E_{baseline}$和$F_{baseline}$, 进一步计算得到密度矩阵$\rho = \sum_i^N \ket{\psi_i}\bra{\psi_i}$
 - 迭代过程
 	- 计算投影密度矩阵, ***局域化***
 		- 使用密度矩阵$\rho$和单电子波函数$\ket{\alpha_{nlm}^I}$ 和 投影用数值原子轨道$\ket{\psi_i}$
