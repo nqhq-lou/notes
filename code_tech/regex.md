@@ -4,6 +4,8 @@ tags: [regex]
 ---
 
 
+for python, see [[code_course/Python/regex]]
+
 ### escape char
 
 - `$.*?+{}|()`

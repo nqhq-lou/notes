@@ -1,4 +1,8 @@
 
+
+for general tricks, see [[code_tech/regex]]
+
+
 ## Python `regex` module
 
 
