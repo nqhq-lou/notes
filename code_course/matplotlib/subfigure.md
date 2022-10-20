@@ -84,4 +84,4 @@ fig.tight_layout()  # 重整布局
 
 
 ## references
-- [第三回：布局格式定方圆[¶](https://datawhalechina.github.io/fantastic-matplotlib/%E7%AC%AC%E4%B8%89%E5%9B%9E%EF%BC%9A%E5%B8%83%E5%B1%80%E6%A0%BC%E5%BC%8F%E5%AE%9A%E6%96%B9%E5%9C%86/index.html#id1 "永久链接至标题")](https://datawhalechina.github.io/fantastic-matplotlib/%E7%AC%AC%E4%B8%89%E5%9B%9E%EF%BC%9A%E5%B8%83%E5%B1%80%E6%A0%BC%E5%BC%8F%E5%AE%9A%E6%96%B9%E5%9C%86/index.html)
+- [第三回：布局格式定方圆](https://datawhalechina.github.io/fantastic-matplotlib/%E7%AC%AC%E4%B8%89%E5%9B%9E%EF%BC%9A%E5%B8%83%E5%B1%80%E6%A0%BC%E5%BC%8F%E5%AE%9A%E6%96%B9%E5%9C%86/index.html)

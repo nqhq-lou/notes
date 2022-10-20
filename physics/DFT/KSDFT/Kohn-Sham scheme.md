@@ -22,6 +22,9 @@ $$
 \quad
 \hat{V}_{KS} = \hat{V}_{ext} + \hat{V}_H + \hat{V}_{XC}
 $$
+$$
+(\hat{T} + \hat{V}_{ext} + \hat{V}_H + \hat{V}_{XC}) \phi_i = \epsilon_i \phi_i
+$$
 - the external potential of the original interacting systems
 - the Hartree potential, namely the static Coulomb potential produced by the electron density of the system
 - the exchange-correlation potential, which captures the remaining electron-electron interactions

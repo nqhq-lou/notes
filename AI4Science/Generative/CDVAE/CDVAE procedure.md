@@ -3,6 +3,20 @@ title: CDVAE procedure
 tags: [AI4Science/Generative/CDVAE]
 ---
 
+## structure
+- DimeNet++ as encoder
+- GemNet-dQ as decoder
+
+
+
+## dataset
+- consider use AIRSS carbon original dataset (101529 samples)
+- replace the carbon atoms with Silicon and Germanium
+- 
+
+
+
+
 ## net components
 
 - `fc_num_atoms`
@@ -14,3 +28,4 @@ tags: [AI4Science/Generative/CDVAE]
 	- Input is VAE latent variable
 	- Output is a vector of 6 scalars
 		- Lattice is reduced to 6 unique, rotation invariant parameters with the Niggli algorithm, the lengths of the 3 lattice vectors, the angles between them.
+``

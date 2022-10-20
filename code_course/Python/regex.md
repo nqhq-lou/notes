@@ -1,6 +1,6 @@
 
 
-for general tricks, see [[code_tech/regex]]
+for general tricks, see [[code_tech/chaos/regex]]
 
 
 ## Python `regex` module

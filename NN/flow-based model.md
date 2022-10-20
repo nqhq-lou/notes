@@ -83,7 +83,11 @@ $$
 
 ### 具体网络设计
 - 知名的model: NICE, Real NVP
-	- 使用了相同的构建flow的方式: coupling layer
+	- 使用了相同的构建flow的方式: **CouplingLayer**
+- GLOW:
+	- 1x1 convolution
+
+#### Coupling Layer
 - 具体一次flow的方法
 	- 将latent分开成两部分, 一部分直接传递, 同时用于生成F和H
 	- 剩余的latent部分分别乘上F并加上, 得到这个部分的更新
@@ -95,6 +99,26 @@ $$
 
 ![[flow-based_model_01.png|500]]
 ![[flow-based_model_02.png|500]]
+![[flow-based_model_03.png]]
+- 不断flow的过程中, 会调整作为F和H做数据来源的部分
+	- 不然data中将会有一部分永远不被修改, 只有另一部分被修改了
+	- 可能的stragety: 奇数列/行做weight, 偶数列/行被修改; RGB中某一层被修改
+	- 不同stragety可以交替使用
+
+
+
+#### 1x1 Convolution
+- 在上述CouplingLayer之前, 进行一次同位置不同channel权重交换操作
+- RGB图中相同的位置, 构成一个长度3vector, 乘上一个网络自己学出来的3x3矩阵weight之后, 放在新的同样的位置
+	- 这里可能会出现W不可逆, 但是实在概率太小, 可能就忽略了吧
+- 具体的新的Jacobian形式见下
+- 此外, 还可以用于生成新内容
+	- 只要将来自不同图片的latent variable进行加和即可
+![[flow-based_model_04.png|500]]
+![[flow-based_model_05.png|500]]
+![[flow-based_model_06.png|500]]
+
+
 
 
 ### 训练过程

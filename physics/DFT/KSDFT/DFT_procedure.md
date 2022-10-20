@@ -25,7 +25,7 @@ tags: [physics/DFT/streamline]
 	- 每个k-point都需要求解一下KS方程
 	- 也就是
 		$$ H_k \psi_{ik} = \left[ -\dfrac{1}{2} \nabla^2 + V(r) \right] \psi_{ik} = E_{ik} \psi_{ik} $$
-	- 然后就能得到能带图了!
+	- 然后就能得到能带图了! 但是是单电子的能带图.
 
 ### FFT在计算中的角色
 - DFT中的傅里叶变换FFT

@@ -12,5 +12,11 @@ tags: [physics/DFT/iKSDFT]
 
 
 
+## input and output
+
+- input
+	- conventional evaluated orbitals and 
+- 
+
 
 
