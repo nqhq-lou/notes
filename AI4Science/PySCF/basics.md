@@ -141,6 +141,117 @@ def mol_slice(atm, mol):
 
 
 
+## physics quantities
+
+- acquisition of physics quantities manually
+
+```Python
+"""do the project"""
+mol = gto.M(...)
+mf = scf.RHF(mol)
+mf.kernel()  # run
+
+
+"""basics quantityes"""
+
+# MO coefficient
+C = mf.mo_coeff
+
+# 1-elec self-overlap
+S = mol.intor("int1e_ovlp")
+
+# random generalized density matrix, for later use
+R = np.random.random((nao, nao));
+R = R + R.T
+
+# 2-elec
+eri = mol.intor("int2e")  # no "_ovlp"
+
+# nucleus repulsion energy
+E_nuc = mol.energy_nuc()
+E_nuc = mf.energy_nuc()
+Z_A = mol.atom_charges()
+Z_AB = Z_A[:,None] * Z_A
+r_A = mol.atom_coords()
+r_AB = np.linalg.norm(r_A[:, None, :] - r_A[None, :, :], axis=-1)
+E_nuc = 0.5 * (Z_AB / r_AB).sum()
+
+
+"""advanced quantities"""
+
+# 1-elec density matrix
+dm1 = mf.make_rdm1()
+ao_occ = slice(mol.nelec[0])
+dm1 = 2 * C[:,ao_occ] @ C[:,ao_occ].T
+
+# H^{core}
+Hcore = mf.get_hcore()
+Hcore = mol.intor("int1e_kin") + mol.intor("int1e_nuc")
+
+# transfrom matrix
+X = scipy.linalg.fractional_matrix_power(S, -0.5)  # X.T@S@X = diag(1)
+
+# Coulomb integral, used in many cases
+J = mf.get_j(dm=R)  # here R is generalized dm, which dm1 is included
+J = np.einsum("uvkl, kl -> uv", mol.intor("int2e"), R)  # R is generalized dm
+
+# Exchange integral, used in many cases
+K = mf.get_k(dm=R, hermi=...)  # check docs for hermi option
+K = np.einsum("ukvl, kl -> uv", mol.intor("int2e"), R)  # R is generalized dm
+
+# Fock matrix (AO)
+F = mf.get_fock(dm=R)
+F = mf.get_hcore() + mf.get_j() - 0.5 * mf.get_k()
+
+# electronic energy (after SCF)
+Eelec0, Eelec1 = mf.energy_elec(dm=R)  # actually return (total energy, HF energy)
+Eelec0_V = mf.get_hcore() + 0.5 * mf.get_j() - 0.25 * mf.get_k()
+Eelec0 = (Eelec0_V * dm1).sum()
+Eelec1_V = 0.5 * mf.get_j() - 0.25 * mf.get_k()
+Eelec1 = (Eelec0_V * dm1).sum()
+
+# system total energy
+Etol = mf.energy_tol(dm=R)
+Etol = mf.energy_elec(dm=R)[0] + mf.energy_nuc()
+
+# MO energy
+Emo = mf.mo_energy
+Emo = np.diag(C.T @ mf.get_fock() @ C)
+
+# MO occupation
+mo_occ = mf.mo_occ
+
+
+"""match band energy with total energy"""
+scf_eng.mo_energy[ao_occ].sum()*2  # close shell energy sum
+>>> -94.5189564217388
+Eelec0, Ecore = scf_eng.energy_elec()[0], np.einsum("uv, vu ->", mf.get_hcore(), dm1)
+(Eelec0 - Ecore) * 2 + Ecore
+>>> -94.51895616984223
+
+
+"""nuclear replusion energy integral"""
+# mol.with_rinv_as_nucleus(nuc_idx)
+# 它通过传入原子序号，将积分时的原点坐标更变为当前原子的坐标
+# 但除了特定积分以外，分子的所有性质，包括坐标，都保持不变。
+v = np.zeros((nao, nao))
+for M in range(natm):
+    with mol.with_rinv_as_nucleus(M):
+        v += - mol.atom_charge(M) * mol.intor("int1e_rinv")
+np.allclose(v, mol.intor("int1e_nuc"))
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
