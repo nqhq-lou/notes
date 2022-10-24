@@ -27,7 +27,7 @@ make install
 	- [Linux非root用户配置安装screen](https://cxybb.com/article/m0_37584687/88958204)
 ```bash
 # 首先安装ncurses
-
+pass
 
 # 准备screen的安装环境变量
 export LDFLAGS='-L [path/to/ncurses/lib]'  # like ~/opt/lib
@@ -36,7 +36,7 @@ export CPPFLAGS='-I [path/to/ncurses/include]'  # like ~/opt/include
 ./configure --prefix=[path/to/install/screen]
 make
 make install
-# 在对应的bin中可以找到
+# 安装完成后, 在对应的bin中可以找到
 ```
 
 

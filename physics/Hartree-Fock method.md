@@ -44,4 +44,8 @@ $$
 ## references
 - [Hartree-Fock method from Wikipedia](https://en.wikipedia.org/wiki/Hartree%E2%80%93Fock_method)
 - [Fock operator from Wikipedia](https://en.wikipedia.org/wiki/Hartree%E2%80%93Fock_method#The_Fock_operator)
-- 
+- Attila Szabo and Neil S. Ostlund, _Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory_ (Dover Publications, 1996), [http://gen.lib.rus.ec/book/index.php?md5=8ca9029b150ce3b511fb2392f8a21400](http://gen.lib.rus.ec/book/index.php?md5=8ca9029b150ce3b511fb2392f8a21400).
+
+
+
+
