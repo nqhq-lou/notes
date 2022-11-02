@@ -7,6 +7,18 @@ tags: [python/module/Hydra]
 ## general ideas
 - former configs could be overwritten by later configs
 - The param structure is actually OmegaConf
+- Hydra config experiment lazily
+	- which means that the sweep experiment might be compacted if configs and python code are changed.
+
+
+
+## lightning-hydra-template
+
+- to notice
+	- sweep by hydra or optimize metrics by Optuna
+	- easy distributed training
+
+
 
 
 
@@ -22,6 +34,13 @@ python run.py -m [group]=[op1,op2,...]  # --multirun == -m
 
 python run.py hydra.output_subdir=null  # disable .hydra to record yaml
 ```
+
+
+## multirun
+
+- parameters labeled in the last place is iterated first
+
+
 
 
 ## dir status
@@ -50,6 +69,10 @@ to_absolute_path('/foo') : /foo
 
 ## logging
 - I prefer `hydra/job_logging=disabled` and `verbose`
+
+
+
+
 
 
 

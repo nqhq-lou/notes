@@ -63,6 +63,16 @@ tags: [physics/DFT/PP, physics/DFT/XC, physics/DFT/basis]
 
 
 
+## GTO
+
+- 6-31d(g)
+	- 经过评测，达到了最低可用标准
+	- 如果再简单, 如6-31g, 就没法得到合理的结果
+- def2 series
+- 6-31g\*\*是6-31g(d,p)的等价写法
+- 
+
+
 
 
 
