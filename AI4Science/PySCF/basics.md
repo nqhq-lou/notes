@@ -146,19 +146,34 @@ def mol_slice(atm, mol):
 - acquisition of physics quantities manually
 
 ```Python
+"""import modules"""
+from pyxdh import GridHelper, KernelHelper
+
+
 """do the project"""
 mol = gto.M(...)
-mf = scf.RHF(mol)
+grids = dft.Grids(mol)
+# quad_grids.atom_grid = (99, 590)
+grids.build()
+# mf = scf.RHF(mol)
+mf = dft.RKS(mol)
+mf.xc = "B3LYPg"
+mf.grids = grids  # determine grids
 mf.kernel()  # run
+```
 
-
+- $S_{\mu\nu} = \braket{\mu|\nu} = \phi_\mu \phi_\nu$ 因为都是real所以就不标注conj了
+```Python
 """basics quantityes"""
 
 # MO coefficient
-C = mf.mo_coeff
+C = mf.mo_coeff  # comb ao for mo
 
 # 1-elec self-overlap
 S = mol.intor("int1e_ovlp")
+
+# transfrom matrix
+X = scipy.linalg.fractional_matrix_power(S, -0.5)  # X.T@S@X = diag(1)
 
 # random generalized density matrix, for later use
 R = np.random.random((nao, nao));
@@ -175,21 +190,29 @@ Z_AB = Z_A[:,None] * Z_A
 r_A = mol.atom_coords()
 r_AB = np.linalg.norm(r_A[:, None, :] - r_A[None, :, :], axis=-1)
 E_nuc = 0.5 * (Z_AB / r_AB).sum()
+```
 
+- $T_{\mu\nu} = \braket{\mu | -\dfrac{1}{2} \partial_r^2 | \nu} = - \dfrac{1}{2} \phi_\mu \phi_{rr\nu}$, 两个$r$代表同一方向上求导, $\nu$为下标
+- $J_{\mu \nu}[R_{\kappa \lambda}] = (\mu \nu | \kappa \lambda) R_{\kappa \lambda}$
+- $K_{\mu \nu}[R_{\kappa \lambda}] = (\mu \kappa | \nu \lambda) R_{\kappa \lambda}$
+
+```Python
+grdh = GridHelper(mol, quad_grids, mf.make_rdm1())  # provide ao spatial values
+kerh = KernelHelper(grdh, "B3LYPg", deriv=3)  # provide functional kernel
 
 """advanced quantities"""
-
 # 1-elec density matrix
-dm1 = mf.make_rdm1()
+dm1 = mf.make_rdm1()  # electron density matrix, D in general texts
 ao_occ = slice(mol.nelec[0])
 dm1 = 2 * C[:,ao_occ] @ C[:,ao_occ].T
 
-# H^{core}
+# kinetic T
+T = mol.intor("int1e_kin")
+T = - 0.5 * np.einsum("g, gu, gvr -> uv", grdh.weight, grdh.ao_0, grdh.ao_2.diagonal(axis1=0, axis2=1))  # grids.weight == grdh.weight, ao_x is from dft.numint.eval_ao(mol, coords,deriv=3)
+
+# H^{core} = T_{ee} + V_{nuc,e}
 Hcore = mf.get_hcore()
 Hcore = mol.intor("int1e_kin") + mol.intor("int1e_nuc")
-
-# transfrom matrix
-X = scipy.linalg.fractional_matrix_power(S, -0.5)  # X.T@S@X = diag(1)
 
 # Coulomb integral, used in many cases
 J = mf.get_j(dm=R)  # here R is generalized dm, which dm1 is included
@@ -198,18 +221,80 @@ J = np.einsum("uvkl, kl -> uv", mol.intor("int2e"), R)  # R is generalized dm
 # Exchange integral, used in many cases
 K = mf.get_k(dm=R, hermi=...)  # check docs for hermi option
 K = np.einsum("ukvl, kl -> uv", mol.intor("int2e"), R)  # R is generalized dm
+```
 
+- RHF中的Fock矩阵为
+	- $F_{\mu \nu}^\mathrm{HF} [R_{\kappa \lambda}] = h_{\mu \nu} + J_{\mu \nu}[R_{\kappa \lambda}] - \frac{1}{2} K_{\mu \nu}[R_{\kappa \lambda}]$
+- GGA中交换积分有一系数$c_x$, `cx = ni.hybrid_coeff("B3LYPg") == 0.2`
+	- $F_{\mu \nu} = h_{\mu \nu} + J_{\mu \nu}[R_{\kappa \lambda}] - \frac{1}{2} c_\mathrm{x} K_{\mu \nu}[R_{\kappa \lambda}] + v_{\mu \nu}^\mathrm{xc} [R_{\kappa \lambda}]$
+- $v_{\mu \nu}^\mathrm{xc} [R_{\kappa \lambda}]$: `ni.nr_rks()`
+```Python
 # Fock matrix (AO)
-F = mf.get_fock(dm=R)
-F = mf.get_hcore() + mf.get_j() - 0.5 * mf.get_k()
+F = mf.get_fock(dm=R)  # related to mf.xc
+F = mf.get_hcore() + mf.get_j() - 0.5 * mf.get_k()  # for RHF
+F = scfh.H_0_ao + scf_eng.get_j(dm=R) - 0.5 * cx * scf_eng.get_k(dm=R) + ni.nr_rks(mol, grids, "B3LYPg", R)[2]  # for B3LYPg functional
+```
 
+- RHF中电子态能量为
+	- $E_\mathrm{elec}^\mathrm{HF} [R_{\mu \nu}] = (h_{\mu \nu} + \frac{1}{2} J_{\mu \nu} [R_{\kappa \lambda}] - \frac{1}{4} K_{\mu \nu} [R_{\kappa \lambda}]) R_{\mu \nu}$
+- GGA中电子态能量为
+	- $E_\mathrm{elec} [R_{\mu \nu}] = (h_{\mu \nu} + \frac{1}{2} J_{\mu \nu} [R_{\kappa \lambda}] - \frac{1}{4} c_\mathrm{x} K_{\mu \nu} [R_{\kappa \lambda}]) R_{\mu \nu} + f^R \rho^R$
+	- upper $R$ for integral by $R$ quad grid, $f$ is functional core 泛函核
+	- $f^R$就是我们预测的东西吧!
+- about $f^R$: `ni.eval_xc`
+	- $\rho^R = R_{\mu\nu} \phi_\mu \phi_\nu$, $\partial_r \rho^R = 2 R_{\mu\nu} (\partial_r \phi_\mu) \phi_\nu$
+	- $f^R = f^R (\rho^R, \partial_r \rho^R)$
+
+```Python
 # electronic energy (after SCF)
+# for HF
 Eelec0, Eelec1 = mf.energy_elec(dm=R)  # actually return (total energy, HF energy)
 Eelec0_V = mf.get_hcore() + 0.5 * mf.get_j() - 0.25 * mf.get_k()
 Eelec0 = (Eelec0_V * dm1).sum()
 Eelec1_V = 0.5 * mf.get_j() - 0.25 * mf.get_k()
 Eelec1 = (Eelec0_V * dm1).sum()
+# for GGA
+Eelec0 = mf.energy_elec(dm=R)  # total energy, GGA energy
+rho_0_R = np.einsum("uv, gu, gv -> g", R, grdh.ao_0, grdh.ao_0)  # 零阶, shape (ngrids, )
+rho_1_R = 2 * np.einsum("uv, rgu, gv -> rg", R, grdh.ao_1, grdh.ao_0)  # 一阶, shape (3, ngrids)
+rho_01_R = np.vstack([rho_0_R, rho_1_R])  # shape (4, ngrids)
+exc_R = ni.eval_xc("B3LYPg", rho_01_R, deriv=0)[0]  # volumetric xc
+# exc_R *= grids.weights  # 写在下面比较清楚
+Eelec0 = (
+    + ((H + 0.5 * J_R - 0.25 * ni.hybrid_coeff("B3LYPg") * K_R) * R).sum()  # 在ao空间做
+    + (grids.weights * exc_R * rho_0_R).sum()  # 在实空间做
+)
+```
 
+$$v_{\mu \nu}^\mathrm{xc} [\rho] = \langle \mu | \frac{\delta E_\mathrm{xc} [\rho]}{\delta \rho} | \nu \rangle$$
+$$
+\text{(ni.eval\_xc())} \quad
+E_{xc}[\rho]
+= f^R \rho^R
+\neq v_{\mu\nu}^{xc}[\rho] D_{\mu\nu}
+= \langle \mu | \frac{\delta E_\mathrm{xc} [\rho]}{\delta \rho} | \nu \rangle D_{\mu\nu}
+= \int \frac{\delta E_{xc}[\rho]}{\delta \rho(\boldsymbol{r})} \rho(\boldsymbol{r}) \, \mathrm{d} \boldsymbol{r}
+\quad \text{(ni.nr\_rks())}
+$$
+- `ni.eval_xc()`
+	- `[0]`: $f^R$ is volumetric for energy eval
+	- `[1,2,3]`: i-order functional derivatives
+		- for 1 (`vxc`) is (`vrho, vgamma, vlapl, vtau`), the first-order functional derivatives evaluated at each grid point, each shape (N) (`=ngrids`).
+- `ni.nr_rks()`
+	- `[0]`: `nelec`, number of electrons
+	- `[1]`: is $E_{xc}[\rho]$
+	- `[2]`: $v_{\mu\nu}^{xc}[\rho]$ is orbital (AO) for Fock matrix
+
+```Python
+# 这两个相等, 是上侧等式右边的内容
+numpy.einsum("uv,uv->", mf.make_rdm1(), ni.nr_rks(mol, grids, mf.xc, mf.make_rdm1())[1])
+quad_rho_grid = numint.eval_rho(mol, mol.eval_gto('GTOval', grids.coords), mf.make_rdm1())
+numpy.sum(quad_rho_grid	* grids.weights * ni.eval_xc(mf.xc, quad_rho_grid, deriv=1)[1])
+```
+
+
+
+```Python
 # system total energy
 Etol = mf.energy_tol(dm=R)
 Etol = mf.energy_elec(dm=R)[0] + mf.energy_nuc()
@@ -240,12 +325,6 @@ for M in range(natm):
         v += - mol.atom_charge(M) * mol.intor("int1e_rinv")
 np.allclose(v, mol.intor("int1e_nuc"))
 ```
-
-
-
-
-
-
 
 
 
