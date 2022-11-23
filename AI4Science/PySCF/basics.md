@@ -277,13 +277,13 @@ E_{xc}[\rho]
 \quad \text{(ni.nr\_rks())}
 $$
 - `ni.eval_xc()`
-	- `[0]`: $f^R$ is volumetric for energy eval
+	- `[0]`: $f^R$ is volumetric for energy eval, `exc` so-called
 	- `[1,2,3]`: i-order functional derivatives
 		- for 1 (`vxc`) is (`vrho, vgamma, vlapl, vtau`), the first-order functional derivatives evaluated at each grid point, each shape (N) (`=ngrids`).
 - `ni.nr_rks()`
 	- `[0]`: `nelec`, number of electrons
 	- `[1]`: is $E_{xc}[\rho]$
-	- `[2]`: $v_{\mu\nu}^{xc}[\rho]$ is orbital (AO) for Fock matrix
+	- `[2]`: $v_{\mu\nu}^{xc}[\rho]$ is orbital (AO) for Fock matrix (used messages from the `ni.eval_xc()`)
 
 ```Python
 # 这两个相等, 是上侧等式右边的内容
@@ -292,6 +292,14 @@ quad_rho_grid = numint.eval_rho(mol, mol.eval_gto('GTOval', grids.coords), mf.ma
 numpy.sum(quad_rho_grid	* grids.weights * ni.eval_xc(mf.xc, quad_rho_grid, deriv=1)[1])
 ```
 
+```Python
+# 从ni.eval_xc()的vrho 能够得到ni.nr_rks()[2]
+quad_ao_value = mol.eval_gto('GTOval', grids.coords)  # ni.eval_ao recommended
+quad_rho_grid = numint.eval_rho(mol, quad_ao_value, mf.make_rdm1())
+quad_vrho_grid = ni.eval_xc("LDA", quad_rho_grid, deriv=1)[1][0]  # get vrho
+quad_vrho_dm_recon = numpy.einsum("pi, p, pj -> ij", quad_ao_value, grids.weights*quad_vrho_grid, quad_ao_value)
+numpy.allclose(quad_vrho_dm_recon, xc_v_dm)
+```
 
 
 ```Python

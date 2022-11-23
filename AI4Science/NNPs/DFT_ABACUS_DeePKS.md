@@ -206,6 +206,7 @@ Chen Y, Zhang L, Wang H, E W. DeePKS: A Comprehensive Data-Driven Approach towar
 
 > **COMMENT**
 > 什么是Pulay force和Pulay stress?
+> 周期性边界条件导致的问题
 
 
 
@@ -231,6 +232,8 @@ Chen Y, Zhang L, Wang H, E W. DeePKS: A Comprehensive Data-Driven Approach towar
 - [陈默涵：ABACUS和基于机器学习的密度泛函](https://www.bilibili.com/video/BV1se411g7KL)
 - [DeePKS+ABACUS：AI辅助的电子结构方法](https://www.bilibili.com/video/BV1bt4y137Xj)
 	- 24:25, pySCF无法处理周期性体系
+	- 不对, 应该说处理的表现不好, 而不是处理不了
+	- 见具体`pbc`模块中, 相应的泛函和轨道基组比较少罢了
 
 
 

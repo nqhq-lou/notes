@@ -9,12 +9,49 @@ tags: []
 - [general information](https://docs.amazonaws.cn/cli/latest/userguide/cli-chap-welcome.html)
 
 
-## aws cli v2 install
+## general ideas
+
+- `BUCKET_NAME`: holds everything, with a unique name
+- `ACCESS_IP`: outside ip, inside ip
+- `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` for each bucket
+	- could be found at the web page
+	- both written in `~/.ceph_key` files
+- `dir`: the directory in each bucket
+
+
+
+## sensesync
+
+### install
+免安装绿色版, 从其他机器上拷贝即可
+
+### example
+```bash
+# copy from src_path to target_path
+sensesync --dryrun cp s3://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY@$BUCKET_NAME.$AWS_OUTSIDE_IP/[src_path]/ ./[target_path]/
+```
+
+### advanced usage
+- [see doc](http://sdoc.pjlab.org.cn:10099/docs/Petrel-OSS/02-Petrel-OSS%E8%BF%9B%E9%98%B6%E8%AF%B4%E6%98%8E/03-sensesync%E8%BF%9B%E9%98%B6.html)
+
+
+
+
+
+
+## aws cli v2
+
+### disadvantages
+- cannot show more than 1000 files if not properly configured
+- for details see [FAQ page](http://sdoc.pjlab.org.cn:10099/docs/Petrel-OSS/06-Petrel-OSS_FAQ.html#awscli1000)
+
+
+### install
 
 - see [user guide for v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 - [python api](https://pypi.org/project/awscliv2/)
 
-## basic usage for v2
+### basic usage for v2
 
 - see [集群用户手册_awscli进阶](http://sdoc.pjlab.org.cn:10099/docs/Petrel-OSS/02-Petrel-OSS%E8%BF%9B%E9%98%B6%E8%AF%B4%E6%98%8E/01-awscli%E8%BF%9B%E9%98%B6.html)
 
@@ -38,8 +75,7 @@ S3Uri -- Petrel-OSS的桶路径，格式为s3://bucket-name/(file-name)；
 ```
 
 
-
-## aws
+### aws by Han-Sen
 
 ```bash
 (base) [zhonghansen@SH-IDCA1404-10-140-54-88 nwchem]$ aws s3 ls --endpoint-url=10.140.2.204  

@@ -24,9 +24,20 @@ mdip = mol.intor("int1e_r")  # dipole, shape (3,N,N)
 - `dft.numint`
 
 - `eval_ao`: Evaluate AO function value on the given grids.
-	- actually call `mol.eval_gto()` from `gto.eval_got.eval_gto`
+	- actually call `mol.eval_gto()` from `gto.eval_gto.eval_gto`
+	- recommend `ni.eval_ao`, see basis
+```Python
+temp0 = mol.eval_gto('GTOval', grids.coords)
+temp1 = ni.eval_ao(mol, grids.coords, deriv=0, cutoff=grids.cutoff)
+numpy.allclose(temp0, temp1)  # True
+```
 - `eval_rho`
-
+```Python
+ao = numint.eval_ao(mol, grids.coords, deriv=0)
+temp1 = numint.eval_rho(mol, ao, rho_dm)
+temp2 = numpy.einsum("iu,uv,iv->i", ao, rho_dm, ao)
+numpy.allclose(temp1, temp2)  # True
+```
 
 ## memo
 
