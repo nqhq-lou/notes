@@ -29,7 +29,6 @@ $$
 
 - atomic-centered descriptor
 	- for atom with index $I$
-	- 感觉ab各自求和有点怪
 $$
 D_{nl,mm'}^{I} = \sum_{occ,i;a,b} c_{ai} (c_{bi})^*
 \braket{\alpha_{nlm}^I | \phi_a} \braket{\phi_b | \alpha_{nlm'}^I}
@@ -48,7 +47,7 @@ $$
 
 - Thermal embedding: rank eigvals by value
 $$
-d_{nl}^I = \mathrm{EigVal}_{mm'}(D_{nl,mm'}^{I}) \quad \text{(sort by value)}
+d_{nl}^I = \mathrm{EigVal}_{mm'}(D_{nl,mm'}^{I}) \quad \text{(sort descending)}
 $$
 
 - 因为之后要GNN, 所以就不考虑更多双点的descriptor模式了
@@ -58,10 +57,27 @@ $$
 
 - mock loss, $r$ is quad grid points
 $$E_{XC} = \sum_{r} w^g (r) f^g (r) \rho(r)$$
-- target
-$$V_{XC}(r^g) = \dfrac{\delta E_{XC}}{\delta \rho(r^g)}
-= w^g (r^g) f^g(r^g) + \sum_r w^g (r) \rho^g (r) \dfrac{\delta f^g (r)}{\delta \rho(r^g)}$$
-- d
+- from `exc` to `xc_v`
+$$
+\begin{aligned}
+\hat{V}_{\mu\nu}^{XC} = \ & \dfrac{\partial E_{XC}}{\partial \rho_{\mu\nu}} \\
+= \ & \sum_{I,nl,mm'} \dfrac{\partial E_{XC}}{\partial D_{nl,mm'}^I} \dfrac{\partial D_{nl,mm'}^I}{\partial \rho_{\mu\nu}} \\
+= \ & \sum_{I,nl,mm'} \dfrac{\partial E_{XC}}{\partial D_{nl,mm'}^I} \braket{\phi_\mu | \alpha_{nlm}^I} \braket{\alpha_{nlm'}^I | \phi_\nu}
+\end{aligned}
+$$
+- from eigval to matrix [[Gradient from eigvals to matrix]]
+$$D v_i = d_i v_i$$
+$$
+\frac{\partial L}{\partial D}
+= - \sum_j \sum_{i \neq j, (d_i \neq d_j)}
+(d_i - d_j)^{-1} v_i v_i^T
+\frac{\partial L}{\partial v_j} v_j^T
+$$
+$$
+\dfrac{\partial L}{\partial D} = X \bar{\Lambda} X^T - \bar{V} X^T
+$$
+- dd
+
 
 
 

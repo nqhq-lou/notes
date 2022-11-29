@@ -138,7 +138,8 @@ def mol_slice(atm, mol):
 	- 氧原子3个s, 2个p
 	- $3+2=5$ 称为 atomic shells
 	- $3*1+2*3=9$ 称为 atomic orbitals
-
+- 实际$Inlm$排列
+	- 原子顺序$I$, 角动量$l$, 主量子数$n$, 磁量子数$m$
 
 
 ## physics quantities
