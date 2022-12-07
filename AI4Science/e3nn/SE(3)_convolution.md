@@ -3,6 +3,8 @@ title: graph SE(3) equivariant convolution
 tags: [GNN, equivariant, e3nn]
 ---
 
+- [documentation to **e3nn**](https://docs.e3nn.org/en/latest/guide/change_of_basis.html)
+
 ## background
 
 - node features are related to angular quantum number / representation order
@@ -16,7 +18,7 @@ $$
 - satisfies equivariant
 	- where $\mathcal{D}$ acts in this form because of batch shape: `A @ D.T`
 $$
-\mathcal{D}_{out} (\mathrm{rot}) 
+\mathcal{D}_{out}
 \mathrm{conv}(f_{in}, \{\vec{r}\}_{vertex})
 = \mathrm{conv}
 (\mathcal{D}_{in} f_{in},

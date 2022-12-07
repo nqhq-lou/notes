@@ -27,7 +27,7 @@ R(r_{ij}) = \ & W_n \sigma(\ldots \sigma(W_2 \sigma(W_1 B(r_{ij})))) \\
 B(r_{ij}) = \ & \dfrac{2}{r_c} \dfrac{\sin (\frac{b\pi}{r_c} r_{ij})}{r_{ij}} f_{env} (r_{ij}, r_c) \\
 \end{aligned}
 $$
-- tensor product and convolution: see [[SE(3)convolution]]
+- tensor product and convolution: see [[SE(3)_convolution]]
 - 
 
 

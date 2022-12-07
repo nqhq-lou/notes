@@ -69,9 +69,6 @@ S3Uri -- Petrel-OSS的桶路径，格式为s3://bucket-name/(file-name)；
 --exclude <value>：使命令忽略符合特定样式的文件或对象；
 --no-sign-request：匿名访问。需要设置相应的桶策略以支持匿名访问；
 --no-follow-symlinks：不上传软连接。默认是上传的。
-
-
-
 ```
 
 

@@ -25,7 +25,52 @@ git push origin [branch_name]  # push
 ```
 
 
+### change remote
+- https://careerkarma.com/blog/git-change-remote/
+
+```
+git remote set-url origin git@github.com:Career-Karma-Tutorials/git-submodule.git
+```
 
 
+
+## full tips after creating a project
+
+```bash
+### Command line instructions
+
+You can also upload existing files from your computer using the instructions below.
+
+##### Git global setup
+
+git config --global user.name "louzekun"
+git config --global user.email "louzekun@pjlab.org.cn"
+
+##### Create a new repository
+
+git clone ssh://git@github.com/ai4science/gnnxc.git
+cd gnnxc
+git switch -c main
+touch README.md
+git add README.md
+git commit -m "add README"
+
+##### Push an existing folder
+
+cd existing_folder
+git init --initial-branch=main
+git remote add origin ssh://git@github.com/ai4science/gnnxc.git
+git add .
+git commit -m "Initial commit"
+
+##### Push an existing Git repository
+
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin ssh://git@github.com/ai4science/gnnxc.git
+```
+
+
+for pjlab, `ssh://git@gitlab.pjlab.org.cn:1122/louzekun/gnnxc.git`
 
 
