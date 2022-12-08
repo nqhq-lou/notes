@@ -29,7 +29,9 @@ tags: []
 ```bash
 # copy from src_path to target_path
 sensesync --dryrun cp s3://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY@$BUCKET_NAME.$AWS_OUTSIDE_IP/[src_path]/ ./[target_path]/
+sensesync --dryrun sync ./share_data/ s3://access_key:secret_key@share_data.10.140.2.204:80/
 ```
+
 
 ### advanced usage
 - [see doc](http://sdoc.pjlab.org.cn:10099/docs/Petrel-OSS/02-Petrel-OSS%E8%BF%9B%E9%98%B6%E8%AF%B4%E6%98%8E/03-sensesync%E8%BF%9B%E9%98%B6.html)
