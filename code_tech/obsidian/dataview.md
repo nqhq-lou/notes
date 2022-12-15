@@ -18,13 +18,14 @@ from "code_tech"
 sort file.ctime
 ```
 
-```dataview
-list
-from ""
-sort file.name
-```
+```Python
+	```dataview
+	list
+	from ""
+	sort file.name
+	```
 
 
 ## references
 - [obsidian插件之dataview入门](https://www.zhihu.com/people/dawuxiaowu)
-- 
+- [add task checker](https://forum.obsidian.md/t/progress-bar-for-incomplete-total-tasks/30744)
