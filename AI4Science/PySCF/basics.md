@@ -277,14 +277,17 @@ E_{xc}[\rho]
 = \int \frac{\delta E_{xc}[\rho]}{\delta \rho(\boldsymbol{r})} \rho(\boldsymbol{r}) \, \mathrm{d} \boldsymbol{r}
 \quad \text{(ni.nr\_rks())}
 $$
-- `ni.eval_xc()`
-	- `[0]`: $f^R$ is volumetric for energy eval, `exc` so-called
-	- `[1,2,3]`: i-order functional derivatives
-		- for 1 (`vxc`) is (`vrho, vgamma, vlapl, vtau`), the first-order functional derivatives evaluated at each grid point, each shape (N) (`=ngrids`).
-- `ni.nr_rks()`
-	- `[0]`: `nelec`, number of electrons
-	- `[1]`: is $E_{xc}[\rho]$
-	- `[2]`: $v_{\mu\nu}^{xc}[\rho]$ is orbital (AO) for Fock matrix (used messages from the `ni.eval_xc()`)
+- `ni.eval_xc()`: at `pyscf.dft.libxc.eval_xc`
+	- output spatial grid value
+	- `[0]`: `exc`, XC energy density, so-call 泛函核 or $f^R$ in pyxdh
+	- `[1]`: `vxc`, list, i-order functional derivatives
+		- `[0,1,2,3] = [vrho, vgamma, vlapl, vtau]`, the first-order functional derivatives evaluated at each grid point, each shape `(ngrids,)`.
+	- `[2]`: `fxc`, see func comment for details
+	- `[3]`: `kxc`, see func comment for details
+- `ni.nr_rks()`: at `pyscf.dft.numint.nr_rks`
+	- `[0]`: `nelec`, scalar, number of electrons
+	- `[1]`: `exccum`, scalar, is $E_{xc}[\rho]$
+	- `[2]`: `vmat`, $v_{\mu\nu}^{xc}[\rho]$ is orbital (AO) for Fock matrix (used messages from the `ni.eval_xc()`
 
 ```Python
 # 这两个相等, 是上侧等式右边的内容
@@ -296,6 +299,7 @@ numpy.sum(quad_rho_grid	* grids.weights * ni.eval_xc(mf.xc, quad_rho_grid, deriv
 ```Python
 # 从ni.eval_xc()的vrho 能够得到ni.nr_rks()[2]
 quad_ao_value = mol.eval_gto('GTOval', grids.coords)  # ni.eval_ao recommended
+# ni.eval_ao(mol, mf.grids.coords, deriv=3, cutoff=mf.grids.cutoff)  # shape (deriv, n_grids, nao)
 quad_rho_grid = numint.eval_rho(mol, quad_ao_value, mf.make_rdm1())
 quad_vrho_grid = ni.eval_xc("LDA", quad_rho_grid, deriv=1)[1][0]  # get vrho
 quad_vrho_dm_recon = numpy.einsum("pi, p, pj -> ij", quad_ao_value, grids.weights*quad_vrho_grid, quad_ao_value)

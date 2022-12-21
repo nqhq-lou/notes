@@ -80,6 +80,24 @@ $$
 d_{nl}^I = \mathrm{EigVal}_{mm'}(D_{nl,mm'}^{I}) \quad \text{(sort descending)}
 $$
 
+## GNN details
+
+### smooth cutoff
+$$
+f(x) =
+\left\{\begin{aligned}
+\mathrm{nan} , \quad & x<0 \\
+1 , \quad & 0 \le x<x_0 \\
+\dfrac{1}{2} \left(1 - \cos \dfrac{(1-x)\pi}{1-x_0}\right) , \quad & x_0 \le x \le 1 \\
+0 , \quad & x > 1
+\end{aligned}\right.
+$$
+
+### gates
+$$
+\left(\bigoplus_i \phi_i(x_i) \right) \oplus \left(\bigoplus_j \phi_j(g_j) y_j \right)
+$$
+
 
 
 ## BP gradient
@@ -116,6 +134,9 @@ $$
 
 - position of ghost atom `X`
 - Choice of $n,l$, and how to apply them in PySCF
+
+
+
 
 
 ### wheel example

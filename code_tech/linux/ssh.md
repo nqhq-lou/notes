@@ -16,5 +16,6 @@ tags: [shell/ssh]
 	- 创建管道连接
 - `ssh-keygen -t ed25519 -C "comment"`
 
+## copy key
 
-****
+- `ssh-copy-id -i [path2pubkey] louzekun@10.140.54.88 -p [port]`

@@ -1,7 +1,7 @@
 
 - axis: YZX
 - Euler angle: ZYZ
-
+- irreps notation: `MxLp`, multiplicity, azimuthal number, parity 
 
 ### compare sequence between `e3nn` and `pyscf`
 - [change of basis - e3nn](https://docs.e3nn.org/en/latest/guide/change_of_basis.html)

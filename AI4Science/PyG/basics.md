@@ -4,6 +4,7 @@ tags: [pyg]
 ---
 
 ## share crystal data format
+- for the latest conventions, see [data conventions](https://gitlab.pjlab.org.cn/hugengyuan/atom-graph-database/-/blob/main/docs/Data_convention.md)
 ```Python
 from torch_geometric.data import Data
 from torch import Tensor

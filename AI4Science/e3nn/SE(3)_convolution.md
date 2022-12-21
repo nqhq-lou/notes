@@ -164,7 +164,7 @@ edge_length_embedding.pow(2).mean()  # tensor(0.9002), the second moment
 ```Python
 fc = nn.FullyConnectedNet([num_basis, 16, tp.weight_numel], torch.relu)
 weight = fc(edge_length_embedding)  # this is the radius embedding
-  
+
 print(f"{edge_length_embedding.shape=}")
 # edge_length_embedding.shape=torch.Size([3290, 10])
 print(f"{weight.shape=}, {len(edge_src)=}, {tp.weight_numel=}")

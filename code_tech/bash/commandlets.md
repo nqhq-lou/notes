@@ -4,6 +4,18 @@ tags: [Linux/cmd]
 ---
 
 
+## ls
+
+```bash
+Usage: ls [OPTION]... [FILE]...
+List information about the FILEs (the current directory by default).
+Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -r, --reverse              reverse order while sorting
+  -t                         sort by modification time, newest first
+```
+
 
 ## grep
 
