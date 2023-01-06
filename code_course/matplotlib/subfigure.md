@@ -1,6 +1,6 @@
 ---
 title: matplotlib subfigure
-tags: [python/module/pandas]
+tags: [python/module/matplotlib]
 ---
 
 

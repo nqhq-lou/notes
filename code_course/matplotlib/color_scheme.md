@@ -1,6 +1,6 @@
 ---
 title: color scheme
-tag: [python/module/matplotlib]
+tags: [python/module/matplotlib]
 ---
 
 

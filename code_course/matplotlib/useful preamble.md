@@ -1,6 +1,6 @@
 ---
 title: useful_preamble
-tags: [python/module/pandas]
+tags: [python/module/matplotlib]
 ---
 
 ```python

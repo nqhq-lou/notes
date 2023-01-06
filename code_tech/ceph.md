@@ -31,6 +31,7 @@ tags: []
 sensesync --dryrun cp s3://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY@$BUCKET_NAME.$AWS_OUTSIDE_IP/[src_path]/ ./[target_path]/
 sensesync --dryrun sync ./share_data/ s3://access_key:secret_key@share_data.10.140.2.204:80/
 sensesync --dryrun cp s3://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY@share_data.10.140.2.204:80/QM7/M062X-def2tzvp/ ./2process/
+sensesync --dryrun --include ".tar$" cp ./ s3://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY@share_data_louzekun.10.140.2.204:80/qm7/m062x_def2tzvp/
 ```
 
 
